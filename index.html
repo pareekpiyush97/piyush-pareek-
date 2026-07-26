@@ -9,16 +9,70 @@
 <meta name="author" content="Piyush Pareek">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0B2545">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://pareekpiyush97.github.io/piyush-pareek-/">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" href="zrimat-icon-small.png">
+<link rel="apple-touch-icon" href="zrimat-icon-small.png">
+
+<!-- Open Graph -->
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Zrimat — Piyush Pareek">
+<meta property="og:locale" content="en_IN">
 <meta property="og:title" content="Piyush Pareek — Premium Websites for India's Next Brands">
 <meta property="og:description" content="Websites that build trust and attract customers for hotels, clinics, institutes and India's next brands. 50+ live client projects.">
-<meta property="og:image" content="https://pareekpiyush97.github.io/Zrimat/image.jpeg">
-<meta property="og:url" content="https://pareekpiyush97.github.io/Zrimat/">
+<meta property="og:url" content="https://pareekpiyush97.github.io/piyush-pareek-/">
+<meta property="og:image" content="https://pareekpiyush97.github.io/piyush-pareek-/image.jpeg">
+<meta property="og:image:width" content="831">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:alt" content="Piyush Pareek, web designer and automation developer based in Bikaner, India">
+
+<!-- Twitter (summary keeps the portrait photo un-cropped; switch to summary_large_image if you add a 1200x630 banner) -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@pareekpiyush97">
+<meta name="twitter:creator" content="@pareekpiyush97">
+<meta name="twitter:title" content="Piyush Pareek — Premium Websites for India's Next Brands">
+<meta name="twitter:description" content="Websites that build trust and attract customers for hotels, clinics, institutes and India's next brands. 50+ live client projects.">
+<meta name="twitter:image" content="https://pareekpiyush97.github.io/piyush-pareek-/image.jpeg">
+<meta name="twitter:image:alt" content="Piyush Pareek, web designer and automation developer">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Zrimat — Piyush Pareek Web Design & Automation",
+  "image": "https://pareekpiyush97.github.io/piyush-pareek-/image.jpeg",
+  "url": "https://pareekpiyush97.github.io/piyush-pareek-/",
+  "description": "Premium websites, SEO and WhatsApp automation for India's next brands.",
+  "telephone": "+91-89494-98980",
+  "email": "pareekpiyush97@gmail.com",
+  "priceRange": "$$",
+  "areaServed": "Worldwide",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bikaner",
+    "addressRegion": "Rajasthan",
+    "addressCountry": "IN"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Piyush Pareek",
+    "jobTitle": "Web Designer & Automation Developer"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/piyush-pareek49",
+    "https://github.com/pareekpiyush97",
+    "https://x.com/pareekpiyush97"
+  ]
+}
+</script>
 <style>
 :root{
   --navy:#0B2545;
@@ -45,6 +99,7 @@ a{color:var(--blue)}
 .container{max-width:1140px;margin:0 auto;padding:0 24px}
 .skip-link{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:10px 18px;z-index:200}
 .skip-link:focus{left:0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 
 /* Scroll reveal */
@@ -66,6 +121,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdr
 .nav-links{display:flex;gap:26px;list-style:none;align-items:center}
 .nav-links a{color:var(--slate);text-decoration:none;font-size:14.5px;font-weight:500;padding:6px 2px;border-bottom:2px solid transparent}
 .nav-links a:hover{color:var(--navy);border-bottom-color:var(--gold)}
+.nav-cta-mobile{display:none}
 .btn{display:inline-block;padding:13px 28px;border-radius:6px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:all .18s ease}
 .btn-primary{background:var(--blue);color:#fff}
 .btn-primary:hover{background:#1E40AF;box-shadow:var(--shadow)}
@@ -186,6 +242,7 @@ label{display:block;font-size:13.5px;font-weight:600;color:var(--navy);margin-bo
 input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-size:15px;color:var(--ink);background:#fff}
 input:hover,select:hover,textarea:hover{border-color:#CBD5E1}
 textarea{resize:vertical;min-height:96px}
+.form-error{color:#B91C1C;font-size:13px;font-weight:600;margin-bottom:14px;min-height:0}
 .form-note{font-size:12.5px;color:var(--muted);margin-top:14px}
 .channels{display:grid;gap:14px}
 .channel{display:flex;align-items:center;gap:16px;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;text-decoration:none;background:#fff;transition:all .18s ease}
@@ -223,8 +280,10 @@ footer .brand-mark{background:#fff;color:var(--navy)}
   .nav-links.open{display:flex}
   .nav-links li{width:100%}
   .nav-links a{display:block;padding:14px 24px;border-bottom:none}
+  .nav-cta-mobile{display:block;padding:8px 24px 4px}
+  .nav-cta-mobile a{display:block;background:var(--blue);color:#fff;text-align:center;border-radius:6px;padding:13px 16px;font-weight:600}
   .nav-toggle{display:block}
-  .nav .btn{display:none}
+  .nav>.btn{display:none}
   section{padding:60px 0}
   .hero{padding-top:60px}
 }
@@ -236,7 +295,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
 <header>
   <div class="container nav">
     <a class="brand" href="#top" aria-label="Zrimat — home">
-      <img class="brand-mark" src="zrimat-icon-small.png" alt="" aria-hidden="true" style="width:40px;height:40px;border-radius:6px;object-fit:contain;background:#fff">
+      <img class="brand-mark" src="zrimat-icon-small.png" alt="" aria-hidden="true" width="40" height="40" style="width:40px;height:40px;border-radius:6px;object-fit:contain;background:#fff">
       <span class="brand-text"><strong>Zrimat</strong><span>Web Design &amp; Automation</span></span>
     </a>
     <nav aria-label="Primary">
@@ -247,6 +306,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
         <li><a href="#why">Why Me</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li class="nav-cta-mobile"><a href="https://wa.me/918949498980?text=Hi%20Piyush%2C%20I%27d%20like%20to%20book%20a%20free%20consultation%20for%20my%20business%20website." rel="noopener">Book a Free Consultation</a></li>
       </ul>
     </nav>
     <a class="btn btn-primary" href="https://wa.me/918949498980?text=Hi%20Piyush%2C%20I%27d%20like%20to%20book%20a%20free%20consultation%20for%20my%20business%20website." rel="noopener">Book a Free Consultation</a>
@@ -274,7 +334,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
       </div>
     </div>
     <div class="hero-card">
-      <img src="https://pareekpiyush97.github.io/Zrimat/image.jpeg" alt="Piyush Pareek, web designer and automation developer" loading="eager">
+      <img src="image.jpeg" width="831" height="1024" alt="Piyush Pareek, web designer and automation developer" loading="eager" fetchpriority="high" decoding="async">
       <div class="hero-card-body">
         <div><strong>Piyush Pareek</strong><br><span>Bikaner, India · Working worldwide</span></div>
         <span class="badge">50+ live client projects</span>
@@ -357,7 +417,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
           <p>Premium real-estate consultancy site: cinematic video hero, featured property portfolio, residential sales, land &amp; plots, leasing and investment advisory sections, plus a client testimonial wall.</p>
           <div class="tags"><span class="tag">Cinematic video hero</span><span class="tag">Property portfolio</span><span class="tag">Investment advisory</span><span class="tag">Testimonials</span></div>
           <div class="proj-links">
-            <a class="link-live" href="https://pareekpiyush97.github.io/MS-PAU-Associates-/" rel="noopener">Live</a>
+            <a class="link-live" href="https://pareekpiyush97.github.io/MS-PAU-Associates-/" target="_blank" rel="noopener">Live<span class="sr-only"> — MS PAU &amp; Associates (opens in new tab)</span></a>
           </div>
         </div>
       </article>
@@ -369,7 +429,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
           <p>Cinematic portfolio site for an automotive design studio: sketch-to-surface process showcase, live build tracker with spec callouts, and a photoreal project gallery.</p>
           <div class="tags"><span class="tag">Process showcase</span><span class="tag">Build tracker</span><span class="tag">Photoreal gallery</span></div>
           <div class="proj-links">
-            <a class="link-live" href="https://pareekpiyush97.github.io/Z-Lab/" rel="noopener">Live</a>
+            <a class="link-live" href="https://pareekpiyush97.github.io/Z-Lab/" target="_blank" rel="noopener">Live<span class="sr-only"> — Z Lab Design (opens in new tab)</span></a>
           </div>
         </div>
       </article>
@@ -381,7 +441,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
           <p>IIT-JEE, NEET, UPSC/RAS and foundation coaching institute site with results showcase, course catalogue, student rank cards, testimonials, and enquiry form.</p>
           <div class="tags"><span class="tag">Results showcase</span><span class="tag">7 course tracks</span><span class="tag">Enquiry form</span></div>
           <div class="proj-links">
-            <a class="link-live" href="https://pareekpiyush97.github.io/eureka/" rel="noopener">Live</a>
+            <a class="link-live" href="https://pareekpiyush97.github.io/eureka/" target="_blank" rel="noopener">Live<span class="sr-only"> — Eureka Institute (opens in new tab)</span></a>
           </div>
         </div>
       </article>
@@ -393,7 +453,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
           <p>Cinematic site for a wedding photography &amp; events studio: full-bleed video hero, Instagram-style work grid, hover-to-play film reels, and a 10-service showcase across Maharashtra and India.</p>
           <div class="tags"><span class="tag">Video hero</span><span class="tag">Work grid</span><span class="tag">Hover-play films</span></div>
           <div class="proj-links">
-            <a class="link-live" href="https://pareekpiyush97.github.io/Badal-Production-/" rel="noopener">Live</a>
+            <a class="link-live" href="https://pareekpiyush97.github.io/Badal-Production-/" target="_blank" rel="noopener">Live<span class="sr-only"> — Badal Production (opens in new tab)</span></a>
           </div>
         </div>
       </article>
@@ -405,7 +465,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
           <p>Multi-page clinic website for Dr. Manali Vyas: online appointment booking, weekly webinar registration, patient testimonials, Google Maps, and full SEO with social-preview cards.</p>
           <div class="tags"><span class="tag">5 pages</span><span class="tag">Booking system</span><span class="tag">Webinar funnel</span><span class="tag">SEO + OG</span></div>
           <div class="proj-links">
-            <a class="link-live" href="https://pareekpiyush97.github.io/Nath-Homiopathy/" rel="noopener">Live</a>
+            <a class="link-live" href="https://pareekpiyush97.github.io/Nath-Homiopathy/" target="_blank" rel="noopener">Live<span class="sr-only"> — Nath Homeopathy (opens in new tab)</span></a>
           </div>
         </div>
       </article>
@@ -417,7 +477,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
           <p>Editorial-style site for a full-service wedding planning house: cinematic video storytelling, signature services showcase, moments gallery, and a client love-notes wall.</p>
           <div class="tags"><span class="tag">Video storytelling</span><span class="tag">Services showcase</span><span class="tag">Gallery</span></div>
           <div class="proj-links">
-            <a class="link-live" href="https://pareekpiyush97.github.io/Anusu/" rel="noopener">Live</a>
+            <a class="link-live" href="https://pareekpiyush97.github.io/Anusu/" target="_blank" rel="noopener">Live<span class="sr-only"> — Anusu Events (opens in new tab)</span></a>
           </div>
         </div>
       </article>
@@ -429,7 +489,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
           <p>Multipage website for the heritage palace hotel (Est. 1904): cinematic scroll animations, room and dining showcases, built with a modern component architecture.</p>
           <div class="tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span><span class="tag">Framer Motion</span></div>
           <div class="proj-links">
-            <a class="link-live" href="https://pareekpiyush97.github.io/laxmi-Niwas-Palace/" rel="noopener">Live</a>
+            <a class="link-live" href="https://pareekpiyush97.github.io/laxmi-Niwas-Palace/" target="_blank" rel="noopener">Live<span class="sr-only"> — Laxmi Niwas Palace (opens in new tab)</span></a>
           </div>
         </div>
       </article>
@@ -504,7 +564,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
         <p>Fill this in and hit send — it opens WhatsApp with your message ready to go.</p>
         <div class="field">
           <label for="fName">Your name</label>
-          <input id="fName" name="name" type="text" autocomplete="name" required>
+          <input id="fName" name="name" type="text" autocomplete="name" required aria-required="true">
         </div>
         <div class="field">
           <label for="fBiz">Business / project</label>
@@ -512,7 +572,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
         </div>
         <div class="field">
           <label for="fSvc">What do you need?</label>
-          <select id="fSvc" name="service" required>
+          <select id="fSvc" name="service" required aria-required="true">
             <option value="">Select a service…</option>
             <option>New website</option>
             <option>Website redesign</option>
@@ -528,6 +588,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
           <label for="fMsg">Anything else? <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
           <textarea id="fMsg" name="message"></textarea>
         </div>
+        <p class="form-error" id="formError" role="alert" aria-live="assertive"></p>
         <button type="submit" class="btn btn-primary" style="width:100%">Send via WhatsApp →</button>
         <p class="form-note">Opens WhatsApp — nothing is stored anywhere else. Replies within 24 hours.</p>
       </form>
@@ -538,13 +599,13 @@ footer .brand-mark{background:#fff;color:var(--navy)}
         <a class="channel" href="mailto:pareekpiyush97@gmail.com">
           <span class="ico" aria-hidden="true">✉️</span><span><b>Email</b><span>pareekpiyush97@gmail.com</span></span>
         </a>
-        <a class="channel" href="https://www.linkedin.com/in/piyush-pareek49" rel="noopener">
+        <a class="channel" href="https://www.linkedin.com/in/piyush-pareek49" target="_blank" rel="noopener">
           <span class="ico" aria-hidden="true">in</span><span><b>LinkedIn</b><span>piyush-pareek49</span></span>
         </a>
-        <a class="channel" href="https://github.com/pareekpiyush97" rel="noopener">
+        <a class="channel" href="https://github.com/pareekpiyush97" target="_blank" rel="noopener">
           <span class="ico" aria-hidden="true">&lt;/&gt;</span><span><b>GitHub</b><span>pareekpiyush97</span></span>
         </a>
-        <a class="channel" href="https://x.com/pareekpiyush97" rel="noopener">
+        <a class="channel" href="https://x.com/pareekpiyush97" target="_blank" rel="noopener">
           <span class="ico" aria-hidden="true">𝕏</span><span><b>Twitter / X</b><span>@pareekpiyush97</span></span>
         </a>
       </div>
@@ -565,10 +626,10 @@ footer .brand-mark{background:#fff;color:var(--navy)}
         </a>
         <p>Premium websites, SEO and WhatsApp automation for India's next brands — from Bikaner to the world.</p>
         <div class="foot-social">
-          <a href="https://wa.me/918949498980" rel="noopener" aria-label="WhatsApp">💬</a>
-          <a href="https://www.linkedin.com/in/piyush-pareek49" rel="noopener" aria-label="LinkedIn">in</a>
-          <a href="https://github.com/pareekpiyush97" rel="noopener" aria-label="GitHub">&lt;/&gt;</a>
-          <a href="https://x.com/pareekpiyush97" rel="noopener" aria-label="Twitter X">𝕏</a>
+          <a href="https://wa.me/918949498980" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+          <a href="https://www.linkedin.com/in/piyush-pareek49" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a href="https://github.com/pareekpiyush97" target="_blank" rel="noopener" aria-label="GitHub">&lt;/&gt;</a>
+          <a href="https://x.com/pareekpiyush97" target="_blank" rel="noopener" aria-label="Twitter X">𝕏</a>
         </div>
       </div>
       <div>
@@ -594,7 +655,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="https://wa.me/918949498980" rel="noopener">+91 89494 98980</a></li>
+          <li><a href="https://wa.me/918949498980" target="_blank" rel="noopener">+91 89494 98980</a></li>
           <li><a href="mailto:pareekpiyush97@gmail.com">pareekpiyush97@gmail.com</a></li>
           <li>Bikaner, Rajasthan, India</li>
           <li>Replies within 24 hours</li>
@@ -627,8 +688,14 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 document.getElementById('waForm').addEventListener('submit',e=>{
   e.preventDefault();
   const v=id=>document.getElementById(id).value.trim();
+  const err=document.getElementById('formError');
   const name=v('fName'),biz=v('fBiz'),svc=v('fSvc'),msg=v('fMsg');
-  if(!name||!svc){alert('Please add your name and select a service.');return;}
+  if(!name||!svc){
+    err.textContent='Please add your name and select a service.';
+    (!name?document.getElementById('fName'):document.getElementById('fSvc')).focus();
+    return;
+  }
+  err.textContent='';
   let text=`Hi Piyush, I'm ${name}`;
   if(biz)text+=` from ${biz}`;
   text+=`. I need: ${svc}.`;
