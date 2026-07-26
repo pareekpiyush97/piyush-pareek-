@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pareekpiyush97.github.io/piyush-pareek-/sitemap.xml
+Sitemap: https://zrimat.com/sitemap.xml
