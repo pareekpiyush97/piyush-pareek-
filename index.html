@@ -14,7 +14,7 @@
 <link rel="canonical" href="https://zrimat.com/">
 
 <!-- Favicons -->
-<link rel="icon" type="image/png" href="zrimat-icon-small.png">
+<link rel="icon" type="image/png" href="zrimat-icon-transparent.png">
 <link rel="apple-touch-icon" href="zrimat-icon-small.png">
 
 <!-- Open Graph -->
@@ -147,6 +147,17 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdr
 .hero-card-body{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .hero-card-body strong{color:var(--navy);font-size:15px}
 .hero-card-body span{color:var(--muted);font-size:13px}
+/* Hero FX + cutout portrait (ported) */
+.hero{position:relative;overflow:hidden}
+#fx-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;mix-blend-mode:screen}
+.hero .hero-grid{position:relative;z-index:2}
+.hero-portrait{position:relative;display:flex;justify-content:center;align-items:flex-end}
+.hero-portrait::before{content:"";position:absolute;z-index:0;left:50%;top:44%;transform:translate(-50%,-50%);
+  width:min(120%,520px);aspect-ratio:1;border-radius:50%;filter:blur(16px);pointer-events:none;
+  background:radial-gradient(closest-side,rgba(124,92,255,.42),rgba(56,225,255,.20) 55%,transparent 72%)}
+.hero-portrait img{position:relative;z-index:1;width:auto;max-width:100%;max-height:540px;
+  filter:drop-shadow(0 26px 60px rgba(0,0,0,.5))}
+@media(max-width:960px){.hero-portrait img{max-height:460px}}
 .badge{background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;white-space:nowrap}
 
 /* ===== Stats band ===== */
@@ -297,7 +308,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
 <header>
   <div class="container nav">
     <a class="brand" href="#top" aria-label="Zrimat — home">
-      <img class="brand-mark" src="zrimat-icon-small.png" alt="" aria-hidden="true" width="40" height="40" style="width:40px;height:40px;border-radius:6px;object-fit:contain;background:#fff">
+      <img class="brand-mark" src="zrimat-icon-transparent.png" alt="" aria-hidden="true" width="40" height="40" style="width:40px;height:40px;object-fit:contain;background:transparent">
       <span class="brand-text"><strong>Zrimat</strong><span>Business Systems &amp; Automation</span></span>
     </a>
     <nav aria-label="Primary">
@@ -320,6 +331,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
 
 <!-- HERO -->
 <section class="hero" id="top" aria-label="Introduction">
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
   <div class="container hero-grid">
     <div>
       <span class="eyebrow">Business Developer · India's Next Brands</span>
@@ -335,12 +347,8 @@ footer .brand-mark{background:#fff;color:var(--navy)}
         <span>Replies within 24 hours</span>
       </div>
     </div>
-    <div class="hero-card">
-      <img src="image.jpeg" width="831" height="1024" alt="Piyush Pareek, business developer" loading="eager" fetchpriority="high" decoding="async">
-      <div class="hero-card-body">
-        <div><strong>Piyush Pareek</strong><br><span>Business Developer · Bikaner, India</span></div>
-        <span class="badge">50+ live client projects</span>
-      </div>
+    <div class="hero-portrait">
+      <img src="piyush-cutout.png" width="831" height="974" alt="Piyush Pareek, business developer, Bikaner, India" loading="eager" fetchpriority="high" decoding="async">
     </div>
   </div>
 </section>
@@ -617,7 +625,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
     <div class="foot-cols">
       <div class="foot-about">
         <a class="brand" href="#top" style="text-decoration:none" aria-label="Zrimat — home">
-          <img class="brand-mark" src="zrimat-icon-small.png" alt="" aria-hidden="true" width="40" height="40" style="width:40px;height:40px;border-radius:6px;object-fit:contain;background:#fff">
+          <img class="brand-mark" src="zrimat-icon-transparent.png" alt="" aria-hidden="true" width="40" height="40" style="width:40px;height:40px;object-fit:contain;background:transparent">
           <span style="color:#fff;font-weight:600">Zrimat</span>
         </a>
         <p>More than a website — the business operating system for India's next brands. Websites, automation, CRM, booking and dashboards, from Bikaner to the world.</p>
@@ -699,6 +707,40 @@ document.getElementById('waForm').addEventListener('submit',e=>{
   if(msg)text+=` Details: ${msg}`;
   window.open('https://wa.me/918949498980?text='+encodeURIComponent(text),'_blank','noopener');
 });
+
+// Hero FX: drifting particles + glitchy cursor trail
+(function(){
+  var canvas=document.getElementById('fx-canvas'), hero=document.getElementById('top');
+  if(!canvas||!hero) return;
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){ canvas.style.display='none'; return; }
+  var ctx=canvas.getContext('2d');
+  var coarse=window.matchMedia('(pointer:coarse)').matches;
+  var DPR=Math.min(window.devicePixelRatio||1,2), CY='56,225,255', VI='124,92,255', W=0, H=0;
+  function resize(){ W=hero.clientWidth; H=hero.clientHeight; canvas.width=Math.round(W*DPR); canvas.height=Math.round(H*DPR); canvas.style.width=W+'px'; canvas.style.height=H+'px'; ctx.setTransform(DPR,0,0,DPR,0,0); }
+  resize();
+  var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(resize,150); });
+  var particles=[], PN=coarse?22:44;
+  for(var i=0;i<PN;i++){ particles.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,r:Math.random()*1.7+.4,c:Math.random()<.5?CY:VI,a:Math.random()*.5+.18}); }
+  var trail=[], mx=W*.7, my=H*.5, hasMouse=false;
+  window.addEventListener('pointermove',function(e){ var r=canvas.getBoundingClientRect(); var x=e.clientX-r.left, y=e.clientY-r.top; if(x<0||y<0||x>W||y>H) return; hasMouse=true; mx=x; my=y; trail.push({x:x,y:y,life:1}); if(trail.length>26) trail.shift(); },{passive:true});
+  function rnd(n){ return (Math.random()-.5)*n; }
+  var running=true, raf;
+  function frame(){
+    if(!running) return;
+    raf=requestAnimationFrame(frame);
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<particles.length;i++){ var p=particles[i]; p.x+=p.vx; p.y+=p.vy; if(p.x<0)p.x+=W; else if(p.x>W)p.x-=W; if(p.y<0)p.y+=H; else if(p.y>H)p.y-=H; ctx.beginPath(); ctx.fillStyle='rgba('+p.c+','+p.a+')'; ctx.arc(p.x,p.y,p.r,0,6.283); ctx.fill(); }
+    if(hasMouse && !coarse){
+      for(var t=0;t<trail.length;t++){ var q=trail[t]; q.life-=0.045; if(q.life<=0) continue; var a=q.life*0.9, n=q.life;
+        for(var s=0;s<3;s++){ var sy=q.y+rnd(16*n), sh=1+Math.random()*3, sw=8+Math.random()*46*n, ox=rnd(20); ctx.fillStyle='rgba('+CY+','+(a*0.6)+')'; ctx.fillRect(q.x-sw/2+ox, sy, sw, sh); ctx.fillStyle='rgba('+VI+','+(a*0.6)+')'; ctx.fillRect(q.x-sw/2-ox, sy+1, sw, sh); } }
+      for(var g=0;g<3;g++){ ctx.fillStyle='rgba(234,241,251,'+(0.14+Math.random()*0.26)+')'; ctx.fillRect(mx+rnd(14), my+rnd(20), 2+Math.random()*10, 1+Math.random()*2); }
+    }
+    for(var k=trail.length-1;k>=0;k--){ if(trail[k].life<=0) trail.splice(k,1); }
+  }
+  frame();
+  if('IntersectionObserver' in window){ new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ if(!running){ running=true; frame(); } } else { running=false; cancelAnimationFrame(raf); } }); },{threshold:.02}).observe(hero); }
+  document.addEventListener('visibilitychange',function(){ if(document.hidden){ running=false; cancelAnimationFrame(raf); } else if(!running){ running=true; frame(); } });
+})();
 </script>
 </body>
 </html>
