@@ -111,7 +111,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 }
 
 /* ===== Header / Nav ===== */
-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand-mark{width:40px;height:40px;border-radius:6px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-family:'Inter',sans-serif;font-size:17px}
@@ -150,12 +150,9 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdr
 /* Hero FX + cutout portrait (ported) */
 .hero{position:relative;overflow:hidden}
 /* Lightweight hero orb — GPU-composited, no WebGL/JS loop */
-.hero-orb{position:absolute;z-index:1;top:44%;right:5%;transform:translateY(-50%);pointer-events:none;
-  width:min(40vw,460px);aspect-ratio:1;border-radius:50%;filter:blur(8px);opacity:.85;
-  background:radial-gradient(closest-side at 38% 38%,rgba(255,255,255,.85),transparent 42%),conic-gradient(from 200deg,#7c5cff,#38e1ff,#7c5cff);
-  -webkit-mask:radial-gradient(closest-side,#000 60%,transparent 74%);mask:radial-gradient(closest-side,#000 60%,transparent 74%);
-  animation:heroSpin 32s linear infinite;will-change:transform}
-@keyframes heroSpin{to{transform:translateY(-50%) rotate(360deg)}}
+.hero-orb{position:absolute;z-index:1;top:44%;right:2%;transform:translateY(-50%);pointer-events:none;
+  width:min(44vw,520px);aspect-ratio:1;border-radius:50%;opacity:.9;
+  background:radial-gradient(closest-side,rgba(124,92,255,.5),rgba(56,225,255,.22) 52%,transparent 72%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
   background-image:radial-gradient(rgba(200,220,255,.5) 1px,transparent 1.4px);background-size:40px 40px;
   -webkit-mask:radial-gradient(130% 90% at 72% 18%,#000,transparent 76%);mask:radial-gradient(130% 90% at 72% 18%,#000,transparent 76%)}
@@ -164,7 +161,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdr
 .hero .hero-grid{position:relative;z-index:2}
 .hero-portrait{position:relative;display:flex;justify-content:center;align-items:flex-end}
 .hero-portrait::before{content:"";position:absolute;z-index:0;left:50%;top:44%;transform:translate(-50%,-50%);
-  width:min(120%,520px);aspect-ratio:1;border-radius:50%;filter:blur(16px);pointer-events:none;
+  width:min(120%,520px);aspect-ratio:1;border-radius:50%;pointer-events:none;
   background:radial-gradient(closest-side,rgba(124,92,255,.42),rgba(56,225,255,.20) 55%,transparent 72%)}
 .hero-portrait img{position:relative;z-index:1;width:auto;max-width:100%;max-height:540px;
   filter:drop-shadow(0 26px 60px rgba(0,0,0,.5))}
@@ -359,7 +356,7 @@ footer .brand-mark{background:#fff;color:var(--navy)}
       </div>
     </div>
     <div class="hero-portrait">
-      <img src="piyush-cutout.png" width="831" height="974" alt="Piyush Pareek, business developer, Bikaner, India" loading="eager" fetchpriority="high" decoding="async">
+      <img src="piyush-cutout.webp" width="831" height="974" alt="Piyush Pareek, business developer, Bikaner, India" loading="eager" fetchpriority="high" decoding="async">
     </div>
   </div>
 </section>
