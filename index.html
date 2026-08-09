@@ -165,6 +165,13 @@ header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid
   background:radial-gradient(closest-side,rgba(124,92,255,.42),rgba(56,225,255,.20) 55%,transparent 72%)}
 .hero-portrait img{position:relative;z-index:1;width:auto;max-width:100%;max-height:540px;
   filter:drop-shadow(0 26px 60px rgba(0,0,0,.5))}
+/* ===== Smooth 3D: hero mouse-parallax layers (transform-only, GPU) ===== */
+.hero{perspective:1100px;--mx:0;--my:0}
+.hero::after{transform:translate3d(calc(var(--mx)*14px),calc(var(--my)*10px),0)}
+.hero-orb{transform:translateY(-50%) translate3d(calc(var(--mx)*26px),calc(var(--my)*18px),0)}
+.hero .hero-grid{transform-style:preserve-3d}
+.hero-portrait{transform:translate3d(calc(var(--mx)*-22px),calc(var(--my)*-14px),0) rotateY(calc(var(--mx)*7deg)) rotateX(calc(var(--my)*-5deg));will-change:transform}
+.svc,.proj,.why,.step{will-change:transform}
 @media(max-width:960px){.hero-portrait img{max-height:460px}}
 .badge{background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;white-space:nowrap}
 
@@ -716,7 +723,47 @@ document.getElementById('waForm').addEventListener('submit',e=>{
   window.open('https://wa.me/918949498980?text='+encodeURIComponent(text),'_blank','noopener');
 });
 
-// Hero visual is now a pure-CSS orb — no WebGL/JS render loop (fixes lag).
+// Hero visual is a pure-CSS orb — no WebGL/JS render loop (fixes lag).
+
+// ===== Smooth 3D: hero mouse-parallax + card tilt (transform-only, GPU) =====
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var fine=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if(reduce||!fine) return;   // desktop pointer only; respect reduced-motion
+
+  // Hero parallax — lerped, rAF only runs while the pointer is moving
+  var hero=document.getElementById('top');
+  if(hero){
+    var tx=0,ty=0,cx=0,cy=0,raf=null;
+    function loop(){
+      cx+=(tx-cx)*0.09; cy+=(ty-cy)*0.09;
+      hero.style.setProperty('--mx',cx.toFixed(4));
+      hero.style.setProperty('--my',cy.toFixed(4));
+      if(Math.abs(tx-cx)>0.0008||Math.abs(ty-cy)>0.0008){ raf=requestAnimationFrame(loop); } else { raf=null; }
+    }
+    hero.addEventListener('pointermove',function(e){
+      var r=hero.getBoundingClientRect();
+      tx=((e.clientX-r.left)/r.width-0.5)*2;
+      ty=((e.clientY-r.top)/r.height-0.5)*2;
+      if(!raf) raf=requestAnimationFrame(loop);
+    },{passive:true});
+    hero.addEventListener('pointerleave',function(){ tx=0; ty=0; if(!raf) raf=requestAnimationFrame(loop); },{passive:true});
+  }
+
+  // Card 3D tilt on hover
+  document.querySelectorAll('.svc,.proj,.why,.step').forEach(function(c){
+    c.addEventListener('pointermove',function(e){
+      var r=c.getBoundingClientRect();
+      var px=(e.clientX-r.left)/r.width-0.5, py=(e.clientY-r.top)/r.height-0.5;
+      c.style.transition='transform 0s';
+      c.style.transform='perspective(800px) rotateY('+(px*7).toFixed(2)+'deg) rotateX('+(-py*7).toFixed(2)+'deg) translateY(-5px)';
+    },{passive:true});
+    c.addEventListener('pointerleave',function(){
+      c.style.transition='transform .3s ease';
+      c.style.transform='';
+    },{passive:true});
+  });
+})();
 </script>
 </body>
 </html>
