@@ -297,6 +297,7 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,7,14,.82);backdrop-fi
 .pquote{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:14px;
   font-size:13.5px;font-style:italic;color:#C7D4EA;line-height:1.5}
 .pquote cite{display:block;margin-top:9px;font-style:normal;font-size:12px;color:var(--muted)}
+.pquote.desc{font-style:normal;color:#B9C7DE}
 .pdetail .btn{margin-top:16px;width:100%;justify-content:center}
 .snav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;
   background:rgba(10,16,32,.92);border:1px solid var(--line-2);color:#fff;cursor:pointer;display:grid;place-items:center;
@@ -602,8 +603,9 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
     <div class="filters" id="filters">
       <button class="filter on" data-cat="all">All</button>
       <button class="filter" data-cat="coaching">Coaching</button>
-      <button class="filter" data-cat="retail">Retail</button>
-      <button class="filter" data-cat="services">Services</button>
+      <button class="filter" data-cat="healthcare">Healthcare</button>
+      <button class="filter" data-cat="hospitality">Hospitality</button>
+      <button class="filter" data-cat="creative">Creative</button>
       <button class="filter" data-cat="professional">Professional</button>
     </div>
 
@@ -611,20 +613,20 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
       <button class="snav prev" id="prev" aria-label="Previous project">‹</button>
       <button class="snav next" id="next" aria-label="Next project">›</button>
 
-      <!-- slide 1 -->
+      <!-- Eureka Institute -->
       <div class="slide on" data-cat="coaching">
         <div class="mock">
           <div class="laptop">
             <div class="laptop-screen">
               <div class="mini-top"><i></i><i></i><i></i><span class="bar"></span></div>
               <div class="mini-hero">
-                <span class="kick">Wings Academy</span>
-                <h5>Dream. Prepare.<br>Achieve with Wings.</h5>
+                <span class="kick">Coaching · Bikaner</span>
+                <h5>Eureka Institute</h5>
               </div>
               <div class="mini-stats">
-                <div><b>500+</b><span>STUDENTS</span></div>
-                <div><b>90%</b><span>RESULTS</span></div>
-                <div><b>10+</b><span>YEARS</span></div>
+                <div><b>Results</b><span>SHOWCASE</span></div>
+                <div><b>7</b><span>COURSE TRACKS</span></div>
+                <div><b>Enquiry</b><span>FORM</span></div>
               </div>
             </div>
             <div class="laptop-base"></div>
@@ -632,32 +634,32 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
           <div class="phone"><div class="pbar"></div><div class="prow"></div><div class="prow w"></div><div class="prow"></div><div class="prow w"></div></div>
         </div>
         <div class="pdetail">
-          <h4>Coaching Institute</h4>
+          <h4>Eureka Institute — Bikaner</h4>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Premium website</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Lead capture system</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> WhatsApp integration</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Google presence</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Results showcase</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> 7 course tracks</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Student rank cards</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Enquiry form</li>
           </ul>
-          <div class="pquote">“Now our enquiries come in one place. Follow-up is much easier!”<cite>— Director, Wings Academy</cite></div>
-          <a class="btn btn-ghost" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20saw%20the%20coaching%20institute%20project%20and%20want%20something%20similar." target="_blank" rel="noopener">View Live Website →</a>
+          <div class="pquote desc">IIT-JEE, NEET, UPSC/RAS and foundation coaching institute site with results showcase, course catalogue, testimonials and enquiry form.</div>
+          <a class="btn btn-ghost" href="https://pareekpiyush97.github.io/eureka/" target="_blank" rel="noopener">View Live Website →</a>
         </div>
       </div>
 
-      <!-- slide 2 -->
-      <div class="slide" data-cat="retail">
+      <!-- Nath Homeopathy -->
+      <div class="slide" data-cat="healthcare">
         <div class="mock">
           <div class="laptop">
             <div class="laptop-screen">
               <div class="mini-top"><i></i><i></i><i></i><span class="bar"></span></div>
               <div class="mini-hero">
-                <span class="kick">Retail Store</span>
-                <h5>Your Shop,<br>Now Open Online.</h5>
+                <span class="kick">Healthcare · Bikaner</span>
+                <h5>Nath Homeopathy</h5>
               </div>
               <div class="mini-stats">
-                <div><b>2x</b><span>WALK-INS</span></div>
-                <div><b>4.8★</b><span>REVIEWS</span></div>
-                <div><b>24/7</b><span>ENQUIRY</span></div>
+                <div><b>5</b><span>PAGES</span></div>
+                <div><b>Booking</b><span>SYSTEM</span></div>
+                <div><b>Webinar</b><span>FUNNEL</span></div>
               </div>
             </div>
             <div class="laptop-base"></div>
@@ -665,32 +667,32 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
           <div class="phone"><div class="pbar"></div><div class="prow"></div><div class="prow w"></div><div class="prow"></div><div class="prow w"></div></div>
         </div>
         <div class="pdetail">
-          <h4>Retail Business</h4>
+          <h4>Nath Homeopathy — Bikaner</h4>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Catalogue website</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> WhatsApp order button</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Google Maps &amp; reviews</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Offer announcements</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Online appointment booking</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Weekly webinar registration</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Patient testimonials &amp; Google Maps</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Full SEO + social preview cards</li>
           </ul>
-          <div class="pquote">“Website ke baad customers pehle online dekh kar aate hain.”<cite>— Owner, Retail Store</cite></div>
-          <a class="btn btn-ghost" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20have%20a%20retail%20store%20and%20want%20a%20website%20like%20this." target="_blank" rel="noopener">View Live Website →</a>
+          <div class="pquote desc">Multi-page clinic website for Dr. Manali Vyas — booking, webinar funnel, testimonials and Maps, wired together end to end.</div>
+          <a class="btn btn-ghost" href="https://pareekpiyush97.github.io/Nath-Homiopathy/" target="_blank" rel="noopener">View Live Website →</a>
         </div>
       </div>
 
-      <!-- slide 3 -->
-      <div class="slide" data-cat="services">
+      <!-- Laxmi Niwas Palace -->
+      <div class="slide" data-cat="hospitality">
         <div class="mock">
           <div class="laptop">
             <div class="laptop-screen">
               <div class="mini-top"><i></i><i></i><i></i><span class="bar"></span></div>
               <div class="mini-hero">
-                <span class="kick">Service Business</span>
-                <h5>Book a Service<br>in 30 Seconds.</h5>
+                <span class="kick">Hospitality · Est. 1904</span>
+                <h5>Laxmi Niwas Palace</h5>
               </div>
               <div class="mini-stats">
-                <div><b>3x</b><span>ENQUIRIES</span></div>
-                <div><b>60%</b><span>LESS WORK</span></div>
-                <div><b>0</b><span>MISSED LEADS</span></div>
+                <div><b>Next.js</b><span>STACK</span></div>
+                <div><b>Multi</b><span>PAGE</span></div>
+                <div><b>Motion</b><span>SCROLL FX</span></div>
               </div>
             </div>
             <div class="laptop-base"></div>
@@ -698,32 +700,131 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
           <div class="phone"><div class="pbar"></div><div class="prow"></div><div class="prow w"></div><div class="prow"></div><div class="prow w"></div></div>
         </div>
         <div class="pdetail">
-          <h4>Service Provider</h4>
+          <h4>Laxmi Niwas Palace — Bikaner</h4>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Online booking form</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Auto WhatsApp confirmation</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Calendar sync</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Follow-up automation</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Multipage heritage hotel site</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Cinematic scroll animations</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Room &amp; dining showcases</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Next.js + TypeScript + Tailwind</li>
           </ul>
-          <div class="pquote">“Ab har enquiry ka reply automatic chala jata hai — time bach gaya.”<cite>— Founder, Service Business</cite></div>
-          <a class="btn btn-ghost" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20run%20a%20service%20business%20and%20want%20a%20booking%20system." target="_blank" rel="noopener">View Live Website →</a>
+          <div class="pquote desc">Website for the heritage palace hotel — cinematic scroll animations and room/dining showcases on a modern component architecture.</div>
+          <a class="btn btn-ghost" href="https://pareekpiyush97.github.io/laxmi-Niwas-Palace/" target="_blank" rel="noopener">View Live Website →</a>
         </div>
       </div>
 
-      <!-- slide 4 -->
+      <!-- Z Lab Design -->
+      <div class="slide" data-cat="creative">
+        <div class="mock">
+          <div class="laptop">
+            <div class="laptop-screen">
+              <div class="mini-top"><i></i><i></i><i></i><span class="bar"></span></div>
+              <div class="mini-hero">
+                <span class="kick">Automotive Design</span>
+                <h5>Z Lab Design</h5>
+              </div>
+              <div class="mini-stats">
+                <div><b>Process</b><span>SHOWCASE</span></div>
+                <div><b>Build</b><span>TRACKER</span></div>
+                <div><b>Photoreal</b><span>GALLERY</span></div>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+          <div class="phone"><div class="pbar"></div><div class="prow"></div><div class="prow w"></div><div class="prow"></div><div class="prow w"></div></div>
+        </div>
+        <div class="pdetail">
+          <h4>Z Lab Design — Design Studio</h4>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Sketch-to-surface process showcase</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Live build tracker with spec callouts</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Photoreal project gallery</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Cinematic portfolio layout</li>
+          </ul>
+          <div class="pquote desc">Cinematic portfolio site for an automotive design studio — process showcase, live build tracker and a photoreal gallery.</div>
+          <a class="btn btn-ghost" href="https://pareekpiyush97.github.io/Z-Lab/" target="_blank" rel="noopener">View Live Website →</a>
+        </div>
+      </div>
+
+      <!-- Badal Production -->
+      <div class="slide" data-cat="creative">
+        <div class="mock">
+          <div class="laptop">
+            <div class="laptop-screen">
+              <div class="mini-top"><i></i><i></i><i></i><span class="bar"></span></div>
+              <div class="mini-hero">
+                <span class="kick">Photography · Nagpur</span>
+                <h5>Badal Production</h5>
+              </div>
+              <div class="mini-stats">
+                <div><b>Video</b><span>HERO</span></div>
+                <div><b>10</b><span>SERVICES</span></div>
+                <div><b>Reels</b><span>HOVER-PLAY</span></div>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+          <div class="phone"><div class="pbar"></div><div class="prow"></div><div class="prow w"></div><div class="prow"></div><div class="prow w"></div></div>
+        </div>
+        <div class="pdetail">
+          <h4>Badal Production &amp; Wedding Events</h4>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Full-bleed video hero</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Instagram-style work grid</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Hover-to-play film reels</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> 10-service showcase</li>
+          </ul>
+          <div class="pquote desc">Cinematic site for a wedding photography &amp; events studio, covering Maharashtra and the rest of India.</div>
+          <a class="btn btn-ghost" href="https://pareekpiyush97.github.io/Badal-Production-/" target="_blank" rel="noopener">View Live Website →</a>
+        </div>
+      </div>
+
+      <!-- Anusu Events -->
+      <div class="slide" data-cat="creative">
+        <div class="mock">
+          <div class="laptop">
+            <div class="laptop-screen">
+              <div class="mini-top"><i></i><i></i><i></i><span class="bar"></span></div>
+              <div class="mini-hero">
+                <span class="kick">Event Management</span>
+                <h5>Anusu Events</h5>
+              </div>
+              <div class="mini-stats">
+                <div><b>Video</b><span>STORYTELLING</span></div>
+                <div><b>Gallery</b><span>MOMENTS</span></div>
+                <div><b>Notes</b><span>CLIENT LOVE</span></div>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+          <div class="phone"><div class="pbar"></div><div class="prow"></div><div class="prow w"></div><div class="prow"></div><div class="prow w"></div></div>
+        </div>
+        <div class="pdetail">
+          <h4>Anusu Events — Wedding Planning</h4>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Cinematic video storytelling</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Signature services showcase</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Moments gallery</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Client love-notes wall</li>
+          </ul>
+          <div class="pquote desc">Editorial-style site for a full-service wedding planning house — storytelling first, enquiries close behind.</div>
+          <a class="btn btn-ghost" href="https://pareekpiyush97.github.io/Anusu/" target="_blank" rel="noopener">View Live Website →</a>
+        </div>
+      </div>
+
+      <!-- MS PAU & Associates -->
       <div class="slide" data-cat="professional">
         <div class="mock">
           <div class="laptop">
             <div class="laptop-screen">
               <div class="mini-top"><i></i><i></i><i></i><span class="bar"></span></div>
               <div class="mini-hero">
-                <span class="kick">Clinic &amp; Professionals</span>
-                <h5>Trusted Care,<br>Simple Appointments.</h5>
+                <span class="kick">Real Estate</span>
+                <h5>MS PAU &amp; Associates</h5>
               </div>
               <div class="mini-stats">
-                <div><b>1000+</b><span>PATIENTS</span></div>
-                <div><b>4.9★</b><span>RATING</span></div>
-                <div><b>15+</b><span>YEARS</span></div>
+                <div><b>Video</b><span>HERO</span></div>
+                <div><b>Portfolio</b><span>PROPERTY</span></div>
+                <div><b>Advisory</b><span>INVESTMENT</span></div>
               </div>
             </div>
             <div class="laptop-base"></div>
@@ -731,15 +832,15 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
           <div class="phone"><div class="pbar"></div><div class="prow"></div><div class="prow w"></div><div class="prow"></div><div class="prow w"></div></div>
         </div>
         <div class="pdetail">
-          <h4>Clinic / Professional</h4>
+          <h4>MS PAU &amp; Associates — Property</h4>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Appointment system</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Patient enquiry dashboard</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Reminder messages</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Google presence &amp; reviews</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Cinematic video hero</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Featured property portfolio</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Leasing &amp; investment advisory</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="#22C55E"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.9" stroke="#0B1122" stroke-width="2.4" fill="none"/></svg> Client testimonial wall</li>
           </ul>
-          <div class="pquote">“Patients ko call karne ki zarurat kam ho gayi — sab online ho gaya.”<cite>— Consultant, Clinic</cite></div>
-          <a class="btn btn-ghost" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20am%20a%20professional%20or%20clinic%20owner%20and%20want%20an%20appointment%20system." target="_blank" rel="noopener">View Live Website →</a>
+          <div class="pquote desc">Premium real-estate consultancy site — residential sales, land &amp; plots, leasing and investment advisory in one place.</div>
+          <a class="btn btn-ghost" href="https://pareekpiyush97.github.io/MS-PAU-Associates-/" target="_blank" rel="noopener">View Live Website →</a>
         </div>
       </div>
 
