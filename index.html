@@ -157,10 +157,25 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,7,14,.82);backdrop-fi
 .wire{fill:none;stroke:rgba(120,160,255,.42);stroke-width:1.4;stroke-dasharray:5 6;
   animation:dash 22s linear infinite}
 @keyframes dash{to{stroke-dashoffset:-220}}
-.node{position:absolute;display:flex;align-items:center;gap:9px;background:rgba(13,20,38,.92);
+.node{position:absolute;z-index:2;display:flex;align-items:center;gap:9px;background:rgba(13,20,38,.92);
   border:1px solid var(--line-2);border-radius:12px;padding:9px 14px;font-size:13.5px;font-weight:600;
   box-shadow:0 14px 34px -14px rgba(0,0,0,.9);backdrop-filter:blur(6px);white-space:nowrap;
   transform:translate(-50%,-50%);animation:float 7s ease-in-out infinite}
+
+/* dashboard illustration behind the flow chips */
+.dash{position:absolute;right:-10%;bottom:-8%;width:72%;z-index:1;pointer-events:none;
+  background:linear-gradient(160deg,#101E40,#070D1E);border:1px solid rgba(120,160,255,.22);
+  border-radius:14px;padding:11px;box-shadow:0 40px 90px -28px rgba(0,0,0,.95);
+  display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.dash-head{grid-column:1/-1;display:flex;align-items:center;gap:5px}
+.dash-head i{width:5px;height:5px;border-radius:50%;background:#33415F}
+.dash-head .b{flex:1;height:6px;border-radius:3px;background:#18233F;margin-left:5px}
+.dtile{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:8px 10px}
+.dtile small{display:block;font-size:8px;letter-spacing:.09em;text-transform:uppercase;color:#7C8CA8}
+.dtile b{font-size:16px;font-weight:800;color:#DCE8FF}
+.dchart{grid-column:1/-1;display:flex;align-items:flex-end;gap:5px;height:70px;
+  background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:8px}
+.dchart span{flex:1;border-radius:3px 3px 0 0;background:linear-gradient(180deg,#4E92FF,#1D4ED8)}
 .node .ic{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff;flex:none}
 @keyframes float{0%,100%{translate:0 0}50%{translate:0 -6px}}
 .node:nth-of-type(2){animation-delay:-1s}.node:nth-of-type(3){animation-delay:-2s}
@@ -177,6 +192,7 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,7,14,.82);backdrop-fi
   .flow svg.wires{display:none}
   .node{position:static;transform:none;animation:none;justify-content:flex-start}
   .hub{position:static;transform:none;grid-column:1/-1;order:-1}
+  .dash{display:none}
 }
 @media(max-width:420px){.flow{grid-template-columns:1fr}}
 
@@ -217,8 +233,9 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,7,14,.82);backdrop-fi
 .sys-c{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
   padding:36px 16px 20px;text-align:left;transition:.25s}
 .sys-c:hover{border-color:rgba(59,135,255,.45);transform:translateY(-5px);box-shadow:0 22px 50px -26px rgba(59,135,255,.7)}
-.sys-c .ic{position:absolute;top:-19px;left:16px;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
-  font-size:17px;background:linear-gradient(140deg,var(--blue),var(--blue-2));box-shadow:0 10px 24px -8px rgba(59,135,255,.8)}
+.sys-c .ic{position:absolute;top:-19px;left:16px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  font-size:17px;background:linear-gradient(140deg,var(--blue),var(--blue-2));
+  box-shadow:0 10px 24px -8px rgba(59,135,255,.8),0 0 0 5px var(--bg)}
 .sys-c h4{font-size:15px;font-weight:700;margin-bottom:6px}
 .sys-c p{font-size:13px;color:var(--muted);line-height:1.5}
 .sys-c::after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:#5B7099;font-size:14px}
@@ -229,7 +246,11 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,7,14,.82);backdrop-fi
 /* ---------- build cards ---------- */
 .builds{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .build{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px;transition:.25s}
-.build:hover{transform:translateY(-5px);border-color:var(--line-2)}
+.build:hover{transform:translateY(-5px)}
+.builds .build:nth-child(1){border-color:rgba(59,135,255,.45)}
+.builds .build:nth-child(2){border-color:rgba(124,92,255,.45)}
+.builds .build:nth-child(3){border-color:rgba(56,189,248,.42)}
+.builds .build:nth-child(4){border-color:rgba(34,197,94,.42)}
 .build .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;margin-bottom:14px;font-size:18px}
 .build h4{font-size:16px;font-weight:700;line-height:1.25;margin-bottom:14px}
 .build ul{list-style:none;display:grid;gap:9px}
@@ -311,7 +332,7 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,7,14,.82);backdrop-fi
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .step{display:flex;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px;transition:.25s}
 .step:hover{border-color:rgba(59,135,255,.45);transform:translateY(-4px)}
-.step .num{width:40px;height:40px;flex:none;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:17px;
+.step .num{width:40px;height:40px;flex:none;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:17px;
   background:linear-gradient(140deg,var(--blue),var(--blue-2));box-shadow:0 10px 24px -10px rgba(59,135,255,.9)}
 .step h4{font-size:15.5px;font-weight:700;line-height:1.25;margin-bottom:5px}
 .step p{font-size:13.5px;color:var(--muted);line-height:1.45}
@@ -391,6 +412,7 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
       <a href="#work">Work</a>
       <a href="#industries">Industries</a>
       <a href="#about">About</a>
+      <a href="blog.html">Blog</a>
     </nav>
     <div class="nav-cta">
       <a class="btn btn-primary btn-sm" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20to%20book%20a%20free%20strategy%20call%20for%20my%20business." target="_blank" rel="noopener">Book a Free Strategy Call</a>
@@ -427,6 +449,17 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
         <path class="wire" d="M52,41 C64,41 64,55 76,55"/>
         <path class="wire" d="M52,41 C64,41 64,74 76,74"/>
       </svg>
+
+      <div class="dash" aria-hidden="true">
+        <div class="dash-head"><i></i><i></i><i></i><span class="b"></span></div>
+        <div class="dtile"><small>New Enquiries</small><b>247</b></div>
+        <div class="dtile"><small>Conversions</small><b>32%</b></div>
+        <div class="dchart">
+          <span style="height:34%"></span><span style="height:52%"></span><span style="height:41%"></span>
+          <span style="height:68%"></span><span style="height:57%"></span><span style="height:83%"></span>
+          <span style="height:72%"></span><span style="height:96%"></span>
+        </div>
+      </div>
 
       <div class="hub">Zrimat<br>Website<small>Your growth engine</small></div>
 
@@ -824,7 +857,7 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
         <a href="#top">Home</a>
         <a href="#solutions">Solution</a>
         <a href="#work">Work</a>
-        <a href="#about">About</a>
+        <a href="blog.html">Blog</a>
       </div>
       <div class="f-col">
         <h5>Our Solutions</h5>
@@ -844,8 +877,8 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
       </div>
     </div>
     <div class="f-bot">
-      <span>© <span id="yr">2026</span> Zrimat. All Rights Reserved.</span>
       <span>Made with ❤️ for Small Businesses in India</span>
+      <span>© <span id="yr">2026</span> Zrimat. All Rights Reserved.</span>
     </div>
   </div>
 </footer>
