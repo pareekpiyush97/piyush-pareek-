@@ -173,6 +173,9 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,7,14,.82);backdrop-fi
 .dtile{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:8px 10px}
 .dtile small{display:block;font-size:8px;letter-spacing:.09em;text-transform:uppercase;color:#7C8CA8}
 .dtile b{font-size:16px;font-weight:800;color:#DCE8FF}
+.dtile .skel{display:block;height:13px;width:72%;margin-top:6px;border-radius:4px;
+  background:linear-gradient(90deg,rgba(78,146,255,.6),rgba(29,78,216,.22))}
+.dtile .skel.s2{width:52%}
 .dchart{grid-column:1/-1;display:flex;align-items:flex-end;gap:5px;height:70px;
   background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:8px}
 .dchart span{flex:1;border-radius:3px 3px 0 0;background:linear-gradient(180deg,#4E92FF,#1D4ED8)}
@@ -318,6 +321,7 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,7,14,.82);backdrop-fi
 .imp:hover{border-color:rgba(59,135,255,.45);transform:translateY(-5px)}
 .imp b{display:block;font-size:clamp(26px,3.4vw,34px);font-weight:800;letter-spacing:-.02em}
 .imp b em{font-style:normal;font-size:.62em;margin-right:3px}
+.imp b.fact{font-size:clamp(16px,2vw,20px);color:var(--txt);margin-bottom:6px;line-height:1.25}
 .imp span{font-size:13.5px;color:var(--muted)}
 .up{color:var(--green)}.down{color:var(--cyan)}
 @media(max-width:900px){.impact{grid-template-columns:repeat(2,1fr)}}
@@ -345,7 +349,7 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,7,14,.82);backdrop-fi
 @media(max-width:900px){.steps{grid-template-columns:1fr}}
 
 /* ---------- testimonials ---------- */
-.tsts{display:grid;grid-template-columns:1fr 1fr .82fr;gap:16px;align-items:stretch}
+.tsts{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
 .tst{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column}
 .tst-h{display:flex;align-items:center;gap:12px;margin-bottom:12px}
 .av{width:44px;height:44px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:800;font-size:17px;color:#fff}
@@ -358,7 +362,6 @@ header{position:sticky;top:0;z-index:200;background:rgba(5,7,14,.82);backdrop-fi
 .wa-b{background:#123B2A;border-radius:10px 10px 10px 3px;padding:11px 13px;font-size:13px;line-height:1.7;color:#DCF4E6}
 .wa-b b{display:block;font-weight:700}
 .wa-t{align-self:flex-end;font-size:10.5px;color:#6D8F7D;margin-top:6px}
-@media(max-width:980px){.tsts{grid-template-columns:1fr 1fr}.wa{grid-column:1/-1}}
 @media(max-width:640px){.tsts{grid-template-columns:1fr}}
 
 /* ---------- final cta ---------- */
@@ -456,8 +459,8 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
 
       <div class="dash" aria-hidden="true">
         <div class="dash-head"><i></i><i></i><i></i><span class="b"></span></div>
-        <div class="dtile"><small>New Enquiries</small><b>247</b></div>
-        <div class="dtile"><small>Conversions</small><b>32%</b></div>
+        <div class="dtile"><small>Enquiries</small><span class="skel"></span></div>
+        <div class="dtile"><small>Follow-ups</small><span class="skel s2"></span></div>
         <div class="dchart">
           <span style="height:34%"></span><span style="height:52%"></span><span style="height:41%"></span>
           <span style="height:68%"></span><span style="height:57%"></span><span style="height:83%"></span>
@@ -481,20 +484,20 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
   <!-- trust strip -->
   <div class="container" id="industries" style="margin-top:52px">
     <div class="trust rv">
-      <h3>Trusted by Coaches, Academies, Shops, Professionals &amp; Growing Brands</h3>
+      <h3>Built for coaching institutes, clinics, hotels, studios &amp; professional firms</h3>
       <div class="inds">
-        <div class="ind"><span class="ic">🎓</span> Coaching Centers</div>
-        <div class="ind"><span class="ic">🏪</span> Retail Stores</div>
-        <div class="ind"><span class="ic">🛠️</span> Service Providers</div>
+        <div class="ind"><span class="ic">🎓</span> Coaching Institutes</div>
         <div class="ind"><span class="ic">🩺</span> Clinics</div>
-        <div class="ind"><span class="ic">🏭</span> Manufacturers</div>
-        <div class="ind"><span class="ic">🚀</span> Startups</div>
+        <div class="ind"><span class="ic">🏛️</span> Hotels &amp; Heritage</div>
+        <div class="ind"><span class="ic">🚗</span> Automotive Studios</div>
+        <div class="ind"><span class="ic">🎬</span> Photography &amp; Events</div>
+        <div class="ind"><span class="ic">🏢</span> Real Estate</div>
       </div>
       <div class="stats">
-        <div class="stat"><b data-count="20" data-suffix="+">20+</b><span>Websites Deployed</span></div>
-        <div class="stat"><b data-count="5" data-suffix="+">5+</b><span>Businesses Automated</span></div>
-        <div class="stat"><b data-count="95" data-suffix="%">95%</b><span>Client Satisfaction</span></div>
-        <div class="stat"><b data-count="100" data-suffix="%">100%</b><span>Custom Built</span></div>
+        <div class="stat"><b data-count="8" data-suffix="">8</b><span>Client websites live</span></div>
+        <div class="stat"><b data-count="6" data-suffix="">6</b><span>Industries served</span></div>
+        <div class="stat"><b>Hand-coded</b><span>No page builders</span></div>
+        <div class="stat"><b>Public</b><span>Source on GitHub</span></div>
       </div>
     </div>
   </div>
@@ -913,14 +916,14 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
 <section class="sect sect-alt">
   <div class="container">
     <div class="sect-head rv">
-      <h2>Zrimat in Action</h2>
-      <p>Simple Systems. Real Impact.</p>
+      <h2>What Every Zrimat Build Includes</h2>
+      <p>Standard on every project — not an upsell.</p>
     </div>
     <div class="impact">
-      <div class="imp rv"><b class="up"><em>↑</em>3x</b><span>More Enquiries</span></div>
-      <div class="imp rv"><b class="down"><em>↓</em>60%</b><span>Less Manual Work</span></div>
-      <div class="imp rv"><b class="up"><em>↑</em>40%</b><span>Better Follow-ups</span></div>
-      <div class="imp rv"><b class="up"><em>↑</em>2x</b><span>Customer Conversion</span></div>
+      <div class="imp rv"><b class="fact">Mobile-first</b><span>Built for phones before desktops</span></div>
+      <div class="imp rv"><b class="fact">SEO ready</b><span>Meta tags, sitemap &amp; social cards</span></div>
+      <div class="imp rv"><b class="fact">WhatsApp lead capture</b><span>Enquiries land straight in your chat</span></div>
+      <div class="imp rv"><b class="fact">Source on GitHub</b><span>Your build stays yours, in the open</span></div>
     </div>
   </div>
 </section>
@@ -975,16 +978,6 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:44px 0 26
           <div><b>Dr. Prateek</b><span>Best English Classes</span><div class="stars">★★★★★</div></div>
         </div>
         <q>Thank you Zrimat team! Website + lead system ne humare admission enquiry ko organize kar diya.</q>
-      </div>
-      <div class="wa rv">
-        <div class="wa-h">🔔 New Lead Received</div>
-        <div class="wa-b">
-          <b>Rohit Sharma</b>
-          Course Enquiry<br>
-          99999 12345<br>
-          “I want to know about fees.”
-        </div>
-        <span class="wa-t">10:32 AM ✓✓</span>
       </div>
     </div>
   </div>
