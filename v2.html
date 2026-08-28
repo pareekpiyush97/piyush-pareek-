@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zrimat — Digital Infrastructure for Modern Businesses</title>
+<meta name="description" content="Zrimat builds custom websites, lead systems and automation for growing businesses in India. Nine client sites live across coaching, healthcare, hospitality, automotive and real estate.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#F7F7F5">
+<link rel="icon" type="image/png" href="zrimat-icon-transparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F7F5; --white:#FFFFFF; --ink:#0A0A0A; --ink-2:#1A1A1A;
+  --muted:#6B6B68; --faint:#93938E; --line:#E4E4E0; --line-2:#D6D6D1;
+  --dark:#0B0B0B; --dark-line:rgba(255,255,255,.12);
+  --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--paper);color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 28px}
+.eyebrow{font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+h1,h2,h3,h4{font-weight:500;letter-spacing:-.035em;line-height:1.08}
+h2{font-size:clamp(28px,3.6vw,42px)}
+.lede{color:var(--muted);font-size:15px;max-width:46ch}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;padding:13px 22px;border-radius:6px;border:1px solid transparent;transition:.2s;
+  white-space:nowrap;cursor:pointer;font-family:inherit}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#2A2A2A}
+.btn-line{background:var(--white);color:var(--ink);border-color:var(--line-2)}
+.btn-line:hover{border-color:var(--ink)}
+.btn-ondark{background:#fff;color:var(--ink)}
+.btn-ondark:hover{background:#E8E8E4}
+.btn-ondark-line{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.btn-ondark-line:hover{border-color:#fff}
+.tlink{display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink);transition:.2s}
+.tlink:hover{gap:12px}
+
+/* nav */
+header{position:sticky;top:0;z-index:200;background:rgba(247,247,245,.88);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:20px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand .mk{width:34px;height:34px;border-radius:9px;background:var(--ink);display:grid;place-items:center;flex:none}
+.brand .mk img{width:21px;height:21px;object-fit:contain;filter:brightness(0) invert(1)}
+.brand b{font-size:14.5px;font-weight:600;letter-spacing:.13em}
+.nlinks{display:flex;gap:30px}
+.nlinks a{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:.2s}
+.nlinks a:hover{color:var(--ink)}
+.nend{display:flex;align-items:center;gap:12px}
+.burger{width:38px;height:38px;border:1px solid var(--line-2);border-radius:8px;background:var(--white);
+  display:none;place-items:center;cursor:pointer;font-size:15px;font-family:inherit}
+@media(max-width:940px){
+  .nlinks{position:fixed;inset:66px 0 auto 0;flex-direction:column;gap:0;background:var(--paper);
+    border-bottom:1px solid var(--line);padding:6px 28px 18px;display:none}
+  .nlinks.open{display:flex}
+  .nlinks a{padding:14px 0;border-bottom:1px solid var(--line);font-size:13px;width:100%}
+  .burger{display:grid} .nend .btn{display:none}
+}
+
+/* hero */
+.hero{padding:64px 0 0;position:relative}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(36px,5.6vw,62px);margin:16px 0 20px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 34px}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:9px;background:var(--white);border:1px solid var(--line);
+  border-radius:999px;padding:9px 16px;font-size:12.5px;font-weight:500;color:var(--ink-2)}
+.chip svg{flex:none;color:var(--muted)}
+
+/* petal object */
+.stage{position:relative;height:420px;display:grid;place-items:center}
+.stage::before{content:"";position:absolute;width:88%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 50% 42%,#fff,rgba(255,255,255,0) 64%)}
+.ring{position:absolute;width:74%;aspect-ratio:1;border:1px solid var(--line);border-radius:50%}
+.bloom{position:relative;width:300px;height:300px;z-index:2}
+.petal{position:absolute;left:50%;top:50%;width:44px;height:150px;margin-left:-22px;margin-top:-150px;
+  transform-origin:50% 100%;border-radius:50% 50% 46% 46% / 62% 62% 38% 38%;
+  background:linear-gradient(168deg,#FFFFFF 0%,#F0F0EC 44%,#CFCFC9 100%);
+  box-shadow:0 8px 22px rgba(0,0,0,.09),inset -6px 0 12px rgba(0,0,0,.05),inset 6px 0 10px rgba(255,255,255,.9)}
+.podium{position:absolute;bottom:46px;left:50%;transform:translateX(-50%);width:280px;height:52px;z-index:1;
+  border-radius:50%;background:radial-gradient(ellipse at 50% 30%,#FFFFFF,#E6E6E1 70%,#DCDCD6);
+  box-shadow:0 26px 44px -18px rgba(0,0,0,.22)}
+.hcard{position:absolute;right:1%;top:11%;z-index:3;background:var(--white);border:1px solid var(--line);
+  border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:12px;
+  box-shadow:0 16px 40px -18px rgba(0,0,0,.25)}
+.hcard .ic{width:32px;height:32px;border-radius:8px;background:var(--paper);border:1px solid var(--line);
+  display:grid;place-items:center;flex:none}
+.hcard b{display:block;font-size:19px;font-weight:600;letter-spacing:-.03em;line-height:1}
+.hcard span{font-size:10.5px;color:var(--muted)}
+.qm{position:absolute;right:0;bottom:26px;z-index:3;max-width:190px;text-align:right;font-size:12px;
+  color:var(--muted);font-style:italic;border-right:2px solid var(--ink);padding-right:14px;line-height:1.5}
+@media(max-width:940px){
+  .hero-grid{grid-template-columns:1fr;gap:12px}
+  .stage{height:330px;order:-1} .bloom{width:230px;height:230px}
+  .petal{height:118px;width:36px;margin-left:-18px;margin-top:-118px}
+  .podium{width:210px;height:40px;bottom:52px}
+  .hcard{right:0;top:0} .qm{display:none}
+}
+
+/* trusted strip */
+.trusted{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:52px;padding:26px 0}
+.trusted .lbl{text-align:center;margin-bottom:18px}
+.tlist{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.tlist div{display:flex;align-items:center;gap:9px;font-size:11.5px;font-weight:600;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.tlist svg{color:var(--faint);flex:none}
+
+/* solutions */
+.sect{padding:84px 0}
+.sol-grid{display:grid;grid-template-columns:.82fr 2.18fr;gap:36px;align-items:start}
+.sol-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.sol{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:20px 18px;
+  display:flex;flex-direction:column;transition:.25s}
+.sol:hover{border-color:var(--line-2);transform:translateY(-4px);box-shadow:0 20px 44px -26px rgba(0,0,0,.3)}
+.sol .ic{width:30px;height:30px;display:grid;place-items:center;margin-bottom:34px;color:var(--ink)}
+.sol h3{font-size:15px;font-weight:600;letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
+.sol p{font-size:12.5px;color:var(--muted);line-height:1.55;flex:1}
+.sol .tlink{margin:16px 0 14px;font-size:9.5px}
+.thumb{border-radius:8px;overflow:hidden;background:var(--dark);height:74px;position:relative;
+  border:1px solid rgba(255,255,255,.08)}
+.thumb .glow{position:absolute;inset:0;background:radial-gradient(70% 90% at 30% 20%,rgba(255,255,255,.16),transparent 70%)}
+.thumb .rows{position:absolute;inset:11px;display:grid;gap:5px;align-content:start}
+.thumb .rows i{display:block;height:4px;border-radius:2px;background:rgba(255,255,255,.2)}
+.thumb .rows i:nth-child(2){width:62%;background:rgba(255,255,255,.13)}
+.thumb .rows i:nth-child(3){width:44%;background:rgba(255,255,255,.1)}
+.thumb .big{position:absolute;right:11px;bottom:9px;font-size:15px;font-weight:600;color:#fff;letter-spacing:-.03em}
+@media(max-width:1000px){.sol-grid{grid-template-columns:1fr}.sol-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.sol-cards{grid-template-columns:1fr}}
+
+/* platform */
+.platform{background:var(--dark);color:#fff;padding:74px 0}
+.plat-grid{display:grid;grid-template-columns:.78fr 1.5fr .74fr;gap:34px;align-items:center}
+.platform h2{color:#fff}
+.platform .lede{color:rgba(255,255,255,.62)}
+.dash{background:#161616;border:1px solid var(--dark-line);border-radius:12px;padding:14px;display:grid;gap:11px}
+.dash-top{display:flex;align-items:center;justify-content:space-between;font-size:10.5px;color:rgba(255,255,255,.5)}
+.dash-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.kpi{background:#1E1E1E;border:1px solid var(--dark-line);border-radius:8px;padding:10px 11px}
+.kpi small{display:block;font-size:9px;color:rgba(255,255,255,.45);letter-spacing:.06em;text-transform:uppercase}
+.kpi b{font-size:16px;font-weight:600;letter-spacing:-.03em}
+.kpi em{font-style:normal;font-size:9px;color:#7BD88F;margin-left:5px}
+.dash-body{display:grid;grid-template-columns:1.55fr .95fr;gap:9px}
+.panel{background:#1E1E1E;border:1px solid var(--dark-line);border-radius:8px;padding:11px}
+.panel small{font-size:9px;color:rgba(255,255,255,.45);letter-spacing:.06em;text-transform:uppercase}
+.spark{display:flex;align-items:flex-end;gap:3px;height:62px;margin-top:9px}
+.spark i{flex:1;border-radius:2px 2px 0 0;background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.25))}
+.donut{width:70px;height:70px;border-radius:50%;margin:10px auto 0;
+  background:conic-gradient(#fff 0 42%,rgba(255,255,255,.55) 42% 70%,rgba(255,255,255,.3) 70% 90%,rgba(255,255,255,.15) 90% 100%);
+  -webkit-mask:radial-gradient(circle,transparent 52%,#000 53%);mask:radial-gradient(circle,transparent 52%,#000 53%)}
+.plist{display:grid;gap:16px}
+.plist>div{display:flex;gap:11px}
+.plist .ic{width:28px;height:28px;border-radius:7px;background:#1E1E1E;border:1px solid var(--dark-line);
+  display:grid;place-items:center;flex:none}
+.plist b{display:block;font-size:12.5px;font-weight:600}
+.plist span{font-size:11px;color:rgba(255,255,255,.55);line-height:1.45}
+@media(max-width:1050px){.plat-grid{grid-template-columns:1fr}}
+
+/* work */
+.work-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:28px}
+.cases{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.case{display:flex;flex-direction:column}
+.shot{aspect-ratio:16/11;border-radius:10px;overflow:hidden;position:relative;border:1px solid var(--line);
+  background:var(--dark);transition:.25s}
+.case:hover .shot{transform:translateY(-4px);box-shadow:0 22px 48px -26px rgba(0,0,0,.45)}
+.shot .sky{position:absolute;inset:0}
+.shot .name{position:absolute;left:14px;bottom:12px;right:14px;color:#fff;font-size:13px;font-weight:600;letter-spacing:-.02em}
+.shot .kick{position:absolute;left:14px;top:12px;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.case h3{font-size:14px;font-weight:600;letter-spacing:-.02em;margin:14px 0 3px}
+.case .sec{font-size:11px;color:var(--faint)}
+.case p{font-size:12px;color:var(--muted);line-height:1.5;margin:9px 0 11px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tag{font-size:10px;font-weight:500;color:var(--muted);background:var(--white);
+  border:1px solid var(--line);border-radius:5px;padding:4px 8px}
+.case .tlink{font-size:9.5px;margin-top:auto}
+@media(max-width:1000px){.cases{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.cases{grid-template-columns:1fr}}
+
+/* process */
+.proc-grid{display:grid;grid-template-columns:.8fr 2.2fr;gap:36px;align-items:center}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.step{position:relative}
+.step .n{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-2);background:var(--white);
+  display:grid;place-items:center;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:14px}
+.step::after{content:"";position:absolute;left:40px;top:17px;right:-4px;height:1px;
+  background:repeating-linear-gradient(90deg,var(--line-2) 0 4px,transparent 4px 8px)}
+.step:last-child::after{display:none}
+.step h4{font-size:13px;font-weight:600;margin-bottom:5px}
+.step p{font-size:11.5px;color:var(--muted);line-height:1.5}
+@media(max-width:1000px){.proc-grid{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr);gap:26px 14px}.step::after{display:none}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* impact */
+.impact{background:var(--dark);color:#fff;padding:44px 0}
+.imp-grid{display:grid;grid-template-columns:.9fr repeat(4,1fr);gap:22px;align-items:center}
+.impact h2{color:#fff;font-size:clamp(22px,2.6vw,30px)}
+.imp{text-align:center}
+.imp b{display:block;font-size:clamp(24px,3.2vw,34px);font-weight:600;letter-spacing:-.04em;line-height:1}
+.imp span{font-size:10.5px;color:rgba(255,255,255,.55);letter-spacing:.06em}
+@media(max-width:900px){.imp-grid{grid-template-columns:repeat(2,1fr);gap:26px 18px}}
+
+/* clients */
+.cl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cl{display:flex;align-items:center;gap:13px;background:var(--white);border:1px solid var(--line);
+  border-radius:10px;padding:15px 16px;transition:.22s}
+.cl:hover{border-color:var(--ink);transform:translateY(-3px)}
+.cl .av{width:36px;height:36px;border-radius:9px;background:var(--paper);border:1px solid var(--line);
+  display:grid;place-items:center;font-size:13px;font-weight:600;flex:none}
+.cl b{display:block;font-size:13px;font-weight:600;letter-spacing:-.015em;line-height:1.25}
+.cl span{font-size:11px;color:var(--faint)}
+@media(max-width:900px){.cl-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.cl-grid{grid-template-columns:1fr}}
+
+/* final cta */
+.cta{background:var(--dark);color:#fff;padding:64px 0;position:relative;overflow:hidden}
+.cta::after{content:"";position:absolute;right:-6%;top:-40%;width:46%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 40% 60%,rgba(255,255,255,.16),transparent 62%)}
+.cta-grid{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap}
+.cta h2{color:#fff}
+.cta p{color:rgba(255,255,255,.6);font-size:14px;margin-top:12px}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap}
+
+/* footer */
+footer{background:var(--dark);color:#fff;border-top:1px solid var(--dark-line);padding:26px 0}
+.f-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.f-row .brand .mk{background:#fff}
+.f-row .brand .mk img{filter:none}
+.f-nav{display:flex;gap:22px;flex-wrap:wrap}
+.f-nav a{font-size:11.5px;font-weight:500;color:rgba(255,255,255,.6);transition:.2s}
+.f-nav a:hover{color:#fff}
+.f-soc{display:flex;gap:9px}
+.f-soc a{width:30px;height:30px;border-radius:7px;border:1px solid var(--dark-line);display:grid;place-items:center;
+  color:rgba(255,255,255,.7);transition:.2s}
+.f-soc a:hover{color:#fff;border-color:#fff}
+.f-cr{font-size:11px;color:rgba(255,255,255,.45)}
+
+.rv{opacity:0;transform:translateY(18px)}
+.rv.in{opacity:1;transform:none;transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.3,1)}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand"><span class="mk"><img src="zrimat-icon-transparent.png" alt=""></span><b>ZRIMAT</b></a>
+    <nav class="nlinks" id="nlinks">
+      <a href="#solutions">Solutions</a>
+      <a href="#platform">Platform</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+    <div class="nend">
+      <a class="btn btn-dark" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20to%20get%20started." target="_blank" rel="noopener">Get Started</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Digital infrastructure for modern businesses</p>
+      <h1>Streamlined<br>Operations<br>Maximized Revenue</h1>
+      <p class="lede">We build custom websites, lead-capture systems and automation that help businesses work smarter, grow faster and stay ahead.</p>
+      <div class="hero-btns">
+        <a class="btn btn-dark" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20to%20get%20started." target="_blank" rel="noopener">Get Started →</a>
+        <a class="btn btn-line" href="#work">View Our Work</a>
+      </div>
+      <div class="chips">
+        <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/></svg> Built for owners</span>
+        <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17l6-6 4 4 7-8"/></svg> Live in days</span>
+        <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Support after launch</span>
+      </div>
+    </div>
+
+    <div class="stage">
+      <span class="ring"></span>
+      <div class="bloom" id="bloom" aria-hidden="true"></div>
+      <span class="podium"></span>
+      <div class="hcard">
+        <span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><circle cx="10" cy="7" r="3.2"/></svg></span>
+        <div><b>9</b><span>Client sites live</span></div>
+      </div>
+      <p class="qm">Every link on this page opens a site we actually built</p>
+    </div>
+  </div>
+
+  <div class="trusted">
+    <div class="wrap">
+      <p class="eyebrow lbl">Trusted by forward thinking businesses</p>
+      <div class="tlist">
+        <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10l9-5 9 5-9 5-9-5z"/><path d="M7 12v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-4"/></svg> Coaching</div>
+        <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg> Healthcare</div>
+        <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg> Hospitality</div>
+        <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 15l2-6h12l2 6"/><circle cx="7.5" cy="17" r="1.6"/><circle cx="16.5" cy="17" r="1.6"/></svg> Automotive</div>
+        <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12.5" r="3"/></svg> Photography</div>
+        <div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="7" height="16"/><rect x="13" y="9" width="7" height="11"/></svg> Real Estate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="solutions">
+  <div class="wrap sol-grid">
+    <div>
+      <p class="eyebrow">Our solutions</p>
+      <h2 style="margin:14px 0 16px">Digital Systems for Real Business Growth</h2>
+      <p class="lede">End-to-end builds that help you attract, operate and scale — all in one ecosystem.</p>
+      <a class="tlink" href="#work" style="margin-top:20px">Explore all solutions →</a>
+    </div>
+    <div class="sol-cards">
+      <div class="sol rv">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M3 9h18"/></svg></span>
+        <h3>Business Websites</h3>
+        <p>Fast, mobile-first sites that turn visitors into enquiries.</p>
+        <a class="tlink" href="#work">Explore →</a>
+        <div class="thumb"><span class="glow"></span><span class="rows"><i></i><i></i><i></i></span><span class="big">A+</span></div>
+      </div>
+      <div class="sol rv">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>
+        <h3>Lead &amp; Booking Systems</h3>
+        <p>Forms, appointments and follow-ups that never lose an enquiry.</p>
+        <a class="tlink" href="#work">Explore →</a>
+        <div class="thumb"><span class="glow"></span><span class="rows"><i></i><i></i><i></i></span><span class="big">24/7</span></div>
+      </div>
+      <div class="sol rv">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17l6-6 4 4 7-8"/><path d="M17 7h4v4"/></svg></span>
+        <h3>Google &amp; SEO Presence</h3>
+        <p>Meta, sitemaps, Maps and reviews so customers actually find you.</p>
+        <a class="tlink" href="#work">Explore →</a>
+        <div class="thumb"><span class="glow"></span><span class="rows"><i></i><i></i><i></i></span><span class="big">SEO</span></div>
+      </div>
+      <div class="sol rv">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
+        <h3>Automation &amp; AI</h3>
+        <p>Remove repetitive work and connect your tools together.</p>
+        <a class="tlink" href="#work">Explore →</a>
+        <div class="thumb"><span class="glow"></span><span class="rows"><i></i><i></i><i></i></span><span class="big">AI</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="platform" id="platform">
+  <div class="wrap plat-grid">
+    <div>
+      <p class="eyebrow" style="color:rgba(255,255,255,.5)">Our platform</p>
+      <h2 style="margin:14px 0 16px">One System.<br>Complete Control.</h2>
+      <p class="lede">Your website, enquiries, bookings and follow-ups in one place — instead of scattered across WhatsApp, Instagram and paper.</p>
+      <a class="btn btn-ondark-line" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20show%20me%20how%20the%20system%20works." target="_blank" rel="noopener" style="margin-top:24px">Explore Platform</a>
+    </div>
+    <div class="dash">
+      <div class="dash-top"><span>Zrimat Dashboard</span><span>Last 30 days</span></div>
+      <div class="dash-kpis">
+        <div class="kpi"><small>Enquiries</small><b>—</b><em>live</em></div>
+        <div class="kpi"><small>Bookings</small><b>—</b><em>live</em></div>
+        <div class="kpi"><small>Follow-ups</small><b>—</b><em>auto</em></div>
+      </div>
+      <div class="dash-body">
+        <div class="panel"><small>Enquiry flow</small>
+          <div class="spark"><i style="height:34%"></i><i style="height:52%"></i><i style="height:41%"></i><i style="height:66%"></i><i style="height:55%"></i><i style="height:78%"></i><i style="height:62%"></i><i style="height:88%"></i><i style="height:71%"></i><i style="height:96%"></i></div>
+        </div>
+        <div class="panel"><small>By channel</small><div class="donut"></div></div>
+      </div>
+    </div>
+    <div class="plist">
+      <div><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><circle cx="10" cy="7" r="3.2"/></svg></span><div><b>Enquiries</b><span>Every lead in one inbox</span></div></div>
+      <div><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><div><b>Bookings</b><span>Self-scheduling with reminders</span></div></div>
+      <div><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 12a9 9 0 11-3-6.7"/><path d="M21 4v5h-5"/></svg></span><div><b>Follow-ups</b><span>Automatic, not manual</span></div></div>
+      <div><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 3 4-6"/></svg></span><div><b>Reporting</b><span>See what is actually working</span></div></div>
+      <div><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4v6c0 4.5-3.3 7.3-8 8-4.7-.7-8-3.5-8-8V7z"/></svg></span><div><b>Ownership</b><span>Source stays on your GitHub</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="work">
+  <div class="wrap">
+    <div class="work-head">
+      <div>
+        <p class="eyebrow">Case studies</p>
+        <h2 style="margin:14px 0 8px">Selected Work</h2>
+        <p class="lede">Real businesses. Real builds. Every one of them live right now.</p>
+      </div>
+      <a class="tlink" href="#clients">View all clients →</a>
+    </div>
+    <div class="cases">
+      <a class="case rv" href="https://pareekpiyush97.github.io/project/" target="_blank" rel="noopener">
+        <div class="shot"><span class="sky" style="background:linear-gradient(150deg,#3A3A3A,#0B0B0B 70%)"></span><span class="kick">Automotive</span><span class="name">Z Lab Design</span></div>
+        <h3>Z Lab Design</h3><span class="sec">Indirapuram, Ghaziabad</span>
+        <p>Cinematic studio site for paint protection and detailing — a ten-service menu and four-stage process walkthrough.</p>
+        <div class="tags"><span class="tag">Website</span><span class="tag">Motion</span><span class="tag">WhatsApp Booking</span></div>
+        <span class="tlink">View live site →</span>
+      </a>
+      <a class="case rv" href="https://pareekpiyush97.github.io/laxmi-Niwas-Palace/" target="_blank" rel="noopener">
+        <div class="shot"><span class="sky" style="background:linear-gradient(150deg,#4A4034,#0B0B0B 72%)"></span><span class="kick">Hospitality</span><span class="name">Laxmi Niwas Palace</span></div>
+        <h3>Laxmi Niwas Palace</h3><span class="sec">Heritage hotel, Bikaner</span>
+        <p>Multipage site for the palace hotel with cinematic scroll animations and room and dining showcases.</p>
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Motion</span></div>
+        <span class="tlink">View live site →</span>
+      </a>
+      <a class="case rv" href="https://pareekpiyush97.github.io/Nath-Homiopathy/" target="_blank" rel="noopener">
+        <div class="shot"><span class="sky" style="background:linear-gradient(150deg,#2C3F38,#0B0B0B 72%)"></span><span class="kick">Healthcare</span><span class="name">Nath Homeopathy</span></div>
+        <h3>Nath Homeopathy</h3><span class="sec">Clinic, Bikaner</span>
+        <p>Five-page clinic site for Dr. Manali Vyas — appointment booking, weekly webinar registration and Maps.</p>
+        <div class="tags"><span class="tag">Booking</span><span class="tag">Webinar Funnel</span><span class="tag">SEO</span></div>
+        <span class="tlink">View live site →</span>
+      </a>
+      <a class="case rv" href="https://pareekpiyush97.github.io/MS-PAU-Associates-/" target="_blank" rel="noopener">
+        <div class="shot"><span class="sky" style="background:linear-gradient(150deg,#39404A,#0B0B0B 72%)"></span><span class="kick">Real Estate</span><span class="name">MS PAU &amp; Associates</span></div>
+        <h3>MS PAU &amp; Associates</h3><span class="sec">Property consultancy</span>
+        <p>Consultancy site with a cinematic video hero, featured property portfolio and investment advisory sections.</p>
+        <div class="tags"><span class="tag">Video Hero</span><span class="tag">Portfolio</span><span class="tag">Advisory</span></div>
+        <span class="tlink">View live site →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="process" style="padding-top:0">
+  <div class="wrap proc-grid">
+    <div>
+      <p class="eyebrow">How we work</p>
+      <h2 style="margin:14px 0 14px">A Clear Process.<br>Better Results.</h2>
+      <p class="lede">From discovery to deployment, we keep things simple, transparent and focused on your goals.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><span class="n">01</span><h4>Discover</h4><p>Understand your business, goals and challenges.</p></div>
+      <div class="step rv"><span class="n">02</span><h4>Design</h4><p>Plan the right solution for your needs.</p></div>
+      <div class="step rv"><span class="n">03</span><h4>Build</h4><p>Develop, test and integrate.</p></div>
+      <div class="step rv"><span class="n">04</span><h4>Deploy</h4><p>Launch and ensure a smooth transition.</p></div>
+      <div class="step rv"><span class="n">05</span><h4>Support</h4><p>Improve and maintain after launch.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="impact">
+  <div class="wrap imp-grid">
+    <div><p class="eyebrow" style="color:rgba(255,255,255,.5)">Our impact</p><h2 style="margin-top:10px">Built for Scale</h2></div>
+    <div class="imp"><b>9</b><span>Client sites live</span></div>
+    <div class="imp"><b>6</b><span>Industries served</span></div>
+    <div class="imp"><b>100%</b><span>Hand-coded</span></div>
+    <div class="imp"><b>Public</b><span>Source on GitHub</span></div>
+  </div>
+</section>
+
+<section class="sect" id="clients">
+  <div class="wrap">
+    <p class="eyebrow">Clients</p>
+    <h2 style="margin:14px 0 8px">Businesses We've Built For</h2>
+    <p class="lede" style="margin-bottom:28px">Every site below is live right now — click any name and see it for yourself.</p>
+    <div class="cl-grid">
+      <a class="cl rv" href="https://pareekpiyush97.github.io/Nath-Homiopathy/" target="_blank" rel="noopener"><span class="av">N</span><div><b>Nath Homeopathy</b><span>Clinic · Bikaner</span></div></a>
+      <a class="cl rv" href="https://pareekpiyush97.github.io/eureka/" target="_blank" rel="noopener"><span class="av">E</span><div><b>Eureka Institute</b><span>Coaching · Bikaner</span></div></a>
+      <a class="cl rv" href="https://pareekpiyush97.github.io/thebestenglishclasses/" target="_blank" rel="noopener"><span class="av">B</span><div><b>BEST English Classes</b><span>Coaching · Bikaner</span></div></a>
+      <a class="cl rv" href="https://pareekpiyush97.github.io/access-career-point/" target="_blank" rel="noopener"><span class="av">A</span><div><b>Access Career Institute</b><span>Coaching · Bikaner</span></div></a>
+      <a class="cl rv" href="https://pareekpiyush97.github.io/laxmi-Niwas-Palace/" target="_blank" rel="noopener"><span class="av">L</span><div><b>Laxmi Niwas Palace</b><span>Heritage Hotel · Bikaner</span></div></a>
+      <a class="cl rv" href="https://pareekpiyush97.github.io/project/" target="_blank" rel="noopener"><span class="av">Z</span><div><b>Z Lab Design</b><span>Automotive · Indirapuram</span></div></a>
+      <a class="cl rv" href="https://pareekpiyush97.github.io/Badal-Production-/" target="_blank" rel="noopener"><span class="av">B</span><div><b>Badal Production</b><span>Photography · Nagpur</span></div></a>
+      <a class="cl rv" href="https://pareekpiyush97.github.io/Anusu/" target="_blank" rel="noopener"><span class="av">A</span><div><b>Anusu Events</b><span>Wedding &amp; Events</span></div></a>
+      <a class="cl rv" href="https://pareekpiyush97.github.io/MS-PAU-Associates-/" target="_blank" rel="noopener"><span class="av">M</span><div><b>MS PAU &amp; Associates</b><span>Real Estate</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap cta-grid">
+    <div>
+      <p class="eyebrow" style="color:rgba(255,255,255,.5)">Let's build together</p>
+      <h2 style="margin:14px 0 0">Your Next System<br>Starts With a Conversation.</h2>
+      <p>Tell us what you're trying to build, automate or scale.</p>
+    </div>
+    <div class="cta-btns">
+      <a class="btn btn-ondark" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20to%20get%20started." target="_blank" rel="noopener">Get Started</a>
+      <a class="btn btn-ondark-line" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20to%20schedule%20a%20call." target="_blank" rel="noopener">Schedule a Call</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap f-row">
+    <a href="#top" class="brand"><span class="mk"><img src="zrimat-icon-transparent.png" alt=""></span><b>ZRIMAT</b></a>
+    <nav class="f-nav">
+      <a href="#solutions">Solutions</a><a href="#platform">Platform</a><a href="#work">Work</a>
+      <a href="#clients">Clients</a><a href="blog.html">Blog</a>
+      <a href="mailto:zrimatofficial@gmail.com">Contact</a>
+    </nav>
+    <div class="f-soc">
+      <a href="https://www.linkedin.com/in/piyush-pareek49" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.2 1.45-2.2 2.96V21H9z"/></svg></a>
+      <a href="https://github.com/pareekpiyush97" target="_blank" rel="noopener" aria-label="GitHub"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+      <a href="https://x.com/pareekpiyush97" target="_blank" rel="noopener" aria-label="X"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.1 8.1L23 22h-6.6l-5.2-6.8L5.3 22H2.2l7.6-8.7L1.5 2h6.8l4.7 6.2zm-1.1 18h1.7L7.3 3.8H5.5z"/></svg></a>
+      <a href="https://wa.me/918949498980" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l1 2.4c.1.2.1.4 0 .6l-.4.5-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.4 1.8 2.3 1.2 1.1 2.2 1.4 2.5 1.5.3.2.5.1.6 0l.9-1c.2-.2.4-.2.6-.1l2.2 1c.2.1.4.2.5.3.1.2.1.6-.1 1.2z"/></svg></a>
+    </div>
+    <span class="f-cr">© <span id="yr">2026</span> Zrimat. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)},
+      $$=function(s){return [].slice.call(document.querySelectorAll(s))};
+  $('#yr').textContent=new Date().getFullYear();
+
+  var b=$('#bloom');
+  for(var i=0;i<12;i++){
+    var p=document.createElement('span');
+    p.className='petal';
+    p.style.transform='rotate('+(i*30)+'deg)';
+    b.appendChild(p);
+  }
+
+  var bg=$('#burger'), nl=$('#nlinks');
+  bg.addEventListener('click',function(){
+    var o=nl.classList.toggle('open');
+    bg.setAttribute('aria-expanded',o); bg.textContent=o?'✕':'☰';
+  });
+  $$('#nlinks a').forEach(function(a){a.addEventListener('click',function(){
+    nl.classList.remove('open'); bg.textContent='☰';
+  })});
+
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)} });
+  },{threshold:.12,rootMargin:'0px 0px -40px'});
+  $$('.rv').forEach(function(el,i){el.style.transitionDelay=(i%4)*55+'ms';io.observe(el)});
+})();
+</script>
+</body>
+</html>
