@@ -83,12 +83,48 @@ header{position:sticky;top:0;z-index:200;background:rgba(247,247,245,.88);backdr
 .stage{position:relative;height:420px;display:grid;place-items:center}
 .stage::before{content:"";position:absolute;width:88%;aspect-ratio:1;border-radius:50%;
   background:radial-gradient(circle at 50% 42%,#fff,rgba(255,255,255,0) 64%)}
-.ring{position:absolute;width:74%;aspect-ratio:1;border:1px solid var(--line);border-radius:50%}
-.bloom{position:relative;width:300px;height:300px;z-index:2}
+
+/* pulsing halo — the highlight behind the bloom */
+.halo{position:absolute;width:66%;aspect-ratio:1;border-radius:50%;z-index:1;pointer-events:none;
+  background:radial-gradient(circle at 50% 46%,rgba(255,255,255,.95) 0%,rgba(255,255,255,.5) 38%,rgba(255,255,255,0) 68%);
+  filter:blur(6px);animation:halo 6s ease-in-out infinite}
+@keyframes halo{0%,100%{transform:scale(.94);opacity:.6}50%{transform:scale(1.06);opacity:1}}
+
+/* slowly rotating dashed ring */
+.ring{position:absolute;width:74%;aspect-ratio:1;border-radius:50%;z-index:0;
+  border:1px dashed var(--line-2);opacity:.85;animation:spin 46s linear infinite}
+.ring.r2{width:88%;border-style:solid;border-color:var(--line);opacity:.7;
+  animation:spin 72s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.bloom{position:relative;width:300px;height:300px;z-index:2;
+  animation:bloomspin 60s linear infinite;transition:filter .4s ease}
+@keyframes bloomspin{to{transform:rotate(360deg)}}
+
 .petal{position:absolute;left:50%;top:50%;width:44px;height:150px;margin-left:-22px;margin-top:-150px;
   transform-origin:50% 100%;border-radius:50% 50% 46% 46% / 62% 62% 38% 38%;
   background:linear-gradient(168deg,#FFFFFF 0%,#F0F0EC 44%,#CFCFC9 100%);
-  box-shadow:0 8px 22px rgba(0,0,0,.09),inset -6px 0 12px rgba(0,0,0,.05),inset 6px 0 10px rgba(255,255,255,.9)}
+  box-shadow:0 8px 22px rgba(0,0,0,.09),inset -6px 0 12px rgba(0,0,0,.05),inset 6px 0 10px rgba(255,255,255,.9);
+  transform:rotate(var(--r)) translateY(0) scaleY(1);
+  animation:breathe 7s ease-in-out infinite;animation-delay:calc(var(--i) * -.42s)}
+@keyframes breathe{
+  0%,100%{transform:rotate(var(--r)) translateY(0) scaleY(1)}
+  50%    {transform:rotate(var(--r)) translateY(-9px) scaleY(1.05)}
+}
+
+/* specular sweep — light travelling across the petals */
+.sheen{position:absolute;width:300px;height:300px;z-index:3;pointer-events:none;border-radius:50%;
+  mix-blend-mode:overlay;opacity:.85;
+  background:conic-gradient(from 0deg,rgba(255,255,255,0) 0deg,rgba(255,255,255,.9) 42deg,rgba(255,255,255,0) 104deg,
+    rgba(255,255,255,0) 250deg,rgba(255,255,255,.5) 300deg,rgba(255,255,255,0) 350deg);
+  -webkit-mask:radial-gradient(circle,#000 26%,rgba(0,0,0,.55) 58%,transparent 76%);
+  mask:radial-gradient(circle,#000 26%,rgba(0,0,0,.55) 58%,transparent 76%);
+  animation:spin 11s linear infinite}
+
+/* hover: bloom leans in */
+.stage:hover .bloom{filter:drop-shadow(0 18px 30px rgba(0,0,0,.14))}
+.stage:hover .sheen{animation-duration:5s}
+.stage:hover .halo{animation-duration:3.4s}
 .podium{position:absolute;bottom:46px;left:50%;transform:translateX(-50%);width:280px;height:52px;z-index:1;
   border-radius:50%;background:radial-gradient(ellipse at 50% 30%,#FFFFFF,#E6E6E1 70%,#DCDCD6);
   box-shadow:0 26px 44px -18px rgba(0,0,0,.22)}
@@ -247,7 +283,13 @@ footer{background:var(--dark);color:#fff;border-top:1px solid var(--dark-line);p
 
 .rv{opacity:0;transform:translateY(18px)}
 .rv.in{opacity:1;transform:none;transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.3,1)}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+  .bloom,.ring,.halo,.sheen,.petal{animation:none}
+  .petal{transform:rotate(var(--r))}
+  .sheen{opacity:.35}
+}
 </style>
 </head>
 <body>
@@ -287,8 +329,11 @@ footer{background:var(--dark);color:#fff;border-top:1px solid var(--dark-line);p
     </div>
 
     <div class="stage">
+      <span class="ring r2"></span>
       <span class="ring"></span>
+      <span class="halo"></span>
       <div class="bloom" id="bloom" aria-hidden="true"></div>
+      <span class="sheen" aria-hidden="true"></span>
       <span class="podium"></span>
       <div class="hcard">
         <span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><circle cx="10" cy="7" r="3.2"/></svg></span>
@@ -517,7 +562,8 @@ footer{background:var(--dark);color:#fff;border-top:1px solid var(--dark-line);p
   for(var i=0;i<12;i++){
     var p=document.createElement('span');
     p.className='petal';
-    p.style.transform='rotate('+(i*30)+'deg)';
+    p.style.setProperty('--r',(i*30)+'deg');
+    p.style.setProperty('--i',i);
     b.appendChild(p);
   }
 
