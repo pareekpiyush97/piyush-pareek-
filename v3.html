@@ -183,10 +183,13 @@ header{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.82);backdr
 .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .case{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.25s;display:flex;flex-direction:column}
 .case:hover{transform:translateY(-5px);box-shadow:0 24px 50px -28px rgba(18,19,43,.45);border-color:var(--line-2)}
-.shot{aspect-ratio:16/9;position:relative;overflow:hidden}
-.shot .kk{position:absolute;left:13px;top:11px;font-size:9px;font-weight:700;letter-spacing:.14em;
+.shot{aspect-ratio:16/9;position:relative;overflow:hidden;background:#100C33}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.case:hover .shot img{transform:scale(1.055)}
+.shot::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(16,12,51,.42) 0%,rgba(16,12,51,0) 38%,rgba(16,12,51,.86) 100%)}
+.shot .kk{position:absolute;z-index:2;left:13px;top:11px;font-size:9px;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;color:rgba(255,255,255,.75)}
-.shot .nm{position:absolute;left:13px;bottom:11px;right:13px;color:#fff;font-size:15px;font-weight:800;letter-spacing:-.02em}
+.shot .nm{position:absolute;z-index:2;left:13px;bottom:11px;right:13px;color:#fff;font-size:15px;font-weight:800;letter-spacing:-.02em}
 .cbody{padding:14px 15px 16px;display:flex;flex-direction:column;flex:1}
 .cbody p{font-size:12.5px;color:var(--muted);line-height:1.5;flex:1}
 .ctags{display:flex;flex-wrap:wrap;gap:6px;margin:11px 0}
@@ -199,14 +202,15 @@ header{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.82);backdr
 
 /* pricing */
 .phead{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:26px}
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;align-items:start}
 .plan{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 20px;display:flex;flex-direction:column;transition:.25s}
 .plan:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(18,19,43,.4)}
 .plan.pop{border-color:var(--violet);box-shadow:0 22px 50px -28px rgba(109,74,255,.6);position:relative}
 .pop-tag{position:absolute;top:-11px;right:18px;background:linear-gradient(96deg,var(--violet),var(--violet-2));
   color:#fff;font-size:10px;font-weight:700;letter-spacing:.04em;padding:5px 11px;border-radius:999px}
 .plan h4{font-size:16px;font-weight:800}
-.plan .sub{font-size:12px;color:var(--muted);margin:4px 0 16px}
+.plan .sub{font-size:12px;color:var(--muted);margin:4px 0 16px;min-height:32px}
+.price .from{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);margin-bottom:4px}
 .price{font-size:24px;font-weight:800;letter-spacing:-.03em}
 .price small{display:block;font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:0;margin-top:3px}
 .plan ul{list-style:none;display:grid;gap:9px;margin:18px 0 20px}
@@ -214,7 +218,8 @@ header{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.82);backdr
 .plan li svg{flex:none;margin-top:3px;color:var(--violet)}
 .plan .btn{width:100%;margin-top:auto}
 .pnote{text-align:center;font-size:12.5px;color:var(--muted);margin-top:20px}
-@media(max-width:900px){.plans{grid-template-columns:1fr}}
+@media(max-width:1080px){.plans{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.plans{grid-template-columns:1fr}}
 
 /* cta */
 .ctaband{background:linear-gradient(96deg,var(--violet),#8B5CF6 42%,var(--orange));border-radius:18px;
@@ -434,7 +439,7 @@ footer{background:var(--deep);color:#fff;margin-top:70px;padding:44px 0 24px}
     </div>
     <div class="cases">
       <a class="case rv" href="https://pareekpiyush97.github.io/project/" target="_blank" rel="noopener">
-        <div class="shot" style="background:linear-gradient(150deg,#3B3B45,#100C33 78%)"><span class="kk">Automotive</span><span class="nm">Z Lab Design</span></div>
+        <div class="shot"><img src="shots/project.webp" alt="Z Lab Design website" loading="lazy" decoding="async" width="800" height="450"><span class="kk">Automotive</span><span class="nm">Z Lab Design</span></div>
         <div class="cbody">
           <p>Cinematic studio site for paint protection and detailing — ten-service menu and a four-stage process walkthrough.</p>
           <div class="ctags"><span class="ctag">Website</span><span class="ctag">Motion</span><span class="ctag">WhatsApp Booking</span></div>
@@ -442,7 +447,7 @@ footer{background:var(--deep);color:#fff;margin-top:70px;padding:44px 0 24px}
         </div>
       </a>
       <a class="case rv" href="https://pareekpiyush97.github.io/laxmi-Niwas-Palace/" target="_blank" rel="noopener">
-        <div class="shot" style="background:linear-gradient(150deg,#5A4A36,#100C33 78%)"><span class="kk">Hospitality</span><span class="nm">Laxmi Niwas Palace</span></div>
+        <div class="shot"><img src="shots/laxmi-Niwas-Palace.webp" alt="Laxmi Niwas Palace website" loading="lazy" decoding="async" width="800" height="450"><span class="kk">Hospitality</span><span class="nm">Laxmi Niwas Palace</span></div>
         <div class="cbody">
           <p>Multipage site for the heritage palace hotel with cinematic scroll animations and room and dining showcases.</p>
           <div class="ctags"><span class="ctag">Next.js</span><span class="ctag">TypeScript</span><span class="ctag">Motion</span></div>
@@ -450,7 +455,7 @@ footer{background:var(--deep);color:#fff;margin-top:70px;padding:44px 0 24px}
         </div>
       </a>
       <a class="case rv" href="https://pareekpiyush97.github.io/Nath-Homiopathy/" target="_blank" rel="noopener">
-        <div class="shot" style="background:linear-gradient(150deg,#2F4A40,#100C33 78%)"><span class="kk">Healthcare</span><span class="nm">Nath Homeopathy</span></div>
+        <div class="shot"><img src="shots/Nath-Homiopathy.webp" alt="Nath Homeopathy website" loading="lazy" decoding="async" width="800" height="450"><span class="kk">Healthcare</span><span class="nm">Nath Homeopathy</span></div>
         <div class="cbody">
           <p>Five-page clinic site for Dr. Manali Vyas — appointment booking, weekly webinar registration and Maps.</p>
           <div class="ctags"><span class="ctag">Booking</span><span class="ctag">Webinar Funnel</span><span class="ctag">SEO</span></div>
@@ -467,53 +472,72 @@ footer{background:var(--deep);color:#fff;margin-top:70px;padding:44px 0 24px}
       <div>
         <span class="kick">Simple pricing</span>
         <h2 style="margin:14px 0 8px">Choose the right build for you</h2>
-        <p class="lede">Pick the scope. We quote it on a free call — no packages you don't need.</p>
+        <p class="lede">Clear starting prices for websites. Bigger systems are quoted once we know what you need.</p>
       </div>
     </div>
     <div class="plans">
       <div class="plan rv">
         <h4>Starter</h4>
-        <p class="sub">For small businesses getting online</p>
-        <div class="price">Custom<small>quoted on a free call</small></div>
+        <p class="sub">Portfolio &amp; personal brand</p>
+        <div class="price"><span class="from">Starts at</span>₹7,000<small>one-time · standard build</small></div>
         <ul>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Single-page website</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Portfolio website</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Work / gallery showcase</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> About &amp; contact sections</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Mobile-first build</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> WhatsApp enquiry button</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Google Business setup</li>
         </ul>
-        <a class="btn btn-w" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20a%20quote%20for%20the%20Starter%20build." target="_blank" rel="noopener">Get a Quote</a>
+        <a class="btn btn-w" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20the%20Starter%20portfolio%20build%20(%E2%82%B97%2C000)." target="_blank" rel="noopener">Get Started →</a>
       </div>
 
       <div class="plan pop rv">
         <span class="pop-tag">★ Most chosen</span>
         <h4>Growth</h4>
-        <p class="sub">For businesses that want enquiries</p>
-        <div class="price">Custom<small>quoted on a free call</small></div>
+        <p class="sub">Business website that brings enquiries</p>
+        <div class="price"><span class="from">Starts at</span>₹15,000<small>one-time · standard build</small></div>
         <ul>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Multipage website</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Multipage business website</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Lead capture forms</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> WhatsApp enquiry routing</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Booking &amp; reminders</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> SEO + social preview cards</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Source on your GitHub</li>
         </ul>
-        <a class="btn btn-p" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20a%20quote%20for%20the%20Growth%20build." target="_blank" rel="noopener">Get a Quote</a>
+        <a class="btn btn-p" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20the%20Growth%20business%20website%20(%E2%82%B915%2C000)." target="_blank" rel="noopener">Get Started →</a>
       </div>
 
       <div class="plan rv">
-        <h4>Complete</h4>
-        <p class="sub">For businesses ready to automate</p>
-        <div class="price">Custom<small>quoted on a free call</small></div>
+        <h4>E-commerce</h4>
+        <p class="sub">For businesses selling online</p>
+        <div class="price"><span class="from">Priced on your build</span>Talk to us<small>depends on catalogue &amp; features</small></div>
         <ul>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Everything in Growth</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Automation workflows</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> AI-assisted replies</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Enquiry dashboard</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Ongoing support</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Product catalogue &amp; categories</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Cart &amp; checkout flow</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Payment gateway integration</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Order &amp; inventory tracking</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Customer accounts</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Shipping &amp; tax setup</li>
         </ul>
-        <a class="btn btn-w" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20a%20quote%20for%20the%20Complete%20build." target="_blank" rel="noopener">Get a Quote</a>
+        <a class="btn btn-w" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20an%20e-commerce%20website.%20My%20products%3A%20" target="_blank" rel="noopener">Get My Quote →</a>
+      </div>
+
+      <div class="plan rv">
+        <h4>ERP / CRM</h4>
+        <p class="sub">For teams running daily operations</p>
+        <div class="price"><span class="from">Priced on your build</span>Talk to us<small>depends on modules &amp; team size</small></div>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Sales &amp; lead pipeline</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Inventory &amp; order management</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Employee &amp; attendance records</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Finance &amp; reporting</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Role-based access</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Automation &amp; AI workflows</li>
+        </ul>
+        <a class="btn btn-w" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20an%20ERP%2FCRM%20system.%20My%20team%20size%3A%20" target="_blank" rel="noopener">Get My Quote →</a>
       </div>
     </div>
-    <p class="pnote">Every project is priced after a free call, once we know what you actually need.</p>
+    <p class="pnote">Starting prices cover a standard build. Pages, features and integrations change the final number — we confirm it on a free call before any work begins.</p>
   </div>
 </section>
 
@@ -602,7 +626,7 @@ footer{background:var(--deep);color:#fff;margin-top:70px;padding:44px 0 24px}
     ['Z Lab Design','Automotive · Indirapuram','project','Z','#3B3B45'],
     ['Badal Production','Photography · Nagpur','Badal-Production-','B','#3E2C52'],
     ['Anusu Events','Wedding & Events','Anusu','A','#4E2A3C'],
-    ['MS PAU & Associates','Real Estate','MS-PAU-Associates-','M','#33384A']
+    ['Profound Create Spaces','Luxury Interiors · Architecture','MS-PAU-Associates-','P','#33384A']
   ];
 
   /* marquee — duplicated so the loop is seamless */
@@ -619,7 +643,8 @@ footer{background:var(--deep);color:#fff;margin-top:70px;padding:44px 0 24px}
   var g=$('#clgrid'), ch='';
   CLIENTS.forEach(function(c){
     ch+='<a class="case rv" href="https://pareekpiyush97.github.io/'+c[2]+'/" target="_blank" rel="noopener">'+
-        '<div class="shot" style="aspect-ratio:16/7;background:linear-gradient(150deg,'+c[4]+',#100C33 80%)">'+
+        '<div class="shot">'+
+        '<img src="shots/'+c[2]+'.webp" alt="'+c[0]+' website" loading="lazy" decoding="async" width="800" height="450">'+
         '<span class="nm">'+c[0]+'</span></div>'+
         '<div class="cbody"><p style="flex:0">'+c[1]+'</p>'+
         '<span class="clink" style="margin-top:10px">View live site →</span></div></a>';
