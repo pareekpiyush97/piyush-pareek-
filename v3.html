@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" href="zrimat-icon-transparent.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#12132B; --ink-2:#2A2C4E; --muted:#6B6F8C; --faint:#9AA0BC;
@@ -261,6 +261,97 @@ footer{background:var(--deep);color:#fff;margin-top:70px;padding:44px 0 24px}
 @media(prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none}html{scroll-behavior:auto}
   .blob,.bot,.rocket,.mq-in,.pillnew i{animation:none}
+}
+
+/* ═══════════ premium layer ═══════════ */
+
+/* 1 — display serif for headlines, sans stays for UI */
+h1,h2,.ai h3,.ctaband h3,.price{
+  font-family:'Instrument Serif',Georgia,'Times New Roman',serif;
+  font-weight:400;letter-spacing:-.018em;line-height:1.04}
+.hero h1{font-size:clamp(42px,6.6vw,78px);max-width:15ch;margin:26px auto 20px;letter-spacing:-.028em}
+h2{font-size:clamp(32px,4.4vw,50px)}
+.ai h3{font-size:clamp(26px,3.4vw,38px)}
+.ctaband h3{font-size:clamp(22px,2.9vw,30px)}
+.price{font-size:34px;letter-spacing:-.02em}
+.hero .lede{font-size:17px;max-width:50ch}
+.lede{font-size:15.5px;line-height:1.65}
+
+/* 2 — film grain: kills the flat-template feel */
+body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.038;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* 3 — more air */
+.sect{padding:108px 0}
+.strip{padding:30px 0}
+
+/* 4 — cards catch light from above, and shadows get two tones */
+.fc,.plan,.case,.dcard,.kpi{box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+.fc:hover,.case:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.9),
+  0 2px 6px rgba(18,19,43,.05),0 26px 52px -28px rgba(18,19,43,.42)}
+.plan:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.9),
+  0 2px 6px rgba(18,19,43,.05),0 30px 58px -30px rgba(18,19,43,.45)}
+
+/* 5 — cursor spotlight on every card */
+.fc,.plan,.case{position:relative;isolation:isolate}
+.fc::before,.plan::before,.case::before{content:"";position:absolute;inset:0;z-index:2;
+  pointer-events:none;opacity:0;transition:opacity .35s ease;border-radius:inherit;
+  background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(109,74,255,.13),transparent 62%)}
+.fc:hover::before,.plan:hover::before,.case:hover::before{opacity:1}
+
+/* 6 — the featured plan breathes through the brand colours */
+@keyframes popglow{
+  0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 0 0 1.6px #6D4AFF,0 26px 56px -30px rgba(109,74,255,.8)}
+  34%    {box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 0 0 1.6px #E250B0,0 26px 56px -30px rgba(226,80,176,.8)}
+  67%    {box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 0 0 1.6px #FF9A62,0 26px 56px -30px rgba(255,154,98,.8)}}
+.plan.pop{border-color:transparent;animation:popglow 9s ease-in-out infinite}
+
+/* 7 — light sweeps across the primary button on hover */
+.btn-p{position:relative;overflow:hidden}
+.btn-p::after{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;pointer-events:none;
+  transform:skewX(-22deg);background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent)}
+.btn-p:hover::after{animation:shine .9s cubic-bezier(.3,.7,.4,1)}
+@keyframes shine{to{left:150%}}
+
+/* 8 — the dashboard lies back, then straightens as you scroll to it */
+.dashwrap{perspective:1900px;perspective-origin:50% 0}
+.dash{transform:rotateX(var(--tilt,15deg)) scale(var(--dsc,.955));transform-origin:50% 0;will-change:transform}
+.dashwrap::before{content:"";position:absolute;left:8%;right:8%;top:14%;bottom:-4%;z-index:-1;border-radius:50%;
+  filter:blur(58px);opacity:.5;background:linear-gradient(96deg,#6D4AFF,#E250B0 55%,#FF9A62)}
+
+/* 9 — reveals arrive with focus, not just position */
+.rv{opacity:0;transform:translateY(28px) scale(.985);filter:blur(7px)}
+.rv.in{opacity:1;transform:none;filter:blur(0);
+  transition:opacity .75s ease,transform .85s cubic-bezier(.16,.84,.28,1),filter .75s ease}
+
+/* 10 — section headers get a hairline accent */
+.kick{position:relative;padding-left:26px}
+.kick::before{content:"";position:absolute;left:0;top:50%;width:18px;height:1.5px;
+  background:linear-gradient(90deg,var(--violet),transparent)}
+.hero .kick{padding-left:0}
+.hero .kick::before{display:none}
+
+/* 11a — scrim so the name stays readable on light screenshots */
+.shot::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,8,30,.42) 0%,transparent 30%,transparent 46%,rgba(10,8,30,.86) 100%)}
+.shot .nm,.shot .kk{z-index:2;text-shadow:0 1px 12px rgba(10,8,30,.6)}
+/* 11 — thumbnails warm up on hover */
+.shot img{transition:transform .6s cubic-bezier(.16,.84,.28,1),filter .5s ease;filter:saturate(.92)}
+.case:hover .shot img{transform:scale(1.055);filter:saturate(1.06)}
+
+/* 12 — quieter, more deliberate marquee */
+.mq a{opacity:.55;font-weight:600}
+.mq a:hover{opacity:1}
+
+@media(max-width:900px){
+  .sect{padding:76px 0}
+  .dash{transform:none}
+  .dashwrap::before{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .plan.pop,.btn-p::after{animation:none}
+  .dash{transform:none}
+  .rv{filter:none}
 }
 </style>
 </head>
@@ -699,6 +790,40 @@ footer{background:var(--deep);color:#fff;margin-top:70px;padding:44px 0 24px}
     });
   },{threshold:.3});
   $$('.sp path, .dcard path').forEach(function(p){pio.observe(p)});
+})();
+</script>
+<script>
+/* premium interactions */
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $$ = function(s){ return [].slice.call(document.querySelectorAll(s)); };
+
+  /* cursor spotlight on cards */
+  $$('.fc,.plan,.case').forEach(function(el){
+    el.addEventListener('pointermove', function(e){
+      var r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  /* dashboard straightens as it scrolls into place */
+  var wrap = document.querySelector('.dashwrap'),
+      dash = document.querySelector('.dash');
+  if (wrap && dash && !reduce && innerWidth > 900) {
+    var apply = function(){
+      var r = wrap.getBoundingClientRect();
+      /* 0 when the top of the card is at the bottom of the screen, 1 once it is settled */
+      var p = 1 - Math.min(Math.max(r.top / (innerHeight * 0.72), 0), 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      dash.style.setProperty('--tilt', (15 - 15 * e).toFixed(2) + 'deg');
+      dash.style.setProperty('--dsc', (0.955 + 0.045 * e).toFixed(4));
+    };
+    var onScroll = apply;
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    apply();
+  }
 })();
 </script>
 </body>
