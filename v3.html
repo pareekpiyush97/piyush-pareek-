@@ -7,7 +7,62 @@
 <meta name="description" content="Zrimat builds websites, lead capture, booking and automation into one connected system for growing businesses in India. Nine client sites live.">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#F6F4FF">
+<meta name="keywords" content="business website India, portfolio website, e-commerce website, ERP CRM development, lead capture system, WhatsApp automation, booking system, Bikaner web developer, Zrimat">
+<meta name="author" content="Zrimat">
+<link rel="canonical" href="https://zrimat.com/">
 <link rel="icon" type="image/png" href="zrimat-icon-transparent.png">
+<link rel="apple-touch-icon" href="zrimat-icon-small.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Zrimat">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Zrimat — The All-in-One System to Grow Your Business">
+<meta property="og:description" content="Website, lead capture, booking and automation — built as one connected system, so no enquiry slips through. Nine client sites live across India.">
+<meta property="og:url" content="https://zrimat.com/">
+<meta property="og:image" content="https://zrimat.com/image.jpeg">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@pareekpiyush97">
+<meta name="twitter:title" content="Zrimat — The All-in-One System to Grow Your Business">
+<meta name="twitter:description" content="Website, lead capture, booking and automation — built as one connected system for growing businesses in India.">
+<meta name="twitter:image" content="https://zrimat.com/image.jpeg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Zrimat",
+  "image": "https://zrimat.com/image.jpeg",
+  "url": "https://zrimat.com/",
+  "description": "Zrimat builds websites, lead capture, booking, e-commerce and ERP/CRM systems for growing businesses in India — connected into one system so no enquiry slips through.",
+  "telephone": "+91-89494-98980",
+  "email": "zrimatofficial@gmail.com",
+  "priceRange": "INR 7000+",
+  "areaServed": "IN",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bikaner",
+    "addressRegion": "Rajasthan",
+    "addressCountry": "IN"
+  },
+  "founder": { "@type": "Person", "name": "Piyush Pareek", "jobTitle": "Business Developer" },
+  "sameAs": [
+    "https://www.linkedin.com/in/piyush-pareek49",
+    "https://github.com/pareekpiyush97",
+    "https://x.com/pareekpiyush97"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Build packages",
+    "itemListElement": [
+      { "@type": "Offer", "name": "Starter — portfolio website", "price": "7000", "priceCurrency": "INR" },
+      { "@type": "Offer", "name": "Growth — business website", "price": "15000", "priceCurrency": "INR" },
+      { "@type": "Offer", "name": "E-commerce website" },
+      { "@type": "Offer", "name": "ERP / CRM system" }
+    ]
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,7 +75,7 @@
   --max:1160px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:hidden}
 body{background:var(--white);color:var(--ink);
   font-family:'Plus Jakarta Sans','Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
   font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -353,10 +408,60 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
   .dash{transform:none}
   .rv{filter:none}
 }
+
+/* ═══ proof band + why + process (content from the live site) ═══ */
+.statsband{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,var(--paper),#fff);padding:34px 0}
+.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat{text-align:center;position:relative}
+.stat+.stat::before{content:"";position:absolute;left:0;top:12%;bottom:12%;width:1px;background:var(--line)}
+.stat b{display:block;font-family:'Instrument Serif',Georgia,serif;font-weight:400;
+  font-size:clamp(28px,3.6vw,40px);letter-spacing:-.02em;line-height:1}
+.stat span{font-size:12px;color:var(--muted);font-weight:600}
+@media(max-width:760px){
+  .statgrid{grid-template-columns:repeat(2,1fr);gap:26px 20px}
+  .stat:nth-child(3)::before{display:none}
+}
+
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.st3{position:relative;background:#fff;border:1px solid var(--line);border-radius:13px;padding:22px 20px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);transition:.25s}
+.st3:hover{transform:translateY(-4px);border-color:var(--line-2);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 24px 48px -28px rgba(18,19,43,.42)}
+.st3 .n{display:inline-block;font-family:'Instrument Serif',Georgia,serif;font-size:30px;line-height:1;
+  color:var(--violet);margin-bottom:12px}
+.st3 h4{font-size:15px;font-weight:700;margin-bottom:6px}
+.st3 p{font-size:12.5px;color:var(--muted);line-height:1.55}
+.st3::after{content:"";position:absolute;right:-8px;top:34px;width:16px;height:1px;
+  background:repeating-linear-gradient(90deg,var(--line-2) 0 4px,transparent 4px 8px)}
+.st3:last-child::after{display:none}
+@media(max-width:820px){.steps3{grid-template-columns:1fr}.st3::after{display:none}}
+
+/* ═══ premium polish pass ═══ */
+
+/* scroll progress rail — reads as a finished product instantly */
+#prog{position:fixed;top:0;left:0;height:2.5px;width:0;z-index:400;pointer-events:none;
+  background:linear-gradient(90deg,var(--violet),var(--pink) 55%,var(--orange))}
+
+/* nav links get an underline that slides in */
+.nlinks a{position:relative}
+.nlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1.5px;border-radius:2px;
+  background:linear-gradient(90deg,var(--violet),var(--pink));transition:right .28s cubic-bezier(.16,.84,.28,1)}
+.nlinks a:hover::after{right:0}
+@media(max-width:960px){.nlinks a::after{display:none}}
+
+/* CTA band secondary button — solid enough to read on the warm gradient */
+.ctaband .btn-o{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.7);backdrop-filter:blur(4px)}
+.ctaband .btn-o:hover{background:rgba(255,255,255,.24)}
+
+/* proof numbers lift a touch on their own hover — invites the eye */
+.stat b{transition:transform .3s ease}
+.statsband:hover .stat b{transform:translateY(-1px)}
 </style>
 </head>
 <body>
 
+<div id="prog"></div>
 <header>
   <div class="wrap nav">
     <a href="#top" class="brand"><img src="zrimat-icon-transparent.png" alt=""><b>Zrimat</b></a>
@@ -481,6 +586,15 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
   <div class="mq"><div class="mq-in" id="mq"></div></div>
 </div>
 
+<div class="statsband">
+  <div class="wrap statgrid">
+    <div class="stat rv"><b data-count="9">9</b><span>Client sites live</span></div>
+    <div class="stat rv"><b data-count="7">7</b><span>Industries served</span></div>
+    <div class="stat rv"><b>Hand-coded</b><span>No page builders</span></div>
+    <div class="stat rv"><b>Public</b><span>Source on GitHub</span></div>
+  </div>
+</div>
+
 <section class="sect" id="features">
   <div class="wrap feat-grid">
     <div>
@@ -553,6 +667,35 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
           <span class="clink">View live site →</span>
         </div>
       </a>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="why" style="padding-top:0">
+  <div class="wrap">
+    <span class="kick">Why Zrimat</span>
+    <h2 style="margin:14px 0 8px">Why businesses choose us</h2>
+    <p class="lede" style="margin-bottom:28px">Six things clients tell us made the difference.</p>
+    <div class="fcards" style="grid-template-columns:repeat(3,1fr)">
+      <div class="fc rv"><span class="ic" style="background:rgba(22,163,74,.12)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="M8 15l3-4 3 3 4-6"/></svg></span><h4>Business first</h4><p>We think about your growth, not just delivering a file.</p></div>
+      <div class="fc rv"><span class="ic" style="background:rgba(109,74,255,.12)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6D4AFF" stroke-width="2"><path d="M20 15a2 2 0 01-2 2H8l-4 4V5a2 2 0 012-2h12a2 2 0 012 2z"/></svg></span><h4>Clear communication</h4><p>No tech jargon. You always know what is happening and why.</p></div>
+      <div class="fc rv"><span class="ic" style="background:rgba(226,80,176,.12)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E250B0" stroke-width="2"><path d="M12 3v18M8 7h6a3 3 0 010 6H9a3 3 0 000 6h7"/></svg></span><h4>Honest pricing</h4><p>Starting prices are published. The quote is agreed before work begins.</p></div>
+      <div class="fc rv"><span class="ic" style="background:rgba(255,154,98,.16)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FF9A62" stroke-width="2"><path d="M12 3l8 4v6c0 4.5-3.3 7.3-8 8-4.7-.7-8-3.5-8-8V7z"/></svg></span><h4>Complete support</h4><p>Before, during and after launch — launch is the start, not the end.</p></div>
+      <div class="fc rv"><span class="ic" style="background:rgba(59,130,246,.12)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M12 2s5 3 5 9c0 3-2 5-2 5H9s-2-2-2-5c0-6 5-9 5-9z"/><path d="M9 16l-2 5 5-2 5 2-2-5"/></svg></span><h4>Future ready</h4><p>Automation and AI built in from the start, not bolted on later.</p></div>
+      <div class="fc rv"><span class="ic" style="background:rgba(139,92,246,.14)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2"><path d="M8 21h8M12 17v4"/><path d="M7 4h10v5a5 5 0 01-10 0z"/><path d="M17 5h3v2a3 3 0 01-3 3M7 5H4v2a3 3 0 003 3"/></svg></span><h4>You own it</h4><p>Source code stays on your GitHub. Nothing is locked to us.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="process" style="padding-top:0">
+  <div class="wrap">
+    <span class="kick">How it works</span>
+    <h2 style="margin:14px 0 8px">Get started in 3 simple steps</h2>
+    <p class="lede" style="margin-bottom:28px">No cost. No commitment. Just a useful conversation.</p>
+    <div class="steps3">
+      <div class="st3 rv"><span class="n">01</span><h4>Book a free call</h4><p>Tell us about your business and what is not working today.</p></div>
+      <div class="st3 rv"><span class="n">02</span><h4>Get a plan &amp; quote</h4><p>We suggest the right build and price it before anything starts.</p></div>
+      <div class="st3 rv"><span class="n">03</span><h4>We build your system</h4><p>You focus on your business while it gets built and launched.</p></div>
     </div>
   </div>
 </section>
@@ -823,6 +966,38 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
     addEventListener('scroll', onScroll, { passive: true });
     addEventListener('resize', onScroll);
     apply();
+  }
+
+  /* top scroll-progress rail */
+  var prog = document.getElementById('prog');
+  if (prog) {
+    var setProg = function(){
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      prog.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    };
+    addEventListener('scroll', setProg, { passive: true });
+    addEventListener('resize', setProg);
+    setProg();
+  }
+
+  /* count-up on the proof numbers */
+  var counters = [].slice.call(document.querySelectorAll('.stat b[data-count]'));
+  if (counters.length && 'IntersectionObserver' in window && !reduce) {
+    var cio = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (!e.isIntersecting) return;
+        cio.unobserve(e.target);
+        var el = e.target, to = +el.dataset.count, t0 = null;
+        requestAnimationFrame(function tick(t){
+          if (!t0) t0 = t;
+          var p = Math.min((t - t0) / 1100, 1);
+          el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+          if (p < 1) requestAnimationFrame(tick);
+        });
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function(el){ cio.observe(el); });
   }
 })();
 </script>
