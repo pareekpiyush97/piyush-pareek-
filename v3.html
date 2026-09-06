@@ -457,6 +457,51 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
 /* proof numbers lift a touch on their own hover — invites the eye */
 .stat b{transition:transform .3s ease}
 .statsband:hover .stat b{transform:translateY(-1px)}
+
+/* ═══ craft pass: orchestrated entrance + typographic detail ═══ */
+
+/* the one bespoke type moment: a true serif italic inside the headline */
+.hero h1 em{font-style:italic;font-weight:400;color:var(--ink);
+  font-family:'Instrument Serif',Georgia,serif}
+
+/* orchestrated hero load — one sequence, not scattered effects.
+   children start low + soft, then settle in order. */
+.hero .hero-in > *,
+.hero .dashwrap{opacity:0;transform:translateY(26px);
+  animation:rise .9s cubic-bezier(.16,.84,.28,1) forwards}
+.hero .pillnew{animation-delay:.05s}
+.hero .lede{animation-delay:.32s}
+.hero-btns{animation-delay:.44s}
+.hero .ticks{animation-delay:.54s}
+.hero .dashwrap{transform:translateY(52px);animation-delay:.66s;animation-duration:1.1s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* headline reads blurred -> sharp, so the type is the first thing you notice.
+   two classes + element so it beats the generic .hero-in > * rule */
+.hero .hero-in > h1{filter:blur(7px);
+  animation:rise .9s cubic-bezier(.16,.84,.28,1) .16s forwards,
+            unblur .85s ease .16s forwards}
+@keyframes unblur{to{filter:blur(0)}}
+
+/* the dashboard is the signature — give it a hairline gradient edge */
+.dash{position:relative}
+.dash::before{content:"";position:absolute;inset:0;border-radius:16px 16px 0 0;padding:1px;pointer-events:none;
+  background:linear-gradient(150deg,rgba(109,74,255,.5),rgba(226,80,176,.28) 45%,transparent 70%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude}
+
+/* restraint — calm the featured-plan border so it accents, not competes.
+   (replaces the 3-colour cycling glow) */
+.plan.pop{animation:none;border-color:var(--violet);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 0 0 1.6px rgba(109,74,255,.55),
+             0 26px 56px -30px rgba(109,74,255,.55)}
+
+@media(max-width:900px){
+  .hero .dashwrap{transform:translateY(26px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero .hero-in > *,.hero .dashwrap,.hero .hero-in > h1{opacity:1;transform:none;filter:none;animation:none}
+}
 </style>
 </head>
 <body>
@@ -485,7 +530,7 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
 
   <div class="wrap hero-in">
     <span class="pillnew"><i></i> New — WhatsApp lead capture on every build <span style="color:var(--violet)">›</span></span>
-    <h1>The <span class="grad">All-in-One System</span> to Grow Your <span class="grad2">Business</span></h1>
+    <h1>The <span class="grad">All-in-One System</span> to <em>grow</em> your <span class="grad2">Business</span></h1>
     <p class="lede">Website, lead capture, booking and automation — built as one connected system, so no enquiry slips through.</p>
     <div class="hero-btns">
       <a class="btn btn-p" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20to%20book%20a%20free%20call." target="_blank" rel="noopener">Book a Free Call →</a>
