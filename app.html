@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zrimat OS — Business Management System</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="zrimat-icon-transparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#fbfbfd; --card:#fff; --text:#1d2035; --muted:#7b7f9b; --faint:#9aa0bc;
+  --border:#e8e7f2; --border-2:#ded9f3;
+  --purple:#7048ff; --purple2:#8d6cff; --purple-soft:#eee9ff;
+  --green:#22ad62; --blue:#4087ff; --orange:#ff8b5c; --pink:#d94aa5; --red:#e5484d;
+  --shadow:0 1px 2px rgba(38,29,91,.02),0 8px 30px rgba(55,43,105,.045);
+  --shadow-lg:0 20px 50px -22px rgba(55,43,105,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#fff 0%,#faf9ff 58%,#fff8f1 100%);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text)}
+button,input,select,textarea{font:inherit}
+a{color:inherit;text-decoration:none}
+[hidden]{display:none!important}
+
+.app{min-height:100vh;display:flex;padding:14px 20px}
+.shell{width:100%;min-height:calc(100vh - 28px);display:flex;border:1px solid var(--border-2);border-radius:22px;
+  background:rgba(255,255,255,.72);box-shadow:0 0 0 2px rgba(219,214,255,.18),0 12px 40px rgba(72,50,130,.06);overflow:hidden}
+
+/* sidebar */
+.sidebar{width:236px;flex:0 0 236px;padding:24px 16px 18px;border-right:1px solid var(--border);
+  background:rgba(249,248,253,.7);display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:11px;padding:0 10px 24px;font-size:19px;font-weight:800;letter-spacing:-.02em}
+.brand small{font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--faint);display:block;margin-top:2px}
+.logo{width:34px;height:34px;flex:none;border-radius:9px;overflow:hidden;background:#0b2545;display:grid;place-items:center}
+.logo img{width:22px;height:22px;object-fit:contain}
+.nav{display:flex;flex-direction:column;gap:4px}
+.nav a{color:#737793;padding:11px 13px;border-radius:11px;display:flex;align-items:center;gap:12px;
+  font-size:14.5px;font-weight:600;cursor:pointer;transition:.15s}
+.nav a:hover{background:#f0edff;color:var(--purple)}
+.nav a.active{background:var(--purple-soft);color:var(--purple)}
+.nav a .ic{width:18px;height:18px;flex:none;display:grid;place-items:center}
+.nav a .badge{margin-left:auto;background:var(--purple);color:#fff;font-size:10px;font-weight:800;
+  min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px}
+.sp{flex:1}
+.help{border:1px solid var(--border-2);background:linear-gradient(145deg,#f0ebff,#f9edff);border-radius:15px;padding:16px 13px;text-align:center}
+.help strong{display:block;font-size:14px;margin-bottom:6px}
+.help p{font-size:12px;color:#8587a2;line-height:1.4;margin:0 0 13px}
+.help a{color:var(--purple);font-size:13px;font-weight:800}
+
+/* main */
+.main{flex:1;min-width:0;padding:18px 22px 26px;overflow:auto}
+.topbar{display:flex;align-items:center;gap:14px;justify-content:space-between;margin-bottom:20px}
+.tb-left{display:flex;align-items:center;gap:12px;min-width:0}
+.welcome h1{font-size:20px;margin:0 0 2px;letter-spacing:-.4px}
+.welcome p{margin:0;color:#8a8da5;font-size:13.5px}
+.search{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:10px;
+  padding:8px 12px;width:230px;color:var(--muted)}
+.search input{border:0;outline:0;background:transparent;width:100%;color:var(--text);font-size:13.5px}
+.actions{display:flex;gap:10px;align-items:center}
+.demo{border:1px solid #ffd86e;background:#fff3ca;color:#e59b00;padding:7px 12px;border-radius:18px;font-weight:800;font-size:11px;letter-spacing:.03em}
+.btn{border:1px solid transparent;border-radius:10px;padding:9px 15px;font-size:13.5px;font-weight:700;cursor:pointer;
+  display:inline-flex;align-items:center;gap:7px;transition:.18s;white-space:nowrap}
+.btn-p{background:linear-gradient(96deg,var(--purple),var(--purple2));color:#fff;box-shadow:0 8px 20px -8px rgba(112,72,255,.7)}
+.btn-p:hover{transform:translateY(-1px);box-shadow:0 12px 26px -10px rgba(112,72,255,.8)}
+.btn-w{background:#fff;border-color:var(--border-2);color:var(--text)}
+.btn-w:hover{border-color:var(--purple);color:var(--purple)}
+.btn-ghost{background:transparent;color:var(--purple);font-weight:800;font-size:13px}
+.avatar-tb{width:36px;height:36px;border-radius:50%;background:#eeeaff;color:var(--purple);display:grid;place-items:center;font-weight:800;font-size:13px;flex:none}
+
+/* page framing */
+.page-head{margin-bottom:16px}
+.page-head h2{font-size:22px;margin:0 0 3px;letter-spacing:-.5px}
+.page-head p{margin:0;color:#8a8da5;font-size:13.5px}
+.card{background:rgba(255,255,255,.9);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
+
+/* metric cards */
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.metric{padding:14px 15px 12px}
+.metric-head{display:flex;justify-content:space-between;align-items:center;color:#737793;font-size:13px;font-weight:600}
+.metric-icon{width:28px;height:28px;border-radius:8px;display:grid;place-items:center}
+.i-purple{background:#eee9ff;color:var(--purple)}.i-green{background:#e5f7ed;color:var(--green)}
+.i-blue{background:#e9f1ff;color:var(--blue)}.i-orange{background:#fff0e9;color:var(--orange)}
+.metric-value{font-size:27px;font-weight:800;margin:11px 0 6px;letter-spacing:-1px}
+.growth{font-size:12.5px;font-weight:750;display:flex;align-items:center;gap:5px}
+.up{color:var(--green)}.down{color:var(--red)}
+.spark{height:42px;margin:10px -2px 0}.spark canvas{width:100%!important;height:42px!important}
+
+.grid2{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,.95fr);gap:13px;margin-top:13px}
+.panel{padding:16px 16px 12px}
+.panel-title{font-size:14.5px;font-weight:750;margin:0 0 4px}
+.panel-sub{font-size:12px;color:var(--faint);margin:0 0 10px}
+.chart-wrap{height:240px}
+.chart-sm{height:200px}
+.donut-row{display:flex;align-items:center;gap:18px;margin-top:6px}
+.donut{width:140px;height:140px;flex:none}.donut canvas{width:140px!important;height:140px!important}
+.legend{flex:1;display:flex;flex-direction:column;gap:14px}
+.legend-item{display:flex;align-items:center;gap:9px;color:#7c7f99;font-size:13px}
+.legend-item b{margin-left:auto;color:#303247}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.d-purple{background:#7048ff}.d-green{background:#3ca565}.d-pink{background:#d94aa5}.d-orange{background:#ff8b5c}.d-blue{background:#4087ff}
+
+/* section header */
+.section{margin-top:16px}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px;flex-wrap:wrap}
+.section-head h3{font-size:16px;margin:0}
+.filters{display:flex;gap:7px;flex-wrap:wrap}
+.chip{border:1px solid var(--border-2);background:#fff;color:#777b96;font-size:12.5px;font-weight:650;
+  padding:6px 13px;border-radius:20px;cursor:pointer;transition:.15s}
+.chip:hover{border-color:var(--purple);color:var(--purple)}
+.chip.on{background:var(--purple);color:#fff;border-color:transparent}
+
+/* table */
+.table-card{overflow:hidden}
+.table-scroll{overflow-x:auto}
+.table{width:100%;border-collapse:collapse;font-size:13px}
+.table th{background:#faf9fd;color:#8588a0;text-align:left;font-weight:650;padding:12px 15px;border-bottom:1px solid var(--border);white-space:nowrap}
+.table td{padding:13px 15px;border-bottom:1px solid #f2f1f7;color:#4f536e;vertical-align:middle}
+.table tr:last-child td{border-bottom:0}
+.table tbody tr{transition:.12s}
+.table tbody tr:hover{background:#faf9ff}
+.client{display:flex;align-items:center;gap:10px;color:#272a40;font-weight:650}
+.avatar{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;flex:none;color:#fff}
+.src{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:12.5px}
+.src i{width:8px;height:8px;border-radius:50%;flex:none}
+.status{padding:5px 10px;border-radius:20px;font-size:11px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.st-new{background:#eae5ff;color:#6a3fe0}.st-replied{background:#e7f8ee;color:#21985a}
+.st-pending{background:#fff4dc;color:#c78b16}.st-confirmed{background:#e7f8ee;color:#21985a}
+.st-cancelled{background:#fde8e8;color:#d23b3f}.st-lost{background:#f0eff5;color:#8a8da5}
+.rowbtn{border:1px solid var(--border-2);background:#fff;color:var(--purple);border-radius:8px;padding:6px 11px;font-size:12px;font-weight:700;cursor:pointer}
+.rowbtn:hover{background:var(--purple-soft)}
+.muted-td{color:var(--faint)}
+
+/* clients grid */
+.clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.client-card{padding:16px}
+.client-card .top{display:flex;align-items:center;gap:12px;margin-bottom:13px}
+.client-card h4{margin:0;font-size:15px}
+.client-card .sub{font-size:12px;color:var(--faint)}
+.client-card .rows{display:grid;gap:8px;font-size:13px;color:#5b5f78}
+.client-card .rows div{display:flex;justify-content:space-between}
+.client-card .rows b{color:#2b2e44;font-weight:700}
+.client-card .cta{display:flex;gap:8px;margin-top:14px}
+.client-card .cta a{flex:1;text-align:center;border:1px solid var(--border-2);border-radius:9px;padding:8px;font-size:12.5px;font-weight:700;color:var(--purple)}
+.client-card .cta a:hover{background:var(--purple-soft)}
+
+/* bookings calendar */
+.cal{padding:16px}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-head h4{margin:0;font-size:15px}
+.cal-nav{display:flex;gap:6px}
+.cal-nav button{width:30px;height:30px;border:1px solid var(--border-2);background:#fff;border-radius:8px;cursor:pointer;color:var(--muted)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal-grid .dow{text-align:center;font-size:11px;font-weight:700;color:var(--faint);padding:4px 0}
+.cal-cell{aspect-ratio:1;border:1px solid var(--border);border-radius:9px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;font-size:13px;color:#4f536e;position:relative;gap:3px}
+.cal-cell.empty{border:0}
+.cal-cell.today{border-color:var(--purple);color:var(--purple);font-weight:800}
+.cal-cell .cdot{width:5px;height:5px;border-radius:50%;background:var(--purple)}
+.cal-cell.has{background:var(--purple-soft);border-color:var(--border-2);font-weight:700;color:#4a2fb0;cursor:pointer}
+
+/* settings */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12.5px;font-weight:700;color:#5b5f78}
+.field input,.field select,.field textarea{border:1px solid var(--border-2);border-radius:10px;padding:11px 13px;
+  font-size:14px;color:var(--text);background:#fff;outline:0;transition:.15s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(112,72,255,.12)}
+.field.full{grid-column:1/-1}
+.settings-actions{display:flex;gap:10px;margin-top:18px;align-items:center}
+.saved-note{color:var(--green);font-size:13px;font-weight:700;opacity:0;transition:.3s}
+.saved-note.show{opacity:1}
+
+/* empty state */
+.empty{text-align:center;padding:46px 20px;color:var(--faint)}
+.empty .big{font-size:34px;margin-bottom:8px}
+.empty p{margin:0 0 4px;font-size:14px}
+
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(24,20,55,.42);backdrop-filter:blur(3px);z-index:50;
+  display:grid;place-items:center;padding:20px;animation:fade .2s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modal{background:#fff;border-radius:18px;width:100%;max-width:460px;box-shadow:var(--shadow-lg);
+  animation:pop .24s cubic-bezier(.2,.8,.3,1);overflow:hidden}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.modal-head{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.modal-head h3{margin:0;font-size:17px}
+.modal-head button{border:0;background:transparent;font-size:20px;color:var(--muted);cursor:pointer;line-height:1}
+.modal-body{padding:18px 20px;display:grid;gap:13px}
+.modal-foot{padding:14px 20px 18px;display:flex;gap:10px;justify-content:flex-end}
+
+.mobile-toggle{display:none;border:1px solid var(--border);background:#fff;border-radius:9px;padding:9px 11px;font-size:16px;cursor:pointer}
+.rv{animation:rise .5s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+@media(max-width:1050px){
+  .cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}
+  .clients-grid{grid-template-columns:repeat(2,1fr)}
+  .sidebar{width:210px;flex-basis:210px}.search{width:170px}
+}
+@media(max-width:720px){
+  .app{padding:0}.shell{border-radius:0;min-height:100vh}
+  .sidebar{position:fixed;z-index:60;left:-250px;top:0;height:100vh;width:240px;transition:.22s;box-shadow:10px 0 30px rgba(30,20,80,.12)}
+  .sidebar.open{left:0}
+  .mobile-toggle{display:block}.main{padding:14px}
+  .search{display:none}.welcome p{display:none}
+  .cards{grid-template-columns:1fr}.clients-grid{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .topbar{flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){.rv,.modal,.overlay{animation:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="shell">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="logo"><img src="zrimat-icon-transparent.png" alt=""></span>
+      <span>Zrimat<small id="brandTag">BUSINESS OS</small></span>
+    </div>
+    <nav class="nav" id="nav">
+      <a data-route="dashboard" class="active"><span class="ic">▦</span>Dashboard</a>
+      <a data-route="enquiries"><span class="ic">✉</span>Enquiries<span class="badge" id="navEnq">0</span></a>
+      <a data-route="bookings"><span class="ic">▣</span>Bookings<span class="badge" id="navBook">0</span></a>
+      <a data-route="clients"><span class="ic">♙</span>Clients</a>
+      <a data-route="analytics"><span class="ic">⌁</span>Analytics</a>
+      <a data-route="settings"><span class="ic">⚙</span>Settings</a>
+    </nav>
+    <div class="sp"></div>
+    <div class="help">
+      <strong>This is the demo.</strong>
+      <p>Want this system wired to your own business?</p>
+      <a href="#" id="helpWa">Chat on WhatsApp →</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="tb-left">
+        <button class="mobile-toggle" id="mtoggle" aria-label="Menu">☰</button>
+        <div class="welcome">
+          <h1 id="pageTitle">Welcome back 👋</h1>
+          <p id="pageSub">Here's what's happening with your business today.</p>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="search"><span>⌕</span><input id="globalSearch" placeholder="Search enquiries, clients…"></div>
+        <span class="demo">DEMO DATA</span>
+        <button class="btn btn-p" id="addBtn">+ New enquiry</button>
+        <span class="avatar-tb" id="ownerAv">PP</span>
+      </div>
+    </div>
+
+    <div id="view"></div>
+  </main>
+</div>
+</div>
+
+<script>
+/* ─────────────────────────  store  ───────────────────────── */
+const KEY='zrimat_os_v1';
+const SRC={WhatsApp:'#7048ff',Google:'#3ca565',Instagram:'#d94aa5',Referral:'#ff8b5c',Website:'#4087ff'};
+const AV=['#7048ff','#22ad62','#4087ff','#ff8b5c','#d94aa5','#8d6cff'];
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const initials=n=>n.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+const avColor=n=>AV[[...n].reduce((a,c)=>a+c.charCodeAt(0),0)%AV.length];
+const fmtDate=iso=>{const d=new Date(iso),t=new Date(),y=new Date(Date.now()-864e5);
+  const hm=d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+  if(d.toDateString()===t.toDateString())return'Today, '+hm;
+  if(d.toDateString()===y.toDateString())return'Yesterday, '+hm;
+  return d.toLocaleDateString('en-IN',{day:'numeric',month:'short'})+', '+hm;};
+
+function seed(){
+  const now=Date.now(),h=36e5,d=864e5;
+  return {
+    business:{name:'Zrimat',owner:'Piyush Pareek',whatsapp:'918949498980',email:'zrimatofficial@gmail.com',hours:'Mon–Sat · 10am–7pm',city:'Bikaner, Rajasthan'},
+    enquiries:[
+      {id:1,name:'Rahul Sharma',phone:'98290 11111',source:'WhatsApp',message:'Interested in a business website with booking.',date:new Date(now-2*h).toISOString(),status:'new'},
+      {id:2,name:'Anjali Mehta',phone:'99999 12345',source:'Google',message:'Can you share available dates and pricing?',date:new Date(now-5*h).toISOString(),status:'pending'},
+      {id:3,name:'Vikram Kumar',phone:'90011 22334',source:'Instagram',message:'Request for a callback about e-commerce.',date:new Date(now-d-3*h).toISOString(),status:'replied'},
+      {id:4,name:'Dr. Manali Vyas',phone:'94140 55667',source:'Referral',message:'Need appointment system for the clinic.',date:new Date(now-2*d).toISOString(),status:'replied'},
+      {id:5,name:'Suresh Patel',phone:'93520 88990',source:'WhatsApp',message:'Quote for a portfolio website.',date:new Date(now-3*d).toISOString(),status:'new'},
+      {id:6,name:'Neha Joshi',phone:'70140 33221',source:'Website',message:'Do you build ERP for a small team?',date:new Date(now-4*d).toISOString(),status:'lost'},
+      {id:7,name:'Imran Khan',phone:'80030 77445',source:'Google',message:'Redesign of an existing site.',date:new Date(now-6*d).toISOString(),status:'replied'}
+    ],
+    bookings:[
+      {id:1,client:'Rahul Sharma',service:'Strategy call',date:isoOn(1,15,30),status:'confirmed'},
+      {id:2,client:'Anjali Mehta',service:'Requirement review',date:isoOn(2,11,0),status:'pending'},
+      {id:3,client:'Dr. Manali Vyas',service:'Handover & training',date:isoOn(4,17,0),status:'confirmed'},
+      {id:4,client:'Imran Khan',service:'Design walkthrough',date:isoOn(7,13,0),status:'confirmed'},
+      {id:5,client:'Suresh Patel',service:'Strategy call',date:isoOn(9,16,0),status:'pending'}
+    ],
+    clients:[
+      {id:1,name:'Eureka Institute',phone:'95115 58173',source:'Referral',value:15000,since:'2026-05'},
+      {id:2,name:'Nath Homeopathy',phone:'94140 55667',source:'Google',value:22000,since:'2026-06'},
+      {id:3,name:'Laxmi Niwas Palace',phone:'90011 90011',source:'Referral',value:45000,since:'2026-06'},
+      {id:4,name:'Parshwanath Property',phone:'88905 07608',source:'WhatsApp',value:30000,since:'2026-07'},
+      {id:5,name:'BEST English Classes',phone:'88529 57725',source:'Website',value:15000,since:'2026-07'},
+      {id:6,name:'Access Career Institute',phone:'97727 74800',source:'Google',value:12000,since:'2026-08'}
+    ]
+  };
+}
+function isoOn(dayOffset,h,m){const d=new Date();d.setDate(d.getDate()+dayOffset);d.setHours(h,m,0,0);return d.toISOString();}
+function load(){
+  try{const r=localStorage.getItem(KEY);if(r)return JSON.parse(r);}catch(e){}
+  const s=seed();
+  try{localStorage.setItem(KEY,JSON.stringify(s));}catch(e){}
+  return s;
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(DB));}catch(e){}}
+let DB=load();
+
+/* ─────────────────────────  charts registry  ───────────────────────── */
+let CHARTS=[];
+function clearCharts(){CHARTS.forEach(c=>{try{c.destroy()}catch(e){}});CHARTS=[];}
+const cOpts={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}},
+  elements:{point:{radius:0},line:{borderWidth:2}}};
+function spark(cv,data,color){CHARTS.push(new Chart(cv,{type:'line',
+  data:{labels:data.map((_,i)=>i),datasets:[{data,borderColor:color,tension:.3,fill:false}]},
+  options:{...cOpts,scales:{x:{display:false},y:{display:false}}}}));}
+
+/* ─────────────────────────  derived metrics  ───────────────────────── */
+const M=()=>{
+  const e=DB.enquiries;
+  const total=e.length;
+  const replied=e.filter(x=>x.status==='replied').length;
+  const rate=total?Math.round(replied/total*100):0;
+  const bySource={};e.forEach(x=>bySource[x.source]=(bySource[x.source]||0)+1);
+  return {total,replied,rate,newClients:DB.clients.length,bookings:DB.bookings.length,bySource};
+};
+
+/* ─────────────────────────  router  ───────────────────────── */
+const META={
+  dashboard:['Welcome back 👋',"Here's what's happening with your business today."],
+  enquiries:['Enquiries','Every lead in one inbox — search, filter and reply.'],
+  bookings:['Bookings','Upcoming calls and handovers, with a month view.'],
+  clients:['Clients','The businesses on board and what each is worth.'],
+  analytics:['Analytics','How enquiries move to clients over time.'],
+  settings:['Settings','Your business details, used across the system.']
+};
+function route(){
+  const r=(location.hash.replace('#','')||'dashboard');
+  const known=META[r]?r:'dashboard';
+  $$('#nav a').forEach(a=>a.classList.toggle('active',a.dataset.route===known));
+  $('#pageTitle').textContent=META[known][0];
+  $('#pageSub').textContent=META[known][1];
+  clearCharts();
+  ({dashboard:renderDashboard,enquiries:renderEnquiries,bookings:renderBookings,
+    clients:renderClients,analytics:renderAnalytics,settings:renderSettings}[known])();
+  refreshBadges();
+  if(innerWidth<720)$('#sidebar').classList.remove('open');
+  $('#main')&&($('#main').scrollTop=0);
+}
+function refreshBadges(){
+  const m=M();
+  $('#navEnq').textContent=DB.enquiries.filter(x=>x.status==='new').length;
+  $('#navBook').textContent=DB.bookings.filter(x=>x.status==='pending').length;
+  $('#ownerAv').textContent=initials(DB.business.owner);
+}
+
+/* ─────────────────────────  helpers  ───────────────────────── */
+const srcDot=s=>`<span class="src"><i style="background:${SRC[s]||'#999'}"></i>${s}</span>`;
+const statusPill=s=>`<span class="status st-${s}">${s[0].toUpperCase()+s.slice(1)}</span>`;
+const av=n=>`<span class="avatar" style="background:${avColor(n)}">${initials(n)}</span>`;
+
+/* ─────────────────────────  Dashboard  ───────────────────────── */
+function renderDashboard(){
+  const m=M();
+  const recent=[...DB.enquiries].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,4);
+  $('#view').innerHTML=`
+  <section class="cards">
+    ${metricCard('Enquiries','i-purple','✉',m.total,'↑ 12.5%','up','sd1')}
+    ${metricCard('Clients','i-green','♙',m.newClients,'↑ 8.3%','up','sd2')}
+    ${metricCard('Bookings','i-blue','▣',m.bookings,'↑ 15.7%','up','sd3')}
+    ${metricCard('Reply rate','i-orange','◷',m.rate+'%',(m.rate>=80?'↑ 6.1%':'↓ needs work'),(m.rate>=80?'up':'down'),'sd4')}
+  </section>
+  <section class="grid2">
+    <div class="card panel rv">
+      <div class="panel-title">Enquiry overview</div>
+      <div class="panel-sub">Last 30 days · demo trend</div>
+      <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
+    </div>
+    <div class="card panel rv">
+      <div class="panel-title">Where enquiries come from</div>
+      <div class="panel-sub">By channel · this period</div>
+      <div class="donut-row">
+        <div class="donut"><canvas id="donut"></canvas></div>
+        <div class="legend" id="dashLegend"></div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-head"><h3>Recent enquiries</h3>
+      <button class="btn-ghost" data-go="enquiries">View all →</button></div>
+    <div class="card table-card"><div class="table-scroll">
+      <table class="table"><thead><tr><th>Client</th><th>Source</th><th>Message</th><th>When</th><th>Status</th></tr></thead>
+      <tbody>${recent.map(e=>`<tr>
+        <td><div class="client">${av(e.name)}${e.name}</div></td>
+        <td>${srcDot(e.source)}</td>
+        <td class="muted-td">${e.message}</td>
+        <td class="muted-td">${fmtDate(e.date)}</td>
+        <td>${statusPill(e.status)}</td></tr>`).join('')}</tbody></table>
+    </div></div>
+  </section>`;
+
+  spark($('#sd1'),[14,17,16,21,19,23,22,26],'#7048ff');
+  spark($('#sd2'),[6,7,7,9,9,10,11,12],'#22ad62');
+  spark($('#sd3'),[13,12,16,14,18,17,21,20],'#4087ff');
+  spark($('#sd4'),[12,13,11,15,14,17,16,18],'#ff8b5c');
+
+  CHARTS.push(new Chart($('#mainChart'),{type:'line',
+    data:{labels:['1','5','10','15','20','25','30'],
+      datasets:[{data:[42,49,48,61,66,68,79],borderColor:'#7048ff',
+        backgroundColor:ctx=>{const g=ctx.chart.ctx.createLinearGradient(0,0,0,240);
+          g.addColorStop(0,'rgba(112,72,255,.22)');g.addColorStop(1,'rgba(112,72,255,0)');return g;},
+        fill:true,tension:.4,borderWidth:3,pointRadius:0}]},
+    options:{...cOpts,scales:{x:{display:false},y:{display:false,min:30,max:90}}}}));
+
+  drawDonut('donut','dashLegend',m.bySource);
+  $('[data-go]').onclick=e=>location.hash=e.target.dataset.go;
+}
+function metricCard(label,cls,icon,val,growth,dir,sparkId){
+  return `<div class="card metric rv"><div class="metric-head"><span>${label}</span>
+    <span class="metric-icon ${cls}">${icon}</span></div>
+    <div class="metric-value">${val}</div>
+    <div class="growth ${dir}">${growth}</div>
+    <div class="spark"><canvas id="${sparkId}"></canvas></div></div>`;
+}
+function drawDonut(canvasId,legendId,bySource){
+  const entries=Object.entries(bySource).sort((a,b)=>b[1]-a[1]);
+  const total=entries.reduce((a,[,v])=>a+v,0)||1;
+  CHARTS.push(new Chart($('#'+canvasId),{type:'doughnut',
+    data:{labels:entries.map(e=>e[0]),datasets:[{data:entries.map(e=>e[1]),
+      backgroundColor:entries.map(e=>SRC[e[0]]||'#999'),borderWidth:0,hoverOffset:3}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'72%',plugins:{legend:{display:false}}}}));
+  $('#'+legendId).innerHTML=entries.map(([k,v])=>
+    `<div class="legend-item"><i class="dot" style="background:${SRC[k]||'#999'}"></i>${k}
+      <b>${Math.round(v/total*100)}%</b></div>`).join('');
+}
+
+/* ─────────────────────────  Enquiries  ───────────────────────── */
+let enqFilter='all',enqSearch='';
+function renderEnquiries(){
+  $('#view').innerHTML=`
+  <div class="section-head" style="margin-bottom:14px">
+    <div class="filters" id="enqFilters">
+      ${['all','new','pending','replied','lost'].map(f=>
+        `<button class="chip ${f===enqFilter?'on':''}" data-f="${f}">${f[0].toUpperCase()+f.slice(1)}</button>`).join('')}
+    </div>
+    <button class="btn btn-p" data-add>+ New enquiry</button>
+  </div>
+  <div class="card table-card"><div class="table-scroll" id="enqTable"></div></div>`;
+  paintEnq();
+  $('#enqFilters').onclick=e=>{const f=e.target.dataset.f;if(!f)return;
+    enqFilter=f;$$('#enqFilters .chip').forEach(c=>c.classList.toggle('on',c.dataset.f===f));paintEnq();};
+  $('[data-add]').onclick=openAdd;
+}
+function paintEnq(){
+  let list=[...DB.enquiries].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  if(enqFilter!=='all')list=list.filter(e=>e.status===enqFilter);
+  if(enqSearch){const q=enqSearch.toLowerCase();
+    list=list.filter(e=>(e.name+e.message+e.source+e.phone).toLowerCase().includes(q));}
+  const box=$('#enqTable');if(!box)return;
+  if(!list.length){box.innerHTML=`<div class="empty"><div class="big">✉</div>
+    <p>No enquiries match this view.</p></div>`;return;}
+  box.innerHTML=`<table class="table"><thead><tr>
+    <th>Client</th><th>Source</th><th>Message</th><th>When</th><th>Status</th><th></th></tr></thead>
+    <tbody>${list.map(e=>`<tr>
+      <td><div class="client">${av(e.name)}<div>${e.name}<div style="font-weight:500;color:var(--faint);font-size:11.5px">${e.phone}</div></div></div></td>
+      <td>${srcDot(e.source)}</td>
+      <td class="muted-td">${e.message}</td>
+      <td class="muted-td">${fmtDate(e.date)}</td>
+      <td>${statusPill(e.status)}</td>
+      <td>${e.status==='replied'?'<span class="muted-td" style="font-size:12px">✓ done</span>'
+        :`<button class="rowbtn" data-reply="${e.id}">Mark replied</button>`}</td></tr>`).join('')}</tbody></table>`;
+  $$('[data-reply]',box).forEach(b=>b.onclick=()=>{
+    const en=DB.enquiries.find(x=>x.id==b.dataset.reply);if(en){en.status='replied';save();paintEnq();refreshBadges();}});
+}
+
+/* ─────────────────────────  Bookings  ───────────────────────── */
+let calRef=new Date();
+function renderBookings(){
+  const up=[...DB.bookings].sort((a,b)=>new Date(a.date)-new Date(b.date));
+  $('#view').innerHTML=`
+  <section class="grid2">
+    <div class="card cal rv" id="calCard"></div>
+    <div class="card panel rv">
+      <div class="panel-title">Upcoming</div><div class="panel-sub">Next appointments</div>
+      <div id="upList"></div>
+    </div>
+  </section>`;
+  paintCal();
+  $('#upList').innerHTML=up.map(b=>`
+    <div style="display:flex;align-items:center;gap:11px;padding:11px 2px;border-bottom:1px solid #f2f1f7">
+      <div style="width:44px;text-align:center;flex:none">
+        <div style="font-size:18px;font-weight:800;line-height:1">${new Date(b.date).getDate()}</div>
+        <div style="font-size:10px;color:var(--faint);text-transform:uppercase">${new Date(b.date).toLocaleDateString('en-IN',{month:'short'})}</div>
+      </div>
+      <div style="flex:1;min-width:0">
+        <div style="font-weight:700;font-size:13.5px">${b.service}</div>
+        <div style="color:var(--faint);font-size:12px">${b.client} · ${new Date(b.date).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}</div>
+      </div>${statusPill(b.status)}</div>`).join('')||'<div class="empty"><p>No bookings yet.</p></div>';
+}
+function paintCal(){
+  const y=calRef.getFullYear(),mo=calRef.getMonth(),today=new Date();
+  const first=new Date(y,mo,1).getDay(),days=new Date(y,mo+1,0).getDate();
+  const booked={};DB.bookings.forEach(b=>{const d=new Date(b.date);if(d.getFullYear()===y&&d.getMonth()===mo)booked[d.getDate()]=1;});
+  let cells='';for(let i=0;i<first;i++)cells+='<div class="cal-cell empty"></div>';
+  for(let d=1;d<=days;d++){
+    const isToday=d===today.getDate()&&mo===today.getMonth()&&y===today.getFullYear();
+    cells+=`<div class="cal-cell ${isToday?'today':''} ${booked[d]?'has':''}">${d}${booked[d]?'<span class="cdot"></span>':''}</div>`;
+  }
+  $('#calCard').innerHTML=`
+    <div class="cal-head"><h4>${calRef.toLocaleDateString('en-IN',{month:'long',year:'numeric'})}</h4>
+      <div class="cal-nav"><button data-m="-1">‹</button><button data-m="1">›</button></div></div>
+    <div class="cal-grid">${['S','M','T','W','T','F','S'].map(d=>`<div class="dow">${d}</div>`).join('')}${cells}</div>`;
+  $$('#calCard [data-m]').forEach(b=>b.onclick=()=>{calRef.setMonth(calRef.getMonth()+ +b.dataset.m);paintCal();});
+}
+
+/* ─────────────────────────  Clients  ───────────────────────── */
+function renderClients(){
+  const c=DB.clients,total=c.reduce((a,x)=>a+x.value,0);
+  $('#view').innerHTML=`
+  <section class="cards" style="grid-template-columns:repeat(3,1fr)">
+    ${miniStat('Active clients',c.length)}
+    ${miniStat('Total project value','₹'+total.toLocaleString('en-IN'))}
+    ${miniStat('Avg. per client','₹'+Math.round(total/c.length).toLocaleString('en-IN'))}
+  </section>
+  <section class="section"><div class="clients-grid">${c.map(x=>`
+    <div class="card client-card rv">
+      <div class="top">${av(x.name)}<div><h4>${x.name}</h4><div class="sub">Since ${new Date(x.since+'-01').toLocaleDateString('en-IN',{month:'short',year:'numeric'})}</div></div></div>
+      <div class="rows">
+        <div><span>Phone</span><b>${x.phone}</b></div>
+        <div><span>Source</span><b>${x.source}</b></div>
+        <div><span>Project value</span><b>₹${x.value.toLocaleString('en-IN')}</b></div>
+      </div>
+      <div class="cta">
+        <a href="https://wa.me/91${x.phone.replace(/\\s/g,'')}" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="tel:+91${x.phone.replace(/\\s/g,'')}">Call</a>
+      </div>
+    </div>`).join('')}</div></section>`;
+}
+function miniStat(label,val){return `<div class="card metric rv"><div class="metric-head"><span>${label}</span></div>
+  <div class="metric-value" style="margin-bottom:2px">${val}</div></div>`;}
+
+/* ─────────────────────────  Analytics  ───────────────────────── */
+function renderAnalytics(){
+  const m=M();
+  $('#view').innerHTML=`
+  <section class="grid2">
+    <div class="card panel rv"><div class="panel-title">Enquiries by month</div>
+      <div class="panel-sub">Demo · last 6 months</div>
+      <div class="chart-sm"><canvas id="barM"></canvas></div></div>
+    <div class="card panel rv"><div class="panel-title">Channel split</div>
+      <div class="panel-sub">Where leads come from</div>
+      <div class="donut-row"><div class="donut"><canvas id="aDonut"></canvas></div>
+        <div class="legend" id="aLegend"></div></div></div>
+  </section>
+  <section class="section">
+    <div class="card panel rv"><div class="panel-title">Lead → client funnel</div>
+      <div class="panel-sub">How enquiries convert</div>
+      <div class="chart-sm"><canvas id="funnel"></canvas></div></div>
+  </section>`;
+
+  CHARTS.push(new Chart($('#barM'),{type:'bar',
+    data:{labels:['Apr','May','Jun','Jul','Aug','Sep'],
+      datasets:[{data:[38,52,61,74,88,96],backgroundColor:'#7048ff',borderRadius:7,barThickness:26}]},
+    options:{...cOpts,scales:{x:{grid:{display:false},ticks:{color:'#9aa0bc'}},y:{display:false}}}}));
+
+  drawDonut('aDonut','aLegend',m.bySource);
+
+  CHARTS.push(new Chart($('#funnel'),{
+    type:'bar',
+    data:{labels:['Enquiries','Replied','In talks','Clients'],
+      datasets:[{data:[m.total*14,m.replied*18,m.newClients*10,m.newClients],
+        backgroundColor:['#c9bcff','#a58cff','#8d6cff','#7048ff'],borderRadius:7,barThickness:26}]},
+    options:{indexAxis:'y',...cOpts,scales:{x:{display:false},y:{grid:{display:false},ticks:{color:'#6b6f8c',font:{weight:600}}}}}
+  }));
+}
+
+/* ─────────────────────────  Settings  ───────────────────────── */
+function renderSettings(){
+  const b=DB.business;
+  $('#view').innerHTML=`
+  <div class="card panel rv" style="max-width:720px">
+    <div class="panel-title">Business profile</div>
+    <div class="panel-sub">Used across the system — brand, WhatsApp links and contact.</div>
+    <div class="form-grid" style="margin-top:14px">
+      <div class="field"><label>Business name</label><input id="fName" value="${b.name}"></div>
+      <div class="field"><label>Owner</label><input id="fOwner" value="${b.owner}"></div>
+      <div class="field"><label>WhatsApp number</label><input id="fWa" value="${b.whatsapp}"></div>
+      <div class="field"><label>Email</label><input id="fEmail" value="${b.email}"></div>
+      <div class="field"><label>Working hours</label><input id="fHours" value="${b.hours}"></div>
+      <div class="field"><label>City</label><input id="fCity" value="${b.city}"></div>
+    </div>
+    <div class="settings-actions">
+      <button class="btn btn-p" id="saveBtn">Save changes</button>
+      <button class="btn btn-w" id="resetBtn">Reset demo data</button>
+      <span class="saved-note" id="savedNote">✓ Saved</span>
+    </div>
+  </div>`;
+  $('#saveBtn').onclick=()=>{
+    Object.assign(DB.business,{name:$('#fName').value.trim()||'Zrimat',owner:$('#fOwner').value.trim()||'Owner',
+      whatsapp:$('#fWa').value.replace(/\\D/g,'')||'918949498980',email:$('#fEmail').value.trim(),
+      hours:$('#fHours').value.trim(),city:$('#fCity').value.trim()});
+    save();applyBusiness();
+    const n=$('#savedNote');n.classList.add('show');setTimeout(()=>n.classList.remove('show'),1800);
+  };
+  $('#resetBtn').onclick=()=>{if(confirm('Reset all demo data to the original sample?')){localStorage.removeItem(KEY);DB=load();applyBusiness();route();}};
+}
+
+/* ─────────────────────────  business → chrome  ───────────────────────── */
+function applyBusiness(){
+  const b=DB.business;
+  $('#brandTag').textContent=(b.name.toUpperCase()+' OS').slice(0,16);
+  $('.brand span').firstChild.textContent=b.name;
+  const wa=`https://wa.me/${b.whatsapp}?text=${encodeURIComponent('Hi '+b.name+', I want a business system like this demo.')}`;
+  $('#helpWa').href=wa;$('#helpWa').target='_blank';
+  refreshBadges();
+}
+
+/* ─────────────────────────  Add-enquiry modal  ───────────────────────── */
+function openAdd(){
+  const wrap=document.createElement('div');wrap.className='overlay';wrap.id='ov';
+  wrap.innerHTML=`<div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head"><h3>New enquiry</h3><button id="mClose" aria-label="Close">×</button></div>
+    <div class="modal-body">
+      <div class="field"><label>Client name</label><input id="mName" placeholder="e.g. Priya Nair"></div>
+      <div class="field"><label>Phone</label><input id="mPhone" placeholder="98290 00000"></div>
+      <div class="field"><label>Source</label><select id="mSource">${Object.keys(SRC).map(s=>`<option>${s}</option>`).join('')}</select></div>
+      <div class="field"><label>Message</label><textarea id="mMsg" rows="3" placeholder="What do they want?"></textarea></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-w" id="mCancel">Cancel</button>
+      <button class="btn btn-p" id="mSave">Add enquiry</button></div></div>`;
+  document.body.appendChild(wrap);
+  const close=()=>wrap.remove();
+  $('#mClose',wrap).onclick=close;$('#mCancel',wrap).onclick=close;
+  wrap.onclick=e=>{if(e.target===wrap)close();};
+  document.addEventListener('keydown',function esc(ev){if(ev.key==='Escape'){close();document.removeEventListener('keydown',esc);}});
+  $('#mName',wrap).focus();
+  $('#mSave',wrap).onclick=()=>{
+    const name=$('#mName',wrap).value.trim();if(!name){$('#mName',wrap).focus();return;}
+    DB.enquiries.push({id:Date.now(),name,phone:$('#mPhone',wrap).value.trim()||'—',
+      source:$('#mSource',wrap).value,message:$('#mMsg',wrap).value.trim()||'(no message)',
+      date:new Date().toISOString(),status:'new'});
+    save();close();
+    if((location.hash.replace('#','')||'dashboard')==='enquiries')paintEnq();else location.hash='enquiries';
+    refreshBadges();
+  };
+}
+
+/* ─────────────────────────  wire up  ───────────────────────── */
+$('#nav').addEventListener('click',e=>{const a=e.target.closest('a');if(a)location.hash=a.dataset.route;});
+$('#addBtn').onclick=openAdd;
+$('#mtoggle').onclick=()=>$('#sidebar').classList.toggle('open');
+$('#globalSearch').addEventListener('input',e=>{enqSearch=e.target.value;
+  if((location.hash.replace('#','')||'dashboard')!=='enquiries'){enqFilter='all';location.hash='enquiries';}
+  else paintEnq();});
+window.addEventListener('hashchange',route);
+applyBusiness();route();
+</script>
+</body>
+</html>
