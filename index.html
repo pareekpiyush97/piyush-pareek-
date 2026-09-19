@@ -1090,9 +1090,16 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
     }
   };
 
-  /* India gets INR. Everyone else gets USD — it travels further than the rupee,
-     and the US is the second market. Locale first, timezone as the check. */
+  /* India sees rupees. Everywhere else sees dollars.
+     Timezone decides it, not language: language is a preference, timezone is where you are,
+     and India has exactly one timezone. A browser set to en-US inside India is common, and
+     an en-IN browser sitting in the US is not India. Locale is only the fallback for when
+     the timezone cannot be read at all. */
   function detect(){
+    var tz = '';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e){}
+    if (tz) return (tz === 'Asia/Kolkata' || tz === 'Asia/Calcutta') ? 'INR' : 'USD';
+
     var region = '';
     try {
       if (window.Intl && Intl.Locale) region = new Intl.Locale(navigator.language).region || '';
@@ -1101,12 +1108,7 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
       var l = (navigator.language || '').split('-');
       region = l.length > 1 ? l[1].toUpperCase() : '';
     }
-    var tz = '';
-    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e){}
-    if (region === 'IN') return 'INR';
-    if (tz === 'Asia/Kolkata' || tz === 'Asia/Calcutta') return 'INR';
-    if (region) return 'USD';
-    return tz.indexOf('Asia/') === 0 ? 'INR' : 'USD';  /* nothing to go on: Asia -> home market */
+    return region === 'IN' ? 'INR' : 'USD';
   }
 
   function saved(){ try { return localStorage.getItem('zrimat-currency'); } catch(e){ return null; } }
