@@ -37,8 +37,8 @@
   "description": "Zrimat builds websites, lead capture, booking, e-commerce and ERP/CRM systems for growing businesses in India — connected into one system so no enquiry slips through.",
   "telephone": "+91-89494-98980",
   "email": "zrimatofficial@gmail.com",
-  "priceRange": "INR 7000+",
-  "areaServed": "IN",
+  "priceRange": "INR 7000+ / USD 100+",
+  "areaServed": ["IN", "US"],
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Bikaner",
@@ -55,8 +55,10 @@
     "@type": "OfferCatalog",
     "name": "Build packages",
     "itemListElement": [
-      { "@type": "Offer", "name": "Starter — portfolio website", "price": "7000", "priceCurrency": "INR" },
-      { "@type": "Offer", "name": "Growth — business website", "price": "15000", "priceCurrency": "INR" },
+      { "@type": "Offer", "name": "Starter — portfolio website", "price": "7000", "priceCurrency": "INR", "eligibleRegion": { "@type": "Country", "name": "IN" } },
+      { "@type": "Offer", "name": "Starter — portfolio website", "price": "100", "priceCurrency": "USD", "eligibleRegion": { "@type": "Country", "name": "US" } },
+      { "@type": "Offer", "name": "Growth — business website", "price": "15000", "priceCurrency": "INR", "eligibleRegion": { "@type": "Country", "name": "IN" } },
+      { "@type": "Offer", "name": "Growth — business website", "price": "200", "priceCurrency": "USD", "eligibleRegion": { "@type": "Country", "name": "US" } },
       { "@type": "Offer", "name": "E-commerce website" },
       { "@type": "Offer", "name": "ERP / CRM system" }
     ]
@@ -254,6 +256,18 @@ header{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.82);backdr
 .case:hover .clink{gap:11px}
 @media(max-width:960px){.cases{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.cases{grid-template-columns:1fr}}
+
+/* currency switch */
+.cur{display:inline-flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--line-2);
+  border-radius:999px;background:var(--white)}
+.cur button{appearance:none;border:0;cursor:pointer;background:transparent;color:var(--muted);
+  font:inherit;font-size:12.5px;font-weight:700;letter-spacing:.02em;
+  padding:7px 15px;border-radius:999px;transition:background .22s,color .22s}
+.cur button:hover{color:var(--ink-2)}
+.cur button[aria-pressed="true"]{background:var(--violet);color:#fff}
+.cur button:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+.curnote{display:block;font-size:11px;color:var(--faint);margin-top:7px;text-align:right}
+@media(max-width:620px){.curnote{text-align:left}}
 
 /* pricing */
 .phead{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:26px}
@@ -753,12 +767,19 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
         <h2 style="margin:14px 0 8px">Choose the right build for you</h2>
         <p class="lede">Clear starting prices for websites. Bigger systems are quoted once we know what you need.</p>
       </div>
+      <div>
+        <div class="cur" role="group" aria-label="Currency">
+          <button type="button" data-cur="INR" aria-pressed="true">₹ INR</button>
+          <button type="button" data-cur="USD" aria-pressed="false">$ USD</button>
+        </div>
+        <small class="curnote" data-curnote>Prices shown in Indian rupees</small>
+      </div>
     </div>
     <div class="plans">
       <div class="plan rv">
         <h4>Starter</h4>
         <p class="sub">Portfolio &amp; personal brand</p>
-        <div class="price"><span class="from">Starts at</span>₹7,000<small>one-time · standard build</small></div>
+        <div class="price"><span class="from">Starts at</span><span data-price="starter">₹7,000</span><small>one-time · standard build</small></div>
         <ul>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Portfolio website</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Work / gallery showcase</li>
@@ -767,14 +788,14 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> WhatsApp enquiry button</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Google Business setup</li>
         </ul>
-        <a class="btn btn-w" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20the%20Starter%20portfolio%20build%20(%E2%82%B97%2C000)." target="_blank" rel="noopener">Get Started →</a>
+        <a class="btn btn-w" data-wa="starter" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20the%20Starter%20portfolio%20build%20(%E2%82%B97%2C000)." target="_blank" rel="noopener">Get Started →</a>
       </div>
 
       <div class="plan pop rv">
         <span class="pop-tag">★ Most chosen</span>
         <h4>Growth</h4>
         <p class="sub">Business website that brings enquiries</p>
-        <div class="price"><span class="from">Starts at</span>₹15,000<small>one-time · standard build</small></div>
+        <div class="price"><span class="from">Starts at</span><span data-price="growth">₹15,000</span><small>one-time · standard build</small></div>
         <ul>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Multipage business website</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Lead capture forms</li>
@@ -783,7 +804,7 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> SEO + social preview cards</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Source on your GitHub</li>
         </ul>
-        <a class="btn btn-p" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20the%20Growth%20business%20website%20(%E2%82%B915%2C000)." target="_blank" rel="noopener">Get Started →</a>
+        <a class="btn btn-p" data-wa="growth" href="https://wa.me/918949498980?text=Hi%20Zrimat%2C%20I%20want%20the%20Growth%20business%20website%20(%E2%82%B915%2C000)." target="_blank" rel="noopener">Get Started →</a>
       </div>
 
       <div class="plan rv">
@@ -1044,6 +1065,84 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
     }, { threshold: 0.6 });
     counters.forEach(function(el){ cio.observe(el); });
   }
+})();
+</script>
+<script>
+/* country-aware pricing — India sees rupees, everywhere else sees dollars.
+   Adding a tier or a currency means adding to PRICES, nothing else. */
+(function(){
+  var WA = '918949498980';
+
+  var PRICES = {
+    INR: {
+      label: 'Prices shown in Indian rupees',
+      plans: {
+        starter: { show: '\u20B97,000',  wa: 'Hi Zrimat, I want the Starter portfolio build (\u20B97,000).' },
+        growth:  { show: '\u20B915,000', wa: 'Hi Zrimat, I want the Growth business website (\u20B915,000).' }
+      }
+    },
+    USD: {
+      label: 'Prices shown in US dollars',
+      plans: {
+        starter: { show: '$100', wa: 'Hi Zrimat, I want the Starter portfolio build (US$100).' },
+        growth:  { show: '$200', wa: 'Hi Zrimat, I want the Growth business website (US$200).' }
+      }
+    }
+  };
+
+  /* India gets INR. Everyone else gets USD — it travels further than the rupee,
+     and the US is the second market. Locale first, timezone as the check. */
+  function detect(){
+    var region = '';
+    try {
+      if (window.Intl && Intl.Locale) region = new Intl.Locale(navigator.language).region || '';
+    } catch(e){}
+    if (!region) {
+      var l = (navigator.language || '').split('-');
+      region = l.length > 1 ? l[1].toUpperCase() : '';
+    }
+    var tz = '';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e){}
+    if (region === 'IN') return 'INR';
+    if (tz === 'Asia/Kolkata' || tz === 'Asia/Calcutta') return 'INR';
+    if (region) return 'USD';
+    return tz.indexOf('Asia/') === 0 ? 'INR' : 'USD';  /* nothing to go on: Asia -> home market */
+  }
+
+  function saved(){ try { return localStorage.getItem('zrimat-currency'); } catch(e){ return null; } }
+  function save(c){ try { localStorage.setItem('zrimat-currency', c); } catch(e){} }
+
+  function apply(cur){
+    var set = PRICES[cur]; if (!set) return;
+
+    [].slice.call(document.querySelectorAll('[data-price]')).forEach(function(el){
+      var plan = set.plans[el.getAttribute('data-price')];
+      if (plan) el.textContent = plan.show;
+    });
+
+    [].slice.call(document.querySelectorAll('[data-wa]')).forEach(function(a){
+      var plan = set.plans[a.getAttribute('data-wa')];
+      if (plan) a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(plan.wa);
+    });
+
+    [].slice.call(document.querySelectorAll('.cur button')).forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-cur') === cur));
+    });
+
+    var note = document.querySelector('[data-curnote]');
+    if (note) note.textContent = set.label;
+
+    document.documentElement.setAttribute('data-currency', cur);
+  }
+
+  apply(saved() || detect());
+
+  [].slice.call(document.querySelectorAll('.cur button')).forEach(function(b){
+    b.addEventListener('click', function(){
+      var c = b.getAttribute('data-cur');
+      save(c); apply(c);
+    });
+  });
 })();
 </script>
 </body>
