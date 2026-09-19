@@ -635,7 +635,7 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
 
 <div class="statsband">
   <div class="wrap statgrid">
-    <div class="stat rv"><b data-count="9">9</b><span>Client sites live</span></div>
+    <div class="stat rv"><b data-count="100" data-suffix="+">100+</b><span>Happy clients</span></div>
     <div class="stat rv"><b data-count="7">7</b><span>Industries served</span></div>
     <div class="stat rv"><b>Hand-coded</b><span>No page builders</span></div>
     <div class="stat rv"><b>Public</b><span>Source on GitHub</span></div>
@@ -1035,11 +1035,11 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
       es.forEach(function(e){
         if (!e.isIntersecting) return;
         cio.unobserve(e.target);
-        var el = e.target, to = +el.dataset.count, t0 = null;
+        var el = e.target, to = +el.dataset.count, sfx = el.dataset.suffix || '', t0 = null;
         requestAnimationFrame(function tick(t){
           if (!t0) t0 = t;
           var p = Math.min((t - t0) / 1100, 1);
-          el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+          el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))) + sfx;
           if (p < 1) requestAnimationFrame(tick);
         });
       });
