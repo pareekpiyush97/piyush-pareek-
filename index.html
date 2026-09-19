@@ -257,18 +257,6 @@ header{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.82);backdr
 @media(max-width:960px){.cases{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.cases{grid-template-columns:1fr}}
 
-/* currency switch */
-.cur{display:inline-flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--line-2);
-  border-radius:999px;background:var(--white)}
-.cur button{appearance:none;border:0;cursor:pointer;background:transparent;color:var(--muted);
-  font:inherit;font-size:12.5px;font-weight:700;letter-spacing:.02em;
-  padding:7px 15px;border-radius:999px;transition:background .22s,color .22s}
-.cur button:hover{color:var(--ink-2)}
-.cur button[aria-pressed="true"]{background:var(--violet);color:#fff}
-.cur button:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
-.curnote{display:block;font-size:11px;color:var(--faint);margin-top:7px;text-align:right}
-@media(max-width:620px){.curnote{text-align:left}}
-
 /* pricing */
 .phead{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:26px}
 .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;align-items:start}
@@ -767,13 +755,6 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
         <h2 style="margin:14px 0 8px">Choose the right build for you</h2>
         <p class="lede">Clear starting prices for websites. Bigger systems are quoted once we know what you need.</p>
       </div>
-      <div>
-        <div class="cur" role="group" aria-label="Currency">
-          <button type="button" data-cur="INR" aria-pressed="true">₹ INR</button>
-          <button type="button" data-cur="USD" aria-pressed="false">$ USD</button>
-        </div>
-        <small class="curnote" data-curnote>Prices shown in Indian rupees</small>
-      </div>
     </div>
     <div class="plans">
       <div class="plan rv">
@@ -1069,29 +1050,23 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
 </script>
 <script>
 /* country-aware pricing — India sees rupees, everywhere else sees dollars.
+   No switch: the currency is decided by where the visitor is and is not offered as a choice.
    Adding a tier or a currency means adding to PRICES, nothing else. */
 (function(){
   var WA = '918949498980';
 
   var PRICES = {
     INR: {
-      label: 'Prices shown in Indian rupees',
-      plans: {
-        starter: { show: '\u20B97,000',  wa: 'Hi Zrimat, I want the Starter portfolio build (\u20B97,000).' },
-        growth:  { show: '\u20B915,000', wa: 'Hi Zrimat, I want the Growth business website (\u20B915,000).' }
-      }
+      starter: { show: '₹7,000',  wa: 'Hi Zrimat, I want the Starter portfolio build (₹7,000).' },
+      growth:  { show: '₹15,000', wa: 'Hi Zrimat, I want the Growth business website (₹15,000).' }
     },
     USD: {
-      label: 'Prices shown in US dollars',
-      plans: {
-        starter: { show: '$199', wa: 'Hi Zrimat, I want the Starter portfolio build (US$199).' },
-        growth:  { show: '$299', wa: 'Hi Zrimat, I want the Growth business website (US$299).' }
-      }
+      starter: { show: '$199', wa: 'Hi Zrimat, I want the Starter portfolio build (US$199).' },
+      growth:  { show: '$299', wa: 'Hi Zrimat, I want the Growth business website (US$299).' }
     }
   };
 
-  /* India sees rupees. Everywhere else sees dollars.
-     Timezone decides it, not language: language is a preference, timezone is where you are,
+  /* Timezone decides it, not language: language is a preference, timezone is where you are,
      and India has exactly one timezone. A browser set to en-US inside India is common, and
      an en-IN browser sitting in the US is not India. Locale is only the fallback for when
      the timezone cannot be read at all. */
@@ -1111,40 +1086,25 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
     return region === 'IN' ? 'INR' : 'USD';
   }
 
-  function saved(){ try { return localStorage.getItem('zrimat-currency'); } catch(e){ return null; } }
-  function save(c){ try { localStorage.setItem('zrimat-currency', c); } catch(e){} }
+  var cur = detect(), set = PRICES[cur];
+  if (!set) return;
 
-  function apply(cur){
-    var set = PRICES[cur]; if (!set) return;
-
-    [].slice.call(document.querySelectorAll('[data-price]')).forEach(function(el){
-      var plan = set.plans[el.getAttribute('data-price')];
-      if (plan) el.textContent = plan.show;
-    });
-
-    [].slice.call(document.querySelectorAll('[data-wa]')).forEach(function(a){
-      var plan = set.plans[a.getAttribute('data-wa')];
-      if (plan) a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(plan.wa);
-    });
-
-    [].slice.call(document.querySelectorAll('.cur button')).forEach(function(b){
-      b.setAttribute('aria-pressed', String(b.getAttribute('data-cur') === cur));
-    });
-
-    var note = document.querySelector('[data-curnote]');
-    if (note) note.textContent = set.label;
-
-    document.documentElement.setAttribute('data-currency', cur);
-  }
-
-  apply(saved() || detect());
-
-  [].slice.call(document.querySelectorAll('.cur button')).forEach(function(b){
-    b.addEventListener('click', function(){
-      var c = b.getAttribute('data-cur');
-      save(c); apply(c);
-    });
+  [].slice.call(document.querySelectorAll('[data-price]')).forEach(function(el){
+    var plan = set[el.getAttribute('data-price')];
+    if (plan) el.textContent = plan.show;
   });
+
+  /* the CTAs carry the price inside the prefilled message, so they follow the currency */
+  [].slice.call(document.querySelectorAll('[data-wa]')).forEach(function(a){
+    var plan = set[a.getAttribute('data-wa')];
+    if (plan) a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(plan.wa);
+  });
+
+  document.documentElement.setAttribute('data-currency', cur);
+
+  /* a visitor who used the old switch before it was removed would otherwise be pinned
+     to their old pick forever, with nothing left to change it back */
+  try { localStorage.removeItem('zrimat-currency'); } catch(e){}
 })();
 </script>
 </body>
