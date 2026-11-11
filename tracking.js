@@ -1,6 +1,5 @@
 /* Zrimat traffic tracking: UTM capture, GA4, WhatsApp lead source. */
 (function () {
-  var GA_ID = 'G-XXXXXXXXXX'; // TODO: replace with the real GA4 Measurement ID
   var KEY = 'zr_utm', TTL = 30 * 864e5;
   var P = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'];
   var store = {
@@ -21,18 +20,9 @@
   }
   var tag = [saved.utm_source, saved.utm_medium, saved.utm_campaign].filter(Boolean).join('/');
 
+  // GA4 is already loaded by the page (gtag.js) and reads utm_* from the URL itself.
   window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  window.gtag = gtag;
-  if (GA_ID.indexOf('XXXX') < 0) {
-    var s = document.createElement('script'); s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID; document.head.appendChild(s);
-    gtag('js', new Date());
-    gtag('config', GA_ID, {
-      campaign_source: saved.utm_source, campaign_medium: saved.utm_medium,
-      campaign_name: saved.utm_campaign, campaign_term: saved.utm_term, campaign_content: saved.utm_content
-    });
-  }
+  window.gtag = window.gtag || function () { dataLayer.push(arguments); };
 
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('a[href*="wa.me"]').forEach(function (a) {
@@ -46,6 +36,6 @@
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href]'); if (!a) return;
     var h = a.href, type = /wa\.me/.test(h) ? 'whatsapp' : /^mailto:/.test(h) ? 'email' : '';
-    if (type) gtag('event', 'generate_lead', { method: type, link_text: (a.textContent || '').trim().slice(0, 60), lead_source: tag });
+    if (type) window.gtag('event', 'generate_lead', { method: type, link_text: (a.textContent || '').trim().slice(0, 60), lead_source: tag });
   });
 })();
