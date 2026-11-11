@@ -57,7 +57,7 @@
     "addressCountry": "IN"
   },
   "geo": { "@type": "GeoCoordinates", "latitude": 28.0229, "longitude": 73.3119 },
-  "founder": { "@type": "Person", "name": "Piyush Pareek", "jobTitle": "Business Developer" },
+  "founder": { "@type": "Person", "@id": "https://zrimat.com/#piyush", "name": "Piyush Pareek", "jobTitle": "Business Developer" },
   "sameAs": [
     "https://www.linkedin.com/in/piyush-pareek49",
     "https://github.com/pareekpiyush97",
@@ -303,6 +303,7 @@ header{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.82);backdr
 .faq summary::after{content:"+";float:right;color:var(--violet)}
 .faq[open] summary::after{content:"–"}
 .faq p{color:var(--muted);font-size:14.5px;line-height:1.65;margin-top:10px}
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.bcard{display:block;background:var(--white);border:1px solid var(--line-2);border-radius:16px;padding:20px;text-decoration:none;color:var(--ink);transition:transform .2s}.bcard:hover{transform:translateY(-3px)}.bcard small{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--violet)}.bcard b{display:block;font-size:17px;line-height:1.35;margin:6px 0 10px}.bcard span{font-size:14px;font-weight:700;color:var(--violet-2)}@media(max-width:800px){.bgrid{grid-template-columns:1fr}}
 .ctaband{background:linear-gradient(96deg,var(--violet),#8B5CF6 42%,var(--orange));border-radius:18px;
   padding:26px 28px;display:flex;align-items:center;gap:22px;justify-content:space-between;flex-wrap:wrap;color:#fff;
   box-shadow:0 28px 60px -30px rgba(109,74,255,.8)}
@@ -856,6 +857,24 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
   </div>
 </section>
 
+<section class="sect" id="about" style="padding-top:0">
+  <div class="wrap" style="max-width:860px">
+    <span class="kick">Who builds it</span>
+    <h2 style="margin:10px 0 14px">Built by one person you can message directly</h2>
+    <p class="lede">Zrimat is run by <strong>Piyush Pareek</strong> from Bikaner, Rajasthan. Every site is hand-coded, prices are published, and the source code stays on your GitHub. You talk to the person who builds your site, on WhatsApp, with no agency layers in between.</p>
+    <p class="lede" style="margin-top:12px">See the work for yourself: a <a href="https://pareekpiyush97.github.io/laxmi-Niwas-Palace/" target="_blank" rel="noopener">heritage hotel</a>, a <a href="https://pareekpiyush97.github.io/parshwanath-property/" target="_blank" rel="noopener">real estate business</a> and a <a href="https://pareekpiyush97.github.io/Nath-Homiopathy/" target="_blank" rel="noopener">homeopathy clinic</a>. Code is public on <a href="https://github.com/pareekpiyush97" target="_blank" rel="noopener">GitHub</a>, and you can connect on <a href="https://www.linkedin.com/in/piyush-pareek49" target="_blank" rel="noopener">LinkedIn</a>.</p>
+  </div>
+</section>
+
+<section class="sect" id="guides" style="padding-top:0">
+  <div class="wrap">
+    <span class="kick">From the blog</span>
+    <h2 style="margin:10px 0 22px">Guides for Bikaner business owners</h2>
+    <div class="bgrid"><a class="bcard" href="/blog/website-cost-bikaner.html"><small>Pricing guide</small><b>Website Design Cost in Bikaner (2026): What You Really Pay</b><span>5 min read →</span></a><a class="bcard" href="/blog/whatsapp-enquiries-from-website.html"><small>Lead capture</small><b>How to Get Customer Enquiries on WhatsApp From Your Website</b><span>6 min read →</span></a><a class="bcard" href="/blog/local-business-website-checklist.html"><small>Checklist</small><b>Local Business Website Checklist: 12 Must-Haves (India)</b><span>5 min read →</span></a></div>
+    <p style="margin-top:16px"><a href="/blog.html">All guides →</a></p>
+  </div>
+</section>
+
 <section class="sect" id="faq" style="padding-top:0">
   <div class="wrap" style="max-width:820px">
     <span class="kick">FAQ</span>
@@ -905,6 +924,7 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
         <a href="#work">Work</a>
         <a href="#clients">Clients</a>
         <a href="#pricing">Pricing</a>
+        <a href="#about">About</a>
         <a href="blog.html">Blog</a>
       </div>
       <div class="fcol fcontact">
