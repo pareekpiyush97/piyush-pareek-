@@ -1,0 +1,24 @@
+# Zrimat
+
+> Zrimat is the freelance web design, development and automation practice of Piyush Pareek in Bikaner, Rajasthan, India. It builds hand-coded business websites, lead capture and booking systems, WhatsApp automation and small ERP/CRM tools for local businesses. Standard business websites start at ₹7,000 (Starter) and ₹15,000 (Growth); e-commerce and ERP/CRM are quoted per project.
+
+## Main pages
+- [Home](https://zrimat.com/): services, pricing plans, FAQs and recent client work
+- [Blog](https://zrimat.com/blog.html): guides for Bikaner business owners
+
+## Guides
+- [Web designer in Bikaner: how to choose](https://zrimat.com/blog/web-designer-in-bikaner.html)
+- [Website design cost in Bikaner](https://zrimat.com/blog/website-cost-bikaner.html)
+- [Get customer enquiries on WhatsApp from your website](https://zrimat.com/blog/whatsapp-enquiries-from-website.html)
+- [Google Business Profile setup guide (India)](https://zrimat.com/blog/google-business-profile-setup-india.html)
+- [Hotel website for direct bookings](https://zrimat.com/blog/hotel-website-direct-bookings.html)
+- [Clinic website for more patient enquiries](https://zrimat.com/blog/clinic-website-more-patient-enquiries.html)
+- [WhatsApp Business app vs API](https://zrimat.com/blog/whatsapp-business-app-vs-api.html)
+- [Local business website checklist](https://zrimat.com/blog/local-business-website-checklist.html)
+- [Website vs Instagram for business](https://zrimat.com/blog/website-vs-instagram-for-business.html)
+- [Bikaner me website banwane ka kharcha (Hinglish)](https://zrimat.com/blog/bikaner-me-website-banwane-ka-kharcha.html)
+- [Business ke liye website kaise banaye (Hinglish)](https://zrimat.com/blog/business-ke-liye-website-kaise-banaye.html)
+- [Google Business Profile kaise banaye (Hinglish)](https://zrimat.com/blog/google-business-profile-kaise-banaye.html)
+
+## Contact
+- WhatsApp enquiries via the buttons on https://zrimat.com/
