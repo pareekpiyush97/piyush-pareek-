@@ -262,6 +262,7 @@ header{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.82);backdr
 .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
 .case:hover .shot img{transform:scale(1.055)}
 .shot::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(16,12,51,.42) 0%,rgba(16,12,51,0) 38%,rgba(16,12,51,.86) 100%)}
+.cgh{font-size:20px;margin:34px 0 4px}.cgh:first-of-type{margin-top:6px}.cgp{font-size:13.5px;color:var(--muted);margin-bottom:16px}.shot .ph{position:absolute;inset:0;display:grid;place-items:center}.shot .ph span{font-size:72px;font-weight:800;color:rgba(255,255,255,.16);letter-spacing:-.04em}
 .shot .kk{position:absolute;z-index:2;left:13px;top:11px;font-size:9px;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;color:rgba(255,255,255,.75)}
 .shot .nm{position:absolute;z-index:2;left:13px;bottom:11px;right:13px;color:#fff;font-size:15px;font-weight:800;letter-spacing:-.02em}
@@ -665,7 +666,7 @@ p a:not(.btn):not(.bcard){text-decoration:underline;text-underline-offset:2px}
 
 <div class="statsband">
   <div class="wrap statgrid">
-    <div class="stat rv"><b data-count="9">9</b><span>Live client websites</span></div>
+    <div class="stat rv"><b data-count="18">18</b><span>Live client websites</span></div>
     <div class="stat rv"><b data-count="7">7</b><span>Industries served</span></div>
     <div class="stat rv"><b>Automated</b><span>Workflows built for precision</span></div>
     <div class="stat rv"><b>Public</b><span>Source on GitHub</span></div>
@@ -856,8 +857,13 @@ p a:not(.btn):not(.bcard){text-decoration:underline;text-underline-offset:2px}
   <div class="wrap">
     <span class="kick">Clients</span>
     <h2 style="margin:14px 0 8px">Businesses we have built for</h2>
-    <p class="lede" style="margin-bottom:26px">Nine sites, live right now. Click any name and see it for yourself.</p>
-    <div class="cases" id="clgrid" style="grid-template-columns:repeat(3,1fr)"></div>
+    <p class="lede" style="margin-bottom:26px">18 sites, live right now, in two groups. Click any name and see it for yourself.</p>
+    <h3 class="cgh">Portfolio &amp; personal brand</h3>
+    <p class="cgp">Websites for professionals and creators whose name is the brand.</p>
+    <div class="cases" id="clport"></div>
+    <h3 class="cgh">Business websites</h3>
+    <p class="cgp">Websites for clinics, institutes, hotels, shops and service businesses.</p>
+    <div class="cases" id="clbiz"></div>
   </div>
 </section>
 
@@ -956,39 +962,47 @@ p a:not(.btn):not(.bcard){text-decoration:underline;text-underline-offset:2px}
       $$=function(s){return [].slice.call(document.querySelectorAll(s))};
   $('#yr').textContent=new Date().getFullYear();
 
-  var CLIENTS=[
-    ['Nath Homeopathy','Clinic · Bikaner','Nath-Homiopathy','N','#2F4A40'],
-    ['Eureka Institute','Coaching · Bikaner','eureka','E','#2B3A5C'],
-    ['BEST English Classes','Coaching · Bikaner','thebestenglishclasses','B','#4A3A20'],
-    ['Access Career Institute','Coaching · Bikaner','access-career-point','A','#1F3F4A'],
-    ['Laxmi Niwas Palace','Heritage Hotel · Bikaner','laxmi-Niwas-Palace','L','#5A4A36'],
-    ['Parshwanath Property','Real Estate · Udaipur','parshwanath-property','P','#0E1930'],
-    ['Badal Production','Photography · Nagpur','Badal-Production-','B','#3E2C52'],
-    ['Anusu Events','Wedding & Events','Anusu','A','#4E2A3C'],
-    ['Profound Create Spaces','Luxury Interiors · Architecture','MS-PAU-Associates-','P','#33384A']
+  var PORT=[
+    ['Dr. Gaurav Gomber','Pediatrician · Bikaner','Dr.-Gaurav-Gomber','D','#2B4A5C',0],
+    ['Films By Tej','Wedding & Event Films','films-by-tej','F','#4A2E3E',0],
+    ['Badal Production','Photography · Nagpur','Badal-Production-','B','#3E2C52',1],
+    ['Profound Create Spaces','Luxury Interiors · Architecture','MS-PAU-Associates-','P','#33384A',1]
   ];
+  var BIZ=[
+    ['Nath Homeopathy','Clinic · Bikaner','Nath-Homiopathy','N','#2F4A40',1],
+    ["Dr Ujjwal's Dental Clinic",'Dental Clinic · Bikaner','Dental-Clinic-','D','#1F4A5A',0],
+    ['Eureka Institute','Coaching · Bikaner','eureka','E','#2B3A5C',1],
+    ['BEST English Classes','Coaching · Bikaner','thebestenglishclasses','B','#4A3A20',1],
+    ['Access Career Institute','Coaching · Bikaner','access-career-point','A','#1F3F4A',1],
+    ['Laxmi Niwas Palace','Heritage Hotel · Bikaner','laxmi-Niwas-Palace','L','#5A4A36',1],
+    ['Parshwanath Property','Real Estate · Udaipur','parshwanath-property','P','#0E1930',1],
+    ['Anusu Events','Wedding & Events','Anusu','A','#4E2A3C',1],
+    ['Solar Energy Enterprises','Solar Installation · Bikaner','','S','#7A4A12',0,'https://solarenergyenterprise.com/'],
+    ["NAN'S Solar Power",'Adani Solar Dealer · Bikaner','Nans-Solar-Power','N','#3B3A12',0],
+    ['HR Shoe Mart','Footwear Retail · Bikaner','hr-shoe-mart','H','#4A2A1E',0],
+    ['Verma Fine Jewellery','Jewellery Retail','tanishq','V','#5A4420',0],
+    ['Z Lab Design','Automotive Design & Detailing','Z-LAB-DESIGN','Z','#2A2A3E',0],
+    ['One Coffee','Café · Bikaner','onecoffee','O','#4A3326',0]
+  ];
+  var CLIENTS=PORT.concat(BIZ);
+  function cUrl(c){return c[6]||('https://pareekpiyush97.github.io/'+c[2]+'/')}
 
   /* marquee — duplicated so the loop is seamless */
   var mq=$('#mq'), html='';
   for(var pass=0;pass<2;pass++){
     CLIENTS.forEach(function(c){
-      html+='<a href="https://pareekpiyush97.github.io/'+c[2]+'/" target="_blank" rel="noopener">'+
-            '<span class="dot">'+c[3]+'</span>'+c[0]+'</a>';
+      html+='<a href="'+cUrl(c)+'" target="_blank" rel="noopener"><span class="dot">'+c[3]+'</span>'+c[0]+'</a>';
     });
   }
   mq.innerHTML=html;
 
-  /* client cards */
-  var g=$('#clgrid'), ch='';
-  CLIENTS.forEach(function(c){
-    ch+='<a class="case rv" href="https://pareekpiyush97.github.io/'+c[2]+'/" target="_blank" rel="noopener">'+
-        '<div class="shot">'+
-        '<img src="shots/'+c[2]+'.webp" alt="'+c[0]+' website" loading="lazy" decoding="async" width="800" height="450">'+
-        '<span class="nm">'+c[0]+'</span></div>'+
-        '<div class="cbody"><p style="flex:0">'+c[1]+'</p>'+
-        '<span class="clink" style="margin-top:10px">View live site →</span></div></a>';
-  });
-  g.innerHTML=ch;
+  /* client cards, grouped */
+  function cCard(c){
+    var img=c[5]?'<img src="shots/'+c[2]+'.webp" alt="'+c[0]+' website" loading="lazy" decoding="async" width="800" height="450">':'<div class="ph" style="background:linear-gradient(140deg,'+c[4]+',#100C33)"><span>'+c[3]+'</span></div>';
+    return '<a class="case rv" href="'+cUrl(c)+'" target="_blank" rel="noopener"><div class="shot">'+img+'<span class="nm">'+c[0]+'</span></div><div class="cbody"><p style="flex:0">'+c[1]+'</p><span class="clink" style="margin-top:10px">View live site →</span></div></a>';
+  }
+  $('#clport').innerHTML=PORT.map(cCard).join('');
+  $('#clbiz').innerHTML=BIZ.map(cCard).join('');
 
   /* mobile nav */
   var bg=$('#burger'), nl=$('#nlinks');
