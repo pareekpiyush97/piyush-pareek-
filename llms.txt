@@ -1,6 +1,6 @@
 # Zrimat
 
-> Zrimat is the freelance web design, development and automation practice of Piyush Pareek in Bikaner, Rajasthan, India. It builds hand-coded business websites, lead capture and booking systems, WhatsApp automation and small ERP/CRM tools for local businesses. Standard business websites start at ₹7,000 (Starter) and ₹15,000 (Growth); e-commerce and ERP/CRM are quoted per project.
+> Zrimat is the freelance web design, development and automation practice of Piyush Pareek in Bikaner, Rajasthan, India. It builds hand-coded business websites, lead capture and booking systems, WhatsApp automation and small ERP/CRM tools for local businesses. Standard business websites start at ₹6,999 (Starter) and ₹14,999 (Growth); e-commerce and ERP/CRM are quoted per project.
 
 ## Main pages
 - [Home](https://zrimat.com/): services, pricing plans, FAQs and recent client work
