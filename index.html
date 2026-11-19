@@ -835,7 +835,7 @@ button.btn{font-family:inherit;cursor:pointer}#qd{border:0;border-radius:18px;pa
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Customer accounts</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Shipping &amp; tax setup</li>
         </ul>
-        <button class="btn btn-w" type="button" data-quote="ecom">Get My Quote →</button>
+        <button class="btn btn-w" type="button" data-price="ecom">Get My Quote →</button>
       </div>
 
       <div class="plan rv">
@@ -850,7 +850,7 @@ button.btn{font-family:inherit;cursor:pointer}#qd{border:0;border-radius:18px;pa
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Role-based access</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12.5l5 5L20 6.5"/></svg> Automation &amp; AI workflows</li>
         </ul>
-        <button class="btn btn-w" type="button" data-quote="erp">Get My Quote →</button>
+        <button class="btn btn-w" type="button" data-price="erp">Get My Quote →</button>
       </div>
     </div>
     <p class="pnote">Starting prices cover a standard build. Pages, features and integrations change the final number — we confirm it on a free call before any work begins.</p>
@@ -1138,11 +1138,15 @@ button.btn{font-family:inherit;cursor:pointer}#qd{border:0;border-radius:18px;pa
   var PRICES = {
     INR: {
       starter: { show: '₹6,999',  wa: 'Hi Zrimat, I want the Starter portfolio build (₹6,999).' },
-      growth:  { show: '₹14,999', wa: 'Hi Zrimat, I want the Growth business website (₹14,999).' }
+      growth:  { show: '₹14,999', wa: 'Hi Zrimat, I want the Growth business website (₹14,999).' },
+      ecom:    { show: '₹24,999', wa: 'Hi Zrimat, I want an E-commerce store (from ₹24,999).' },
+      erp:     { show: '₹39,999', wa: 'Hi Zrimat, I want an ERP / CRM system (from ₹39,999).' }
     },
     USD: {
       starter: { show: '$99', wa: 'Hi Zrimat, I want the Starter portfolio build (US$99).' },
-      growth:  { show: '$199', wa: 'Hi Zrimat, I want the Growth business website (US$199).' }
+      growth:  { show: '$199', wa: 'Hi Zrimat, I want the Growth business website (US$199).' },
+      ecom:    { show: '$349', wa: 'Hi Zrimat, I want an E-commerce store (from US$349).' },
+      erp:     { show: '$499', wa: 'Hi Zrimat, I want an ERP / CRM system (from US$499).' }
     }
   };
 
